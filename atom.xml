@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-15T01:41:15.541Z</updated>
+  <updated>2019-07-15T03:00:02.744Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/07/15/article/"/>
     <id>http://yoursite.com/2019/07/15/article/</id>
     <published>2019-07-15T01:40:28.000Z</published>
-    <updated>2019-07-15T01:41:15.541Z</updated>
+    <updated>2019-07-15T03:00:02.744Z</updated>
     
     <content type="html"><![CDATA[<p>123lkfdsjfljlksd荆防颗粒累块积苏都放假快乐 </p>]]></content>
     
@@ -35,6 +35,10 @@
     
     </summary>
     
+      <category term="cyuya" scheme="http://yoursite.com/categories/cyuya/"/>
+    
+    
+      <category term="study" scheme="http://yoursite.com/tags/study/"/>
     
   </entry>
   
