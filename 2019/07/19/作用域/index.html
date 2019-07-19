@@ -90,8 +90,7 @@
 <meta property="og:description" content="作用域什么是作用域？作用域是代码在运行时，某些特定部分中的变量，函数，和对象的可访问性。作用域负责收集并维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。换句话说，作用域决定了变量和函数的可访问范围，即作用域控制着变量和函数的可见性和生命周期。 JavaScript中的作用域 全局作用域 局部作用域  如果一个变量在函数外或者大括号">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/.com//%E4%BD%9C%E7%94%A8%E5%9F%9F%5C%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86.PNG">
-<meta property="og:image" content="http://yoursite.com/.com//%E4%BD%9C%E7%94%A8%E5%9F%9F%5CJavaScript%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B.PNG">
-<meta property="og:updated_time" content="2019-07-19T12:11:58.401Z">
+<meta property="og:updated_time" content="2019-07-19T12:22:07.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域">
 <meta name="twitter:description" content="作用域什么是作用域？作用域是代码在运行时，某些特定部分中的变量，函数，和对象的可访问性。作用域负责收集并维护由所有声明的标识符（变量）组成的一系列查询，并实施一套非常严格的规则，确定当前执行的代码对这些标识符的访问权限。换句话说，作用域决定了变量和函数的可访问范围，即作用域控制着变量和函数的可见性和生命周期。 JavaScript中的作用域 全局作用域 局部作用域  如果一个变量在函数外或者大括号">
@@ -419,12 +418,17 @@
 <li><code>JavaScript</code> 大部分情况下编译发生在代码执行前的几微秒(甚至更短!)的时间内</li>
 <li><code>JavaScript</code> 引擎用尽了各种办法(比如 <code>JIT</code>，可以延 迟编译甚至实施重编译)来保证性能最佳</li>
 </ul>
-<h3 id="JavaScript是如何执行的"><a href="#JavaScript是如何执行的" class="headerlink" title="JavaScript是如何执行的"></a>JavaScript是如何执行的</h3><p><img src="/.com//%E4%BD%9C%E7%94%A8%E5%9F%9F%5CJavaScript%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B.PNG" alt="JavaScript编译过程"></p>
+<h3 id="JavaScript是如何执行的"><a href="#JavaScript是如何执行的" class="headerlink" title="JavaScript是如何执行的"></a>JavaScript是如何执行的</h3><p>! <a href="作用域\JavaScript编译过程.PNG">JavaScript编译过程</a></p>
 <ul>
 <li>核心重点：变量和函数在内的所有声明都会在任何代码被执行前首先被处理。</li>
 <li>函数运行的瞬间，创建一个<strong>AO</strong> (Active Object 活动对象)运行载体。</li>
 </ul>
 <h3 id="作用域链是什么？"><a href="#作用域链是什么？" class="headerlink" title="作用域链是什么？"></a>作用域链是什么？</h3><p><strong>JavaScript上每一个函数执行时，会先在自己创建的AO上找对应属性值。若找不到则往父函数的AO上找，再找不到则再上一层的AO,直到找到window（全局作用域）。而这一条形成的“AO链” 就是JavaScript中的作用域链。</strong></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>《你不知道的JavaScript》上卷</li>
+<li><a href="https://segmentfault.com/a/1190000019783405" target="_blank" rel="noopener">深入理解JavaScript</a></li>
+<li><a href="https://www.jianshu.com/p/0c69c777e0a4" target="_blank" rel="noopener">javascript作用域</a></li>
+</ol>
 
       
     </div>
@@ -620,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#作用域"><span class="nav-number">1.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是作用域？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是作用域？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript中的作用域"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript中的作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局作用域"><span class="nav-number">1.2.1.</span> <span class="nav-text">全局作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部作用域"><span class="nav-number">1.2.2.</span> <span class="nav-text">局部作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作用域"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">函数作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于变量提升"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">关于变量提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#块级作用域"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">块级作用域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域链"><span class="nav-number">1.3.</span> <span class="nav-text">作用域链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于编译原理"><span class="nav-number">1.3.1.</span> <span class="nav-text">关于编译原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript是如何执行的"><span class="nav-number">1.3.2.</span> <span class="nav-text">JavaScript是如何执行的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域链是什么？"><span class="nav-number">1.3.3.</span> <span class="nav-text">作用域链是什么？</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#作用域"><span class="nav-number">1.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是作用域？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是作用域？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript中的作用域"><span class="nav-number">1.2.</span> <span class="nav-text">JavaScript中的作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局作用域"><span class="nav-number">1.2.1.</span> <span class="nav-text">全局作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部作用域"><span class="nav-number">1.2.2.</span> <span class="nav-text">局部作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作用域"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">函数作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于变量提升"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">关于变量提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#块级作用域"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">块级作用域</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域链"><span class="nav-number">1.3.</span> <span class="nav-text">作用域链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关于编译原理"><span class="nav-number">1.3.1.</span> <span class="nav-text">关于编译原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript是如何执行的"><span class="nav-number">1.3.2.</span> <span class="nav-text">JavaScript是如何执行的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域链是什么？"><span class="nav-number">1.3.3.</span> <span class="nav-text">作用域链是什么？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.4.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
             
 
           </div>

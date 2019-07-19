@@ -419,12 +419,17 @@
 <li><code>JavaScript</code> 大部分情况下编译发生在代码执行前的几微秒(甚至更短!)的时间内</li>
 <li><code>JavaScript</code> 引擎用尽了各种办法(比如 <code>JIT</code>，可以延 迟编译甚至实施重编译)来保证性能最佳</li>
 </ul>
-<h3 id="JavaScript是如何执行的"><a href="#JavaScript是如何执行的" class="headerlink" title="JavaScript是如何执行的"></a>JavaScript是如何执行的</h3><p><img src="/.com//%E4%BD%9C%E7%94%A8%E5%9F%9F%5CJavaScript%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B.PNG" alt="JavaScript编译过程"></p>
+<h3 id="JavaScript是如何执行的"><a href="#JavaScript是如何执行的" class="headerlink" title="JavaScript是如何执行的"></a>JavaScript是如何执行的</h3><p>! <a href="作用域\JavaScript编译过程.PNG">JavaScript编译过程</a></p>
 <ul>
 <li>核心重点：变量和函数在内的所有声明都会在任何代码被执行前首先被处理。</li>
 <li>函数运行的瞬间，创建一个<strong>AO</strong> (Active Object 活动对象)运行载体。</li>
 </ul>
 <h3 id="作用域链是什么？"><a href="#作用域链是什么？" class="headerlink" title="作用域链是什么？"></a>作用域链是什么？</h3><p><strong>JavaScript上每一个函数执行时，会先在自己创建的AO上找对应属性值。若找不到则往父函数的AO上找，再找不到则再上一层的AO,直到找到window（全局作用域）。而这一条形成的“AO链” 就是JavaScript中的作用域链。</strong></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li>《你不知道的JavaScript》上卷</li>
+<li><a href="https://segmentfault.com/a/1190000019783405" target="_blank" rel="noopener">深入理解JavaScript</a></li>
+<li><a href="https://www.jianshu.com/p/0c69c777e0a4" target="_blank" rel="noopener">javascript作用域</a></li>
+</ol>
 
           
         
@@ -1295,21 +1300,21 @@ Web浏览器将CSS规则应用于文档以影响它们的显示方式。</code><
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    &lt;script language=<span class="string">"javascript"</span> type=<span class="string">"text/javascript"</span>&gt;           <span class="built_in">window</span>.location.href=<span class="string">"login.jsp?backurl="</span>+<span class="built_in">window</span>.location.href;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>直接跳转无参数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">window</span>.location.href=<span class="string">'http://www.baidu.com'</span>;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">window</span>.location.href=<span class="string">'http://www.baidu.com'</span>;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p><strong>第二种：返回上一次预览界面</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;alert(<span class="string">"返回"</span>);<span class="built_in">window</span>.history.back(<span class="number">-1</span>);&lt;/script&gt;标签嵌套：</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;alert(<span class="string">"返回"</span>);<span class="built_in">window</span>.history.back(<span class="number">-1</span>);<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>标签嵌套：</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"javascript:history.go(-1)"</span>&gt;返回上一步&lt;a&gt;&lt;a href="&lt;%=Request.ServerVariables("HTTP_REFERER")%&gt;"&gt;返回上一步&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"javascript:history.go(-1)"</span>&gt;返回上一步&lt;a&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%=Request.ServerVariables("</span><span class="attr">HTTP_REFERER</span>")%&gt;</span>"&gt;返回上一步<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p><strong>第三种：指定跳转页面 对框架无效。。。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;       <span class="built_in">window</span>.navigate(<span class="string">"top.jsp"</span>);  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;       <span class="built_in">window</span>.navigate(<span class="string">"top.jsp"</span>);  <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p><strong>第四种：指定自身跳转页面 对框架无效。。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"JavaScript"</span>&gt;          self.location=<span class="string">'top.htm'</span>;   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"JavaScript"</span>&gt;          self.location=<span class="string">'top.htm'</span>;   <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p><strong>第五种：指定自身跳转页面 对框架有效。。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;          alert(<span class="string">"非法访问！"</span>);          top.location=<span class="string">'xx.aspx'</span>;   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;          alert(<span class="string">"非法访问！"</span>);          top.location=<span class="string">'xx.aspx'</span>;   <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 
 <p><strong>第六种：按钮式 在button按钮添加 事件跳转。。</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input name=<span class="string">"pclog"</span> type=<span class="string">"button"</span> value=<span class="string">"GO"</span> onClick=<span class="string">"location.href='login.aspx'"</span>&gt;</span><br></pre></td></tr></table></figure>
