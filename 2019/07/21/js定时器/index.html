@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="javascript,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="SampsonKY'blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="JavaScript定时器一、什么是定时器JavaScript提供了一些原生的方法来实现延时去执行某一段代码，下面简单介绍一下： setTimeout:设置一个定时器，在定时器到期后执行一次函数或代码段， 1var timeoutId = window.setTimeout(func|code, delay);    timeoutId: 定时器ID func: 延迟后执行的函数 code: 延迟">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Js 定时器">
+<meta property="og:url" content="http://yoursite.com/2019/07/21/js定时器/index.html">
+<meta property="og:site_name" content="SampsonKY&#39;blog">
+<meta property="og:description" content="JavaScript定时器一、什么是定时器JavaScript提供了一些原生的方法来实现延时去执行某一段代码，下面简单介绍一下： setTimeout:设置一个定时器，在定时器到期后执行一次函数或代码段， 1var timeoutId = window.setTimeout(func|code, delay);    timeoutId: 定时器ID func: 延迟后执行的函数 code: 延迟">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-07-21T13:24:11.684Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Js 定时器">
+<meta name="twitter:description" content="JavaScript定时器一、什么是定时器JavaScript提供了一些原生的方法来实现延时去执行某一段代码，下面简单介绍一下： setTimeout:设置一个定时器，在定时器到期后执行一次函数或代码段， 1var timeoutId = window.setTimeout(func|code, delay);    timeoutId: 定时器ID func: 延迟后执行的函数 code: 延迟">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/21/js定时器/">
+
+
+
+
+
+  <title>Js 定时器 | SampsonKY'blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SampsonKY'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/js定时器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Js 定时器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T21:24:29+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="JavaScript定时器"><a href="#JavaScript定时器" class="headerlink" title="JavaScript定时器"></a>JavaScript定时器</h1><h2 id="一、什么是定时器"><a href="#一、什么是定时器" class="headerlink" title="一、什么是定时器"></a>一、什么是定时器</h2><p>JavaScript提供了一些原生的方法来实现延时去执行某一段代码，下面简单介绍一下：</p>
+<p><code>setTimeout</code>:设置一个定时器，在定时器到期后执行一次函数或代码段，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeoutId = <span class="built_in">window</span>.setTimeout(func|code, delay);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>timeoutId: 定时器ID</li>
+<li>func: 延迟后执行的函数</li>
+<li>code: 延迟后执行的代码字符串，不推荐使用原理类似eval()</li>
+<li>delay: 延迟的时间（单位：毫秒），默认值为0</li>
+</ul>
+</blockquote>
+<p><code>setInterval</code>: 以固定的时间间隔重复调用一个函数或者代码段<a href="http://caibaojian.com/javascript-timer.html" target="_blank" rel="noopener">·</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var intervalId = window.setInterval(func|code, delay);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>intervalId: 重复操作的ID</li>
+<li>func: 延迟调用的函数</li>
+<li>code: 代码段</li>
+<li>delay: 延迟时间，没有默认值</li>
+</ul>
+</blockquote>
+<p>另外，还有两种不常见的定时器：<code>setImmediate</code>, <code>requestAnimationFrame</code>。</p>
+<h2 id="二、定时器的工作原理以及不定时的原理"><a href="#二、定时器的工作原理以及不定时的原理" class="headerlink" title="二、定时器的工作原理以及不定时的原理"></a>二、定时器的工作原理以及不定时的原理</h2><blockquote>
+<p>JavaScript是一个<strong>单线程的解释器</strong>，因此一定时间内只能执行一段代码。为了要控制执行的代码，就有一个JavaScript任务队列。这些任务会按照它们添加到队列的顺序执行。<code>setTimeout()</code>的第二个参数告诉JavaScript再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</p>
+</blockquote>
+<p><strong>【注意】</strong>：</p>
+<ol>
+<li>首先，<strong>JavaScript是以单线程的方式运行的</strong>。JavaScript的主要用途是与用户互动，以及操作DOM。若以多线程的方式，则可能出现冲突。假设有两个线程同时操作一个DOM元素，线程1要求浏览器删除DOM，而线程2却要求修改DOM样式，这时浏览器就无法决定采用哪个线程的操作。（但是JavaScript有个基于“Event Loop”并发的模型。&lt;此处不讨论。。&gt;）</li>
+<li>js既然是单线程的，也就意味着所有任务需要排队。所有任务可以分成两种，一种是<strong>同步任务</strong>（synchronous），另一种是<strong>异步任务</strong>（asynchronous）<ul>
+<li>同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务，形成了一个执行栈</li>
+<li>异步任务指的是，不进入主线程，而进入”任务队列”（task queue）的任务。”任务队列”是一个事件的队列（可以当作消息的队列来理解）。IO设备完成一项任务or异步任务有了运行结果，就在”任务队列”中添加一个事件，表示相关的操作可以进入”执行栈”，就等着执行栈调用了。</li>
+</ul>
+</li>
+<li><strong>因为<code>setTimeout</code>, <code>setInterval</code>是异步任务，调用之后不会直接进入执行栈，而是进入任务队列，所以只有等到当前执行栈没有其他操作，它们才会进入执行栈中执行，</strong> 以上就是为什么定时器<strong>不总是定时</strong>的原因了。</li>
+<li>如果<code>delay</code>时间周期设为0，相当于一个插队操作</li>
+</ol>
+<h2 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h2><p>例1：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="literal">false</span>;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>(a)&#123;&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p><code>console.log(a)</code>永远不会执行,因为JavaScript是单线程的，且定时器的回调将在等待当前正在执行的任务完成后才执行，而<code>while(a){}</code>直接进入了死循环，一直占用线程，不会给回调函数执行机会。</p>
+<p>例2：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码会输出<code>5 5 5 5 5</code>。当<code>i = 0</code>时，生成一个定时器，将回调函数插入到事件队列中，等待当前队列中无任务执行时立即执行，而此时<code>for</code>循环正在执行，所以回调被搁置。当for循环执行完之后，队列中存在5个回调函数，它们都将执行<code>console.log(i)</code>的操作，因为当前JS代码中并没有使用块级作用域，所以<code>i</code>的值在<code>for</code>循环结束后一直为5.</p>
+<p>例3：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    msg: <span class="string">'obj'</span>,</span><br><span class="line">    shout: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.msg);</span><br><span class="line">    &#125;,</span><br><span class="line">    waitAndShout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.shout();</span><br><span class="line">        &#125;, <span class="number">0</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.waitAndShout();</span><br></pre></td></tr></table></figure>
+
+<p>这个问题涉及到了<code>this</code>的指向问题，由<code>setTimeout()</code>调用的代码运行在与与所在函数完全分离的执行环境上。这会导致这些代码中包含的<code>this</code>关键字会指向<code>window</code>（或全局）对象，<code>window</code>对象中并不存在<code>shout</code>方法，所以就会报错。</p>
+<p>可以这样修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    msg: <span class="string">'obj'</span>,</span><br><span class="line">    shout: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.msg);</span><br><span class="line">    &#125;,</span><br><span class="line">    waitAndShout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//这里将this赋给一个变量</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.shout();</span><br><span class="line">        &#125;, <span class="number">0</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.waitAndShout();</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h2><ol>
+<li>我们可以使用<code>clearTimeout()</code>和<code>clearInterval()</code>方法来取消定时器</li>
+<li>对于<code>setTimeout(f, 0)</code>指定时间为0，并不是说回调函数<code>f</code>会马上执行，而是会在下一轮事件循环一开始就执行。</li>
+<li>在使用超时调用时，没必要跟踪超时调用ID，因为每次执行代码之后，如果不再设置另一次超时调用，调用就会自行停止。</li>
+<li>最好不要使用间歇调用</li>
+</ol>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ul>
+<li><p>《JavaScript高级程序设计》第三版</p>
+</li>
+<li><p>MDN</p>
+</li>
+<li><p><a href="http://caibaojian.com/javascript-timer.html" target="_blank" rel="noopener">JS 定时器的四种写法及简介</a></p>
+</li>
+<li><p><a href="https://javascript.ruanyifeng.com/advanced/timer.html#toc5" target="_blank" rel="noopener">定时器</a></p>
+</li>
+<li><p><a href="https://juejin.im/post/5acd8006f265da239236b172" target="_blank" rel="noopener">js定时器，你所要了解的那点事</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/19/JavaScript高级程序设计总结/" rel="next" title="JavaScript高级程序设计总结">
+                <i class="fa fa-chevron-left"></i> JavaScript高级程序设计总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="SampsonKY">
+            
+              <p class="site-author-name" itemprop="name">SampsonKY</p>
+              <p class="site-description motion-element" itemprop="description">Dreams are destined to be lonely, and there is no doubt and ridicule on the road, but what about it, even if it is bruised and bruised, it must live beautifully.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/SampsonKY" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:theonekangyong@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript定时器"><span class="nav-number">1.</span> <span class="nav-text">JavaScript定时器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是定时器"><span class="nav-number">1.1.</span> <span class="nav-text">一、什么是定时器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、定时器的工作原理以及不定时的原理"><span class="nav-number">1.2.</span> <span class="nav-text">二、定时器的工作原理以及不定时的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、实例"><span class="nav-number">1.3.</span> <span class="nav-text">三、实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、注意事项"><span class="nav-number">1.4.</span> <span class="nav-text">四、注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、参考"><span class="nav-number">1.5.</span> <span class="nav-text">五、参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SampsonKY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

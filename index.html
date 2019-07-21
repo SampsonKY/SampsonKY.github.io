@@ -264,6 +264,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/js定时器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/21/js定时器/" itemprop="url">Js 定时器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T21:24:29+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript定时器"><a href="#JavaScript定时器" class="headerlink" title="JavaScript定时器"></a>JavaScript定时器</h1><h2 id="一、什么是定时器"><a href="#一、什么是定时器" class="headerlink" title="一、什么是定时器"></a>一、什么是定时器</h2><p>JavaScript提供了一些原生的方法来实现延时去执行某一段代码，下面简单介绍一下：</p>
+<p><code>setTimeout</code>:设置一个定时器，在定时器到期后执行一次函数或代码段，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeoutId = <span class="built_in">window</span>.setTimeout(func|code, delay);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>timeoutId: 定时器ID</li>
+<li>func: 延迟后执行的函数</li>
+<li>code: 延迟后执行的代码字符串，不推荐使用原理类似eval()</li>
+<li>delay: 延迟的时间（单位：毫秒），默认值为0</li>
+</ul>
+</blockquote>
+<p><code>setInterval</code>: 以固定的时间间隔重复调用一个函数或者代码段<a href="http://caibaojian.com/javascript-timer.html" target="_blank" rel="noopener">·</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var intervalId = window.setInterval(func|code, delay);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>intervalId: 重复操作的ID</li>
+<li>func: 延迟调用的函数</li>
+<li>code: 代码段</li>
+<li>delay: 延迟时间，没有默认值</li>
+</ul>
+</blockquote>
+<p>另外，还有两种不常见的定时器：<code>setImmediate</code>, <code>requestAnimationFrame</code>。</p>
+<h2 id="二、定时器的工作原理以及不定时的原理"><a href="#二、定时器的工作原理以及不定时的原理" class="headerlink" title="二、定时器的工作原理以及不定时的原理"></a>二、定时器的工作原理以及不定时的原理</h2><blockquote>
+<p>JavaScript是一个<strong>单线程的解释器</strong>，因此一定时间内只能执行一段代码。为了要控制执行的代码，就有一个JavaScript任务队列。这些任务会按照它们添加到队列的顺序执行。<code>setTimeout()</code>的第二个参数告诉JavaScript再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</p>
+</blockquote>
+<p><strong>【注意】</strong>：</p>
+<ol>
+<li>首先，<strong>JavaScript是以单线程的方式运行的</strong>。JavaScript的主要用途是与用户互动，以及操作DOM。若以多线程的方式，则可能出现冲突。假设有两个线程同时操作一个DOM元素，线程1要求浏览器删除DOM，而线程2却要求修改DOM样式，这时浏览器就无法决定采用哪个线程的操作。（但是JavaScript有个基于“Event Loop”并发的模型。&lt;此处不讨论。。&gt;）</li>
+<li>js既然是单线程的，也就意味着所有任务需要排队。所有任务可以分成两种，一种是<strong>同步任务</strong>（synchronous），另一种是<strong>异步任务</strong>（asynchronous）<ul>
+<li>同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务，形成了一个执行栈</li>
+<li>异步任务指的是，不进入主线程，而进入”任务队列”（task queue）的任务。”任务队列”是一个事件的队列（可以当作消息的队列来理解）。IO设备完成一项任务or异步任务有了运行结果，就在”任务队列”中添加一个事件，表示相关的操作可以进入”执行栈”，就等着执行栈调用了。</li>
+</ul>
+</li>
+<li><strong>因为<code>setTimeout</code>, <code>setInterval</code>是异步任务，调用之后不会直接进入执行栈，而是进入任务队列，所以只有等到当前执行栈没有其他操作，它们才会进入执行栈中执行，</strong> 以上就是为什么定时器<strong>不总是定时</strong>的原因了。</li>
+<li>如果<code>delay</code>时间周期设为0，相当于一个插队操作</li>
+</ol>
+<h2 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h2><p>例1：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="literal">false</span>;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>(a)&#123;&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p><code>console.log(a)</code>永远不会执行,因为JavaScript是单线程的，且定时器的回调将在等待当前正在执行的任务完成后才执行，而<code>while(a){}</code>直接进入了死循环，一直占用线程，不会给回调函数执行机会。</p>
+<p>例2：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码会输出<code>5 5 5 5 5</code>。当<code>i = 0</code>时，生成一个定时器，将回调函数插入到事件队列中，等待当前队列中无任务执行时立即执行，而此时<code>for</code>循环正在执行，所以回调被搁置。当for循环执行完之后，队列中存在5个回调函数，它们都将执行<code>console.log(i)</code>的操作，因为当前JS代码中并没有使用块级作用域，所以<code>i</code>的值在<code>for</code>循环结束后一直为5.</p>
+<p>例3：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    msg: <span class="string">'obj'</span>,</span><br><span class="line">    shout: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.msg);</span><br><span class="line">    &#125;,</span><br><span class="line">    waitAndShout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.shout();</span><br><span class="line">        &#125;, <span class="number">0</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.waitAndShout();</span><br></pre></td></tr></table></figure>
+
+<p>这个问题涉及到了<code>this</code>的指向问题，由<code>setTimeout()</code>调用的代码运行在与与所在函数完全分离的执行环境上。这会导致这些代码中包含的<code>this</code>关键字会指向<code>window</code>（或全局）对象，<code>window</code>对象中并不存在<code>shout</code>方法，所以就会报错。</p>
+<p>可以这样修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    msg: <span class="string">'obj'</span>,</span><br><span class="line">    shout: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.msg);</span><br><span class="line">    &#125;,</span><br><span class="line">    waitAndShout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//这里将this赋给一个变量</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.shout();</span><br><span class="line">        &#125;, <span class="number">0</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.waitAndShout();</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h2><ol>
+<li>我们可以使用<code>clearTimeout()</code>和<code>clearInterval()</code>方法来取消定时器</li>
+<li>对于<code>setTimeout(f, 0)</code>指定时间为0，并不是说回调函数<code>f</code>会马上执行，而是会在下一轮事件循环一开始就执行。</li>
+<li>在使用超时调用时，没必要跟踪超时调用ID，因为每次执行代码之后，如果不再设置另一次超时调用，调用就会自行停止。</li>
+<li>最好不要使用间歇调用</li>
+</ol>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ul>
+<li><p>《JavaScript高级程序设计》第三版</p>
+</li>
+<li><p>MDN</p>
+</li>
+<li><p><a href="http://caibaojian.com/javascript-timer.html" target="_blank" rel="noopener">JS 定时器的四种写法及简介</a></p>
+</li>
+<li><p><a href="https://javascript.ruanyifeng.com/advanced/timer.html#toc5" target="_blank" rel="noopener">定时器</a></p>
+</li>
+<li><p><a href="https://juejin.im/post/5acd8006f265da239236b172" target="_blank" rel="noopener">js定时器，你所要了解的那点事</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/JavaScript高级程序设计总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1642,21 +1854,21 @@ Web浏览器将CSS规则应用于文档以影响它们的显示方式。</code><
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    &lt;script language=<span class="string">"javascript"</span> type=<span class="string">"text/javascript"</span>&gt;           <span class="built_in">window</span>.location.href=<span class="string">"login.jsp?backurl="</span>+<span class="built_in">window</span>.location.href;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>直接跳转无参数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">window</span>.location.href=<span class="string">'http://www.baidu.com'</span>;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">window</span>.location.href=<span class="string">'http://www.baidu.com'</span>;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>第二种：返回上一次预览界面</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;alert(<span class="string">"返回"</span>);<span class="built_in">window</span>.history.back(<span class="number">-1</span>);<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>标签嵌套：</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;alert(<span class="string">"返回"</span>);<span class="built_in">window</span>.history.back(<span class="number">-1</span>);&lt;/script&gt;标签嵌套：</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"javascript:history.go(-1)"</span>&gt;返回上一步&lt;a&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%=Request.ServerVariables("</span><span class="attr">HTTP_REFERER</span>")%&gt;</span>"&gt;返回上一步<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"javascript:history.go(-1)"</span>&gt;返回上一步&lt;a&gt;&lt;a href="&lt;%=Request.ServerVariables("HTTP_REFERER")%&gt;"&gt;返回上一步&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>第三种：指定跳转页面 对框架无效。。。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;       <span class="built_in">window</span>.navigate(<span class="string">"top.jsp"</span>);  <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;       <span class="built_in">window</span>.navigate(<span class="string">"top.jsp"</span>);  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>第四种：指定自身跳转页面 对框架无效。。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"JavaScript"</span>&gt;          self.location=<span class="string">'top.htm'</span>;   <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"JavaScript"</span>&gt;          self.location=<span class="string">'top.htm'</span>;   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>第五种：指定自身跳转页面 对框架有效。。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;          alert(<span class="string">"非法访问！"</span>);          top.location=<span class="string">'xx.aspx'</span>;   <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;          alert(<span class="string">"非法访问！"</span>);          top.location=<span class="string">'xx.aspx'</span>;   &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>第六种：按钮式 在button按钮添加 事件跳转。。</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input name=<span class="string">"pclog"</span> type=<span class="string">"button"</span> value=<span class="string">"GO"</span> onClick=<span class="string">"location.href='login.aspx'"</span>&gt;</span><br></pre></td></tr></table></figure>
@@ -2190,7 +2402,7 @@ inherit:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
