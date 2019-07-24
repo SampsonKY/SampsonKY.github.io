@@ -614,6 +614,28 @@
 <p>如果单击了<code>&lt;div&gt;</code>标签，在事件冒泡的概念下，<code>click</code>事件传播顺序：<code>div -&gt; body -&gt; html -&gt; document</code>;在事件捕获的概念下,<code>click</code>事件传播的顺序：<code>document -&gt; html -&gt; body -&gt; div</code>.</p>
 <p>在DOM事件流中，实际的目标（<code>&lt;div&gt;</code>元素）在捕获阶段不会接收到事件。这意味着在捕获阶段，事件从<code>document</code>到<code>&lt;html&gt;</code>再到<code>&lt;body&gt;</code>就停止了。下一个阶段是“处于目标阶段”，于是事件在<code>&lt;div&gt;</code>上发生，并在事件处理中看成冒泡阶段的一部分。然后冒泡阶段发生，事件又传播回文档。</p>
 <p>【注意】：对于事件代理而言，在事件捕获或事件冒泡阶段处理并没有明显的优劣之分，但由于事件冒泡的事件流模型被所有主流的浏览器兼容，从兼容角度来说，建议使用事件冒泡模型。最好只在需要在事件到达目标之前截获它的时候将将事件处理程序添加到捕获阶段。</p>
+<p>几个题目，看你是否懂了：</p>
+<ol>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s1"</span>&gt;</span>s1</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s2"</span>&gt;</span>s2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    s1.addEventListener("click", function (e) &#123;</span><br><span class="line">        console.log("s1 捕获事件");</span><br><span class="line">    &#125;, true);</span><br><span class="line">    s2.addEventListener("click", function (e) &#123;</span><br><span class="line">        console.log("s2 捕获事件");</span><br><span class="line">    &#125;, true);</span><br><span class="line">    //点击s1，结果为：s1捕获事件</span><br><span class="line">    //点击s2, 结果为：s1捕获事件，s2捕获事件</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s1"</span>&gt;</span>s1</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s2"</span>&gt;</span>s2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">	s1.addEventListener("click", function (e) &#123;</span><br><span class="line">		console.log("s1 冒泡事件");</span><br><span class="line">	&#125;, false);</span><br><span class="line">	s2.addEventListener("click", function (e) &#123;</span><br><span class="line">		console.log("s2 冒泡事件");</span><br><span class="line">	&#125;, false);</span><br><span class="line">	//点击s1：s1冒泡事件</span><br><span class="line">	//点击s2: s2冒泡事件，s1冒泡事件</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s1"</span>&gt;</span>s1</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s2"</span>&gt;</span>s2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">	s1.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s1 冒泡事件");</span><br><span class="line">		&#125;, false);</span><br><span class="line">	s2.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s2 冒泡事件");</span><br><span class="line">		&#125;, false);</span><br><span class="line"></span><br><span class="line">	s1.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s1 捕获事件");</span><br><span class="line">		&#125;, true);</span><br><span class="line"></span><br><span class="line">	s2.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s2 捕获事件");</span><br><span class="line">		&#125;, true);</span><br><span class="line">		//点击s1: s1冒泡，s1捕获</span><br><span class="line">		//点击s2: s1捕获事件 s2冒泡事件 s2捕获事件 s1冒泡事件</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当事件捕获和事件冒泡一起存在的情况:</p>
+<p>先记被点击的DOM节点为target节点</p>
+<ol>
+<li>document 往 target节点，捕获前进，遇到注册的捕获事件立即触发执行</li>
+<li>到达target节点，触发事件（对于target节点上，是先捕获还是先冒泡则捕获事件和冒泡事件的注册顺序，先注册先执行）</li>
+<li>target节点 往 document 方向，冒泡前进，遇到注册的冒泡事件立即触发</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li>对于非target节点则先执行捕获在执行冒泡</li>
+<li>对于target节点则是先执行先注册的事件，无论冒泡还是捕获</li>
+</ul>
+</li>
+</ol>
 <h2 id="二、事件处理程序"><a href="#二、事件处理程序" class="headerlink" title="二、事件处理程序"></a>二、事件处理程序</h2><blockquote>
 <p>事件是用户或浏览器自生执行的某种动作。<strong>而响应某个事件的函数就叫做事件处理程序（或事件侦听器）</strong>。</p>
 </blockquote>
@@ -700,6 +722,10 @@
 <h2 id="四、内存和性能"><a href="#四、内存和性能" class="headerlink" title="四、内存和性能"></a>四、内存和性能</h2><p>在JavaScript中，添加到页面上的事件处理程序数量直接关系到页面的整体运行性能。导致这一问题的原因有很多，首先，每个函数都是对象，都会占用内存；内存中的对象越多，性能就越差。其次，必须事先指定所有事件处理程序而导致的DOM访问次数，会延迟整个页面的交互就绪时间。</p>
 <p><strong>事件委托</strong>就是解决方案，时间委托利用了事件冒泡，只指定一个事件处理程序就可以管理某一类的所有事件。<strong>使用事件委托，只需要在DOM树中尽量最高的层次上添加一个事件处理程序。</strong></p>
 <p>内存中存有那些“过时不用”的“空事件处理程序”，也是造成web应用程序内存与性能问题的主要原因。在不需要的时候<strong>移除事件处理程序</strong>也是一种解决方案。</p>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ul>
+<li><a href="https://segmentfault.com/a/1190000005654451" target="_blank" rel="noopener">JS中事件冒泡与捕获</a></li>
+<li>JavaScript高级程序设计</li>
+</ul>
 
           
         
