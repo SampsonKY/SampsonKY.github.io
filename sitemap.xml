@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/03/11/vim/</loc>
+    
+    <lastmod>2020-03-11T07:02:32.090Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/07/25/jQuery/</loc>
     
-    <lastmod>2019-07-26T08:53:39.772Z</lastmod>
+    <lastmod>2019-08-18T01:24:02.581Z</lastmod>
     
   </url>
   

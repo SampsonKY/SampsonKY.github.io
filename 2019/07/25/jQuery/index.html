@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="SampsonKY'blog" type="application/atom+xml">
 
@@ -83,18 +81,18 @@
 
 
 
-<meta name="description" content="锋利的jQuery第一章 认识jQuery jQuery简介优势 程序中的$符号是jQuery的一个简写 window.onload与$(document).ready()的区别 jQuery代码风格 jQuery对象和DOM对象的介绍 jQuery对象和DOM对象相互转换的方法 解决jQuery和其它库的冲突 jQuery.noConflict()方法 jQuery库在其它库之前导入 jQuer">
+<meta name="description" content="锋利的jQuery第一章 认识jQuery jQuery简介优势，JavaScript的缺点  程序中的$符号是jQuery的一个简写  window.onload与$(document).ready()的区别  jQuery代码风格  jQuery对象和DOM对象的介绍 1.jQuery转换为DOM对象 （1）jQuery是一个类数组对象，可以通过[index]的方法得到对应的DOM对象 12v">
 <meta name="keywords" content="javascript,jQuery">
 <meta property="og:type" content="article">
 <meta property="og:title" content="锋利的jQuery笔记">
 <meta property="og:url" content="http://yoursite.com/2019/07/25/jQuery/index.html">
 <meta property="og:site_name" content="SampsonKY&#39;blog">
-<meta property="og:description" content="锋利的jQuery第一章 认识jQuery jQuery简介优势 程序中的$符号是jQuery的一个简写 window.onload与$(document).ready()的区别 jQuery代码风格 jQuery对象和DOM对象的介绍 jQuery对象和DOM对象相互转换的方法 解决jQuery和其它库的冲突 jQuery.noConflict()方法 jQuery库在其它库之前导入 jQuer">
+<meta property="og:description" content="锋利的jQuery第一章 认识jQuery jQuery简介优势，JavaScript的缺点  程序中的$符号是jQuery的一个简写  window.onload与$(document).ready()的区别  jQuery代码风格  jQuery对象和DOM对象的介绍 1.jQuery转换为DOM对象 （1）jQuery是一个类数组对象，可以通过[index]的方法得到对应的DOM对象 12v">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-26T08:53:39.772Z">
+<meta property="og:updated_time" content="2019-08-18T01:24:02.581Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="锋利的jQuery笔记">
-<meta name="twitter:description" content="锋利的jQuery第一章 认识jQuery jQuery简介优势 程序中的$符号是jQuery的一个简写 window.onload与$(document).ready()的区别 jQuery代码风格 jQuery对象和DOM对象的介绍 jQuery对象和DOM对象相互转换的方法 解决jQuery和其它库的冲突 jQuery.noConflict()方法 jQuery库在其它库之前导入 jQuer">
+<meta name="twitter:description" content="锋利的jQuery第一章 认识jQuery jQuery简介优势，JavaScript的缺点  程序中的$符号是jQuery的一个简写  window.onload与$(document).ready()的区别  jQuery代码风格  jQuery对象和DOM对象的介绍 1.jQuery转换为DOM对象 （1）jQuery是一个类数组对象，可以通过[index]的方法得到对应的DOM对象 12v">
 
 
 
@@ -357,13 +355,30 @@
 
       
         <h1 id="锋利的jQuery"><a href="#锋利的jQuery" class="headerlink" title="锋利的jQuery"></a>锋利的jQuery</h1><h2 id="第一章-认识jQuery"><a href="#第一章-认识jQuery" class="headerlink" title="第一章 认识jQuery"></a>第一章 认识jQuery</h2><ul>
-<li>j<strong>Query简介优势</strong></li>
-<li><strong>程序中的<code>$</code>符号是<code>jQuery</code>的一个简写</strong></li>
-<li><strong><code>window.onload</code>与<code>$(document).ready()</code>的区别</strong></li>
-<li><strong>jQuery代码风格</strong></li>
-<li><strong>jQuery对象和DOM对象的介绍</strong></li>
-<li><strong>jQuery对象和DOM对象相互转换的方法</strong></li>
-<li><strong>解决jQuery和其它库的冲突</strong><ul>
+<li><p><strong>jQuery简介优势，JavaScript的缺点</strong></p>
+</li>
+<li><p><strong>程序中的<code>$</code>符号是<code>jQuery</code>的一个简写</strong></p>
+</li>
+<li><p><strong><code>window.onload</code>与<code>$(document).ready()</code>的区别</strong></p>
+</li>
+<li><p><strong>jQuery代码风格</strong></p>
+</li>
+<li><p><strong>jQuery对象和DOM对象的介绍</strong></p>
+<p>1.jQuery转换为DOM对象</p>
+<p>（1）jQuery是一个类数组对象，可以通过[index]的方法得到对应的DOM对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $cr = $(<span class="string">"#cr"</span>);</span><br><span class="line"><span class="keyword">var</span> cr = $cr[<span class="number">0</span>];</span><br></pre></td></tr></table></figure>
+
+<p>（2）这种方法是jQuery本身提供的，通过get(index)方法得到对应的DOM对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> &amp;cr = $(<span class="string">"#cr"</span>);</span><br><span class="line"><span class="keyword">var</span> cr = $cr.get(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2.DOM对象转成jQuery对象</p>
+<p>对于一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> cr = <span class="built_in">document</span>.getElementById(<span class="string">"cr"</span>);</span><br><span class="line"><span class="keyword">var</span> $sr = $(cr);</span><br></pre></td></tr></table></figure>
+
+<p>【注意】：DOM对象才能使用都DOM中的方法，jQuery对象不可以使用DOM中的方法。</p>
+</li>
+<li><p><strong>解决jQuery和其它库的冲突</strong></p>
+<ul>
 <li><code>jQuery.noConflict()</code>方法</li>
 <li>jQuery库在其它库之前导入</li>
 <li>jQuery库在其它库之后导入</li>
@@ -371,59 +386,531 @@
 </li>
 </ul>
 <h2 id="第二章-jQuery选择器"><a href="#第二章-jQuery选择器" class="headerlink" title="第二章 jQuery选择器"></a>第二章 jQuery选择器</h2><ul>
-<li>CSS的选择器</li>
-<li>CSS选择器找到元素后是添加样式，而jQuery选择器找到元素后是添加行为；jQuery的行为准则都必须在获取到元素之后才能生效。</li>
-<li>jQuery选择器的优势（简洁的写法、支持CSS1到CSS3的选择器、完善的处理机制）</li>
-<li>jQuery选择器分为基本选择器、层次选择器、过滤选择器和表单选择器</li>
-<li>过滤选择器包括：基本过滤选择器、内容过滤选择器、可见性过滤选择器、属性过滤选择器、子元素过滤选择器、表单对象属性过滤选择器、</li>
-<li>选择器中的一些注意事项<ul>
+<li><p>CSS的选择器</p>
+</li>
+<li><p>CSS选择器找到元素后是添加样式，而jQuery选择器找到元素后是添加行为；jQuery的行为准则都必须在获取到元素之后才能生效。</p>
+</li>
+<li><p>jQuery选择器的优势（简洁的写法、支持CSS1到CSS3的选择器、完善的处理机制）</p>
+</li>
+<li><p>jQuery选择器分为基本选择器、层次选择器、过滤选择器和表单选择器</p>
+</li>
+<li><p>基本选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>#id</td>
+<td>根据给定的id匹配一个元素</td>
+<td>单个元素</td>
+</tr>
+<tr>
+<td>.class</td>
+<td>根据给定的类名匹配元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>element</td>
+<td>根据匹配的元素名匹配元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配所有元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>selector1, selector2,…</td>
+<td>将每一个选择器匹配到的元素合并后一起返回</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>层次选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$(“ancestor descendant”)</td>
+<td>选取ancestor元素里的所有后代元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>$(“parent&gt;child”)</td>
+<td>选取parent元素下的子元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>$(“prev+next”)</td>
+<td>选取紧接在perv元素后的next元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>$(“prev~siblings”)</td>
+<td>选取prev元素之后的所有siblings元素</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>过滤选择器包括：基本过滤选择器，内容过滤选择器、可见性过滤选择器、属性过滤选择器、子元素过滤选择器、表单对象属性过滤选择器</p>
+</li>
+<li><p>基本过滤选</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:first</td>
+<td>选取第一个元素</td>
+<td>单个元素</td>
+</tr>
+<tr>
+<td>:last</td>
+<td>选取最后一个元素</td>
+<td>单个元素</td>
+</tr>
+<tr>
+<td>:not(selector)</td>
+<td>去除所有与给定选择器匹配的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:even</td>
+<td>选取索引是偶数的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:odd</td>
+<td>选取索引是奇数的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:eq(index)</td>
+<td>选取索引等于index的元素</td>
+<td>单个元素</td>
+</tr>
+<tr>
+<td>:gt(index)</td>
+<td>选取索引大于index的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:lt(index)</td>
+<td>选取索引小于index的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:header</td>
+<td>选取所有的标题元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:animated</td>
+<td>选取当前正在执行动画的所有元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:focus</td>
+<td>选取当前获得焦点的元素</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>内容过滤选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:contains(text)</td>
+<td>选取含有文本内容为“text”的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:empty</td>
+<td>选取不包含子元素或者文本的空元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:has(selector)</td>
+<td>选取含有选择器所匹配的元素的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:parent</td>
+<td>选取含有子元素或者文本的元素</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>可见性过滤选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:hidden</td>
+<td>选取所有不可见的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:visible</td>
+<td>选取所有可见的元素</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>属性过滤选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[attribute]</td>
+<td>选取拥有此属性的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>[attribute=value]</td>
+<td>选取属性值为value的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>[attribute!=value]</td>
+<td>选取属性值不等于value的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>[attribute^=value]</td>
+<td>选取属性值以value开头的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>[attribute$=value]</td>
+<td>value结尾</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>[attribute*=value]</td>
+<td>含有value</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>[attribute|=value]</td>
+<td>选取属性等于给定字符串或以该字符串为前缀</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>[attribute~=value]</td>
+<td>选取属性用空格分隔的值中包含一个给定值的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td><code>[attribute1][attribute2][attributeN]</code></td>
+<td>用属性选择器合并一个复合属性选择器，满足多个条件。每选择一次，缩小一次范围</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>子元素过滤选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:nth-child(index/even/odd/equation)</td>
+<td>选取每个父元素下的第index个子元素或者奇偶元素（下标从1开始）</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:first-child</td>
+<td>选取每个父元素第一个子元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:last-child</td>
+<td>选取每个服元素最后一个子元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:only-child</td>
+<td>唯一元素</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>表单对象属性过滤选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:enabled</td>
+<td>选取所有可用的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:disabled</td>
+<td>选取所有不可用的元素</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:checked</td>
+<td>选取所有被选中的元素（单选复选框）</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:selected</td>
+<td>选取所有被选中的选项元素（下拉元素）</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>表单选择器</p>
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>描述</th>
+<th>返回</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>:input</td>
+<td>选择所有的<input>、<textarea>、</textarea><select>和</select><button>元素</button></td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:text</td>
+<td>选取所有的单行文本框</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:passward</td>
+<td>密码框</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:radio</td>
+<td>单选框</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:checkbox</td>
+<td>多选框</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:submit</td>
+<td>提交按钮</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:image</td>
+<td>图像按钮</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:reset</td>
+<td>重置按钮</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:button</td>
+<td>所有的按钮</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:file</td>
+<td>所有的上传域</td>
+<td>集合元素</td>
+</tr>
+<tr>
+<td>:hidden</td>
+<td>所有不可见元素</td>
+<td>集合元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<ul>
+<li><p>选择器中的一些注意事项</p>
+<ul>
 <li>选择器中含有“.”、“#”、“(”、或“[”等特殊字符</li>
 <li>选择器的@符号问题</li>
 <li>选择器中含有空格的注意事项</li>
 </ul>
 </li>
-<li>其它选择器</li>
+<li><p>其它选择器</p>
+</li>
 </ul>
 <h2 id="第三章-jQuery中的DOM操作"><a href="#第三章-jQuery中的DOM操作" class="headerlink" title="第三章 jQuery中的DOM操作"></a>第三章 jQuery中的DOM操作</h2><ul>
 <li><p><strong>DOM的分类</strong>（DOM Core、HTML-DOM、CSS-DOM)</p>
 </li>
 <li><p><strong>查找节点</strong></p>
 <p>查找元素节点（通过选择器来完成）、查找属性节点（<strong><code>attr()</code></strong>方法来获取它的各种属性的值)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $li = $(<span class="string">"ul :eq(1)); //获取&lt;ul&gt;里面的第二个&lt;li&gt;标签</span></span><br><span class="line"><span class="string">var text = $("</span>para<span class="string">").attr("</span>title<span class="string">"); //获取属性title</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>创建节点</strong></p>
 <p>创建元素节点（<strong>工厂模式$()</strong>）、创建文本节点、创建属性节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $li_1 = $(<span class="string">"&lt;li&gt;&lt;/li&gt;"</span>) <span class="comment">//创建了一个&lt;li&gt;元素</span></span><br><span class="line"><span class="keyword">var</span> $li_2 = $(<span class="string">"&lt;li&gt;香蕉&lt;li&gt;"</span>);  <span class="comment">//创造了一个文本节点</span></span><br><span class="line"><span class="keyword">var</span> $li_3 = $(<span class="string">"&lt;li title="</span>香蕉<span class="string">"&gt;香蕉&lt;/li&gt;"</span>)<span class="comment">//创建了一个属性节点</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>插入、移动节点</strong></p>
 <p><code>append()</code>,<code>appendTo()</code> ,<code>prepend()</code>,<code>prependTo()</code>,<code>after()</code>,<code>insertAfter()</code> ,<code>before()</code> ,<code>insertBefore()</code> </p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>append()</td>
+<td>向每个匹配元素<strong>内部</strong>追加内容</td>
+</tr>
+<tr>
+<td>appendTo()</td>
+<td>颠倒了append()方法</td>
+</tr>
+<tr>
+<td>prepend()</td>
+<td>向每个匹配元素内部前置内容</td>
+</tr>
+<tr>
+<td>prependTo()</td>
+<td>颠倒了prepend()</td>
+</tr>
+<tr>
+<td>after()</td>
+<td>在每个匹配元素之后插入内容</td>
+</tr>
+<tr>
+<td>insertAfter()</td>
+<td>颠倒了after()</td>
+</tr>
+<tr>
+<td>before()</td>
+<td>在每个元素之前插入内容</td>
+</tr>
+<tr>
+<td>insertBefore()</td>
+<td>颠倒before()</td>
+</tr>
+</tbody></table>
 </li>
 <li><p><strong>删除节点</strong></p>
 <p><code>remove()</code>方法、<code>detach()</code>方法、<code>empty()</code>方法</p>
+<p>remove()方法：当某个节点用remove()方法删除后，该节点包含的所有后代节点将同时被删除。这个方法的返回值是一个指向已被删除的节点的引用，因此可以在以后再使用这些元素。</p>
+<p>detach()方法：这个方法和remove()一样，也是从DOM中去除所有匹配元素，但这个方法不会把匹配的元素从jQuery对象中删除，因而可以在将来再使用这些匹配的元素，与remove()方法不同的是，所有绑定的事件、附加的数据等都会保留下来。</p>
+<p>empty()方法：严格来说empty()方法并不是删除节点，而是清空节点，它能清空元素中的所有后代节点。</p>
 </li>
 <li><p><strong>复制节点</strong></p>
 <p><code>clone()</code>方法（注意深复制和浅复制）</p>
+<p>clone(): 复制节点后，被复制的新元素并不具有任何行为。</p>
+<p>clone(true): 复制元素的同时复制元素中所绑定的事件。</p>
 </li>
 <li><p><strong>替换节点</strong></p>
 <p><code>replaceWith()</code>方法和<code>replaceAll()</code>方法</p>
+<p>replaceWith()方法的作用是将所匹配的元素都替换成指定的HTML或者DOM元素。</p>
+<p>replaceAll()是replaceWith()的颠倒方法。</p>
+<p>如果在替换之前，已经为元素绑定事件，替换后原先绑定的事件将会与被替换的元素一起消失，需要在新元素上重新绑定新的事件。</p>
 </li>
 <li><p><strong>包裹节点</strong></p>
 <p><code>wrap()</code>方法、<code>wrapAll()</code>方法、<code>wrapInner()</code>方法</p>
+<p>将某个节点用其它标记包裹起来。</p>
+<ol>
+<li>wrap()</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"strong"</span>).wrap(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>); <span class="comment">//用&lt;b&gt;标签把&lt;strong&gt;元素包裹起来</span></span><br><span class="line"><span class="comment">//结果：&lt;b&gt;&lt;strong&gt;你好&lt;/strong&gt;&lt;/b&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>   2.wrapAll()。该方法会将所有匹配的元素用一个元素包裹起来，不同于wrap()方法，wrap()方法是把所有的元素进行单独的包裹。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">html代码：</span></span><br><span class="line"><span class="comment">&lt;strong&gt;haha&lt;/strong&gt;</span></span><br><span class="line"><span class="comment">&lt;strong&gt;xixi&lt;/strong&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">$(<span class="string">"strong"</span>).wrap(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</span><br><span class="line"><span class="comment">//结果：</span></span><br><span class="line"><span class="comment">//&lt;b&gt;&lt;strong&gt;haha&lt;/strong&gt;&lt;/b&gt;</span></span><br><span class="line"><span class="comment">//&lt;b&gt;&lt;strong&gt;xixi&lt;/strong&gt;&lt;/b&gt;</span></span><br><span class="line">$(<span class="string">"strong"</span>).wrapAll(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</span><br><span class="line"><span class="comment">//结果：</span></span><br><span class="line"><span class="comment">//&lt;b&gt;</span></span><br><span class="line"><span class="comment">//&lt;strong&gt;haha&lt;/strong&gt;</span></span><br><span class="line"><span class="comment">//&lt;strong&gt;xixi&lt;/strong&gt;</span></span><br><span class="line"><span class="comment">//&lt;/b&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果被包裹的多个元素间有其他元素，其他元素会被放到包裹元素之后</span></span><br></pre></td></tr></table></figure>
+
+<p>  3.wrapInner()方法，该方法将每一个匹配的元素的子内容（包括文本节点）用其他结构化的标记包裹起来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"strong"</span>).wrapInner(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</span><br><span class="line"><span class="comment">//&lt;strong&gt;&lt;b&gt;哈哈&lt;/b&gt;&lt;/storng&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>属性操作</strong></p>
 <p>获取和设置属性（<strong><code>attr()</code>方法</strong>）、删除属性（<code>removeAttr()</code>方法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"P"</span>).attr(<span class="string">"title"</span>, <span class="string">"haha"</span>);</span><br><span class="line">$(<span class="string">"P"</span>).atrr(<span class="string">"title"</span>:<span class="string">"jaja"</span>, <span class="string">"name"</span>:<span class="string">"test"</span>);</span><br><span class="line"></span><br><span class="line">&amp;(<span class="string">"P"</span>).removeAttr(<span class="string">"title"</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>样式操作</strong></p>
 <p>获取和设置样式（<code>attr()</code>方法）、追加样式（<code>addClass()</code>方法）【注意<code>attr()</code>和<code>addClass()</code>的区别】、移除样式（<code>removeClass()</code>方法）、切换样式（<code>toggle()</code>方法和<code>toggleClass()</code>方法）、判断是否含有某个样式（<code>hasClass()</code>方法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"p"</span>).addClass(<span class="string">"another"</span>); <span class="comment">//给&lt;p&gt;元素追加“another”类</span></span><br><span class="line">$(<span class="string">"p"</span>).removeClass(<span class="string">"another"</span>); <span class="comment">//移除类；若不今添加参数，则将class的值全部清除</span></span><br><span class="line">$(<span class="string">"p"</span>).hasClass(<span class="string">"another"</span>);<span class="comment">//判断元素中是否含有某个类，如果有则返回true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$toggleBtn.toggle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="comment">//显示元素    代码③</span></span><br><span class="line">   &#125;,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//隐藏元素  代码④</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">/*toggle()方法在此处的作用是交替执行代码③和代码④两个函数，如果元素原来是显示的，则隐藏它；反之，显示*/</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"p"</span>).toggleClass(<span class="string">"another"</span>); <span class="comment">//重复切换类名“another"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>设置和获取HTML、文本和值</strong></p>
 <p><code>html()</code>方法、<code>text()</code>方法、<code>val()</code>方法</p>
+<p>html()：类似于JavaScript中的innerHTML属性，可以用来读取或者设置某个元素中的HTML内容。</p>
+<p>text()：类似于JavaScript中的innerText属性，可以用来读取或者设置某个元素中的文本内容。</p>
+<p>val()：类似于JavaScript中的value属性，可以用来设置和获取元素的值。无论是文本框、下拉列表还是单选框，它都可以返回元素的值。如果元素为多选，则返回一个包含所有选择的值的数组。</p>
 </li>
 <li><p><strong>遍历节点</strong></p>
-<p><code>children()</code>方法、<code>next()</code>方法、<code>prev()</code>方法、<code>sibling()</code>方法、<code>closest()</code>方法、<code>parent(),parents(),closest()</code>的区别</p>
+<p><code>children()</code>方法、<code>next()</code>方法，<code>prev()</code>方法，<code>siblings()</code>方法、<code>closest()</code>方法、<code>parent(),parents(),closest()</code>的区别</p>
+<p>children()：取得匹配元素的所有子元素集合。（只考虑子元素而不考虑其他后代元素）</p>
+<p>next()：取得匹配元素后面紧邻的同辈元素。</p>
+<p>prev()：取得匹配元素前面紧邻的同辈元素。</p>
+<p>siblings()：取得所匹配元素前后所有的同辈元素。</p>
+<p>closest()：取得最近的匹配元素，首先检查当前元素是否匹配，如果匹配则直接返回元素本身。如果不匹配则向上查找父元素，逐级向上直到找到匹配选择器的元素如果什么都没找到，则返回一个空的jQuery对象。</p>
+<p>parent()：获得集合中每个元素的父级元素。</p>
+<p>parents()：获得集合中每个元素的祖先元素。</p>
 </li>
 <li><p><strong>CSS-DOM操作</strong></p>
 <p><code>css()</code>方法、<code>height()</code>方法、<code>width()</code>方法、<code>offset()</code>方法、<code>position()</code>方法、<code>scrollTop()</code>方法和<code>scrollLeft()</code>方法</p>
+<p>css() : 可以直接利用css()方法设置某个元素的单个样式，也可以同时设置多个样式属性。</p>
+<p>offset()：获取在当前视窗的相对偏移，其中返回的对象包含两个属性，即top和left。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> offset = $(<span class="string">"p"</span>).offset();</span><br><span class="line"><span class="keyword">var</span> left = offset.left;</span><br><span class="line"><span class="keyword">var</span> top = offset.top;</span><br></pre></td></tr></table></figure>
+
+
 </li>
 </ul>
+<p>  position()：获取元素相对于最近的一个position样式属性设置为relative或者absolute的祖父节点的相对偏移，包含两个属性，即top和left。</p>
+<p>  scrollTop()和scrollLeft()方法：获取元素的滚动条距顶端的距离和距左端的距离。也可以为这两个方法指定一个参数，控制元素的滚动条滚动到指定位置。</p>
 <h2 id="第四章-jQuery的事件和动画"><a href="#第四章-jQuery的事件和动画" class="headerlink" title="第四章 jQuery的事件和动画"></a>第四章 jQuery的事件和动画</h2><h3 id="jQuery中的事件"><a href="#jQuery中的事件" class="headerlink" title="jQuery中的事件"></a>jQuery中的事件</h3><ul>
 <li><p><strong><code>$(document).ready()</code>方法和<code>window.onload</code>方法的异同点</strong></p>
 <ul>
@@ -679,6 +1166,31 @@
 <li>serializeArray()方法</li>
 <li>$.param()方法</li>
 </ol>
+<h2 id="第九章-jQuery-Mobile"><a href="#第九章-jQuery-Mobile" class="headerlink" title="第九章 jQuery Mobile"></a>第九章 jQuery Mobile</h2><ul>
+<li><p>HTML 5的简介</p>
+</li>
+<li><p>jQuery Mobile简介以及它的主要特性</p>
+</li>
+<li><p>jQuery的使用</p>
+<ul>
+<li>下载</li>
+<li>建议在页面中使用HTML 5标准的页面声明和标签，因为移动设备浏览器对HTML 5的支持程度要远远优于PC设备</li>
+<li>构建HTML模板，引入框架</li>
+</ul>
+</li>
+<li><p><code>data-role</code>属性</p>
+</li>
+<li><p><code>data-inset</code>属性</p>
+</li>
+<li><p><code>data-theme</code>属性</p>
+</li>
+<li><p>其他的框架</p>
+</li>
+<li><p>例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">data-role</span>=<span class="string">"listview"</span> <span class="attr">data-inset</span>=<span class="string">"true"</span> <span class="attr">data-theme</span>=<span class="string">"e"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Acura<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Audi<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>BMW<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 
       
     </div>
@@ -720,6 +1232,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/11/vim/" rel="prev" title="前端知识点">
+                前端知识点 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -798,7 +1314,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -876,7 +1392,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#锋利的jQuery"><span class="nav-number">1.</span> <span class="nav-text">锋利的jQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-认识jQuery"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 认识jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-jQuery选择器"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 jQuery选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-jQuery中的DOM操作"><span class="nav-number">1.3.</span> <span class="nav-text">第三章 jQuery中的DOM操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-jQuery的事件和动画"><span class="nav-number">1.4.</span> <span class="nav-text">第四章 jQuery的事件和动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的事件"><span class="nav-number">1.4.1.</span> <span class="nav-text">jQuery中的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的动画"><span class="nav-number">1.4.2.</span> <span class="nav-text">jQuery中的动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-jQuery对表单、表格的操作及更多应用"><span class="nav-number">1.5.</span> <span class="nav-text">第五章 jQuery对表单、表格的操作及更多应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-jQuery与Ajax的应用"><span class="nav-number">1.6.</span> <span class="nav-text">第六章 jQuery与Ajax的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#part-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">part 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#part-2-jQuery中的Ajax"><span class="nav-number">1.6.2.</span> <span class="nav-text">part 2 jQuery中的Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#part-3-序列化元素"><span class="nav-number">1.6.3.</span> <span class="nav-text">part 3 序列化元素</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#锋利的jQuery"><span class="nav-number">1.</span> <span class="nav-text">锋利的jQuery</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-认识jQuery"><span class="nav-number">1.1.</span> <span class="nav-text">第一章 认识jQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-jQuery选择器"><span class="nav-number">1.2.</span> <span class="nav-text">第二章 jQuery选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-jQuery中的DOM操作"><span class="nav-number">1.3.</span> <span class="nav-text">第三章 jQuery中的DOM操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-jQuery的事件和动画"><span class="nav-number">1.4.</span> <span class="nav-text">第四章 jQuery的事件和动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的事件"><span class="nav-number">1.4.1.</span> <span class="nav-text">jQuery中的事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery中的动画"><span class="nav-number">1.4.2.</span> <span class="nav-text">jQuery中的动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-jQuery对表单、表格的操作及更多应用"><span class="nav-number">1.5.</span> <span class="nav-text">第五章 jQuery对表单、表格的操作及更多应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-jQuery与Ajax的应用"><span class="nav-number">1.6.</span> <span class="nav-text">第六章 jQuery与Ajax的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#part-1"><span class="nav-number">1.6.1.</span> <span class="nav-text">part 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#part-2-jQuery中的Ajax"><span class="nav-number">1.6.2.</span> <span class="nav-text">part 2 jQuery中的Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#part-3-序列化元素"><span class="nav-number">1.6.3.</span> <span class="nav-text">part 3 序列化元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第九章-jQuery-Mobile"><span class="nav-number">1.7.</span> <span class="nav-text">第九章 jQuery Mobile</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -896,7 +1412,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
