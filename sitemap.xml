@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/07/19/%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    
+    <lastmod>2020-03-15T09:17:10.029Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/03/11/vim/</loc>
     
-    <lastmod>2020-03-11T07:02:32.090Z</lastmod>
+    <lastmod>2020-03-15T09:15:26.105Z</lastmod>
     
   </url>
   
@@ -40,13 +47,6 @@
     <loc>http://yoursite.com/2019/07/19/JavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2019-07-19T12:24:27.121Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/07/19/%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
-    
-    <lastmod>2019-07-19T12:22:07.680Z</lastmod>
     
   </url>
   
