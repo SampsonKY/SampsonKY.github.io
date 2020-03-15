@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="SampsonKY'blog" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="SampsonKY" type="application/atom+xml">
 
 
 
@@ -83,13 +83,13 @@
 
 <meta name="description" content="Dreams are destined to be lonely, and there is no doubt and ridicule on the road, but what about it, even if it is bruised and bruised, it must live beautifully.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="SampsonKY&#39;blog">
+<meta property="og:title" content="SampsonKY">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="SampsonKY&#39;blog">
+<meta property="og:site_name" content="SampsonKY">
 <meta property="og:description" content="Dreams are destined to be lonely, and there is no doubt and ridicule on the road, but what about it, even if it is bruised and bruised, it must live beautifully.">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SampsonKY&#39;blog">
+<meta name="twitter:title" content="SampsonKY">
 <meta name="twitter:description" content="Dreams are destined to be lonely, and there is no doubt and ridicule on the road, but what about it, even if it is bruised and bruised, it must live beautifully.">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>SampsonKY'blog</title>
+  <title>SampsonKY</title>
   
 
 
@@ -157,7 +157,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">SampsonKY'blog</span>
+        <span class="site-title">SampsonKY</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -264,6 +264,1747 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/24/JavaScript事件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/24/JavaScript事件/" itemprop="url">Js 事件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-24T17:27:09+08:00">
+                2019-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JS事件"><a href="#JS事件" class="headerlink" title="JS事件"></a>JS事件</h1><h2 id="一、-事件与事件流"><a href="#一、-事件与事件流" class="headerlink" title="一、 事件与事件流"></a>一、 事件与事件流</h2><p>先来看它们的定义：</p>
+<blockquote>
+<p><strong>事件</strong>，就是通过文档或浏览器窗口中发生的一些特定的交互瞬间。</p>
+<p><strong>事件</strong>是您在编程时系统内发生的动作或者发生的事情— 系统会在事件出现的时候触发某种信号并且会提供一个自动加载某种动作（例如：运行一些代码）的机制。</p>
+<p><strong>事件流</strong>描述的是从页面中接收事件的顺序。</p>
+<p>事件流包括<strong>事件冒泡</strong>和<strong>事件捕获</strong>，两者分别由微软和网景公司提出。两个概念都是为了解决页面中事件发生顺序的问题。</p>
+<p><strong>事件冒泡</strong>的思想是：从最具体的元素（文档中嵌套层次最深的那个节点）开始接收，然后逐级向上传播到最不具体的节点（文档）。</p>
+<p><strong>事件捕获</strong>的思想是：不太具体的节点应该更早接受到事件，而最具体的节点应该最后接收到事件。</p>
+<p><strong>DOM事件流</strong>：在<strong>DOM2级事件</strong>中规定，事件流包括三个阶段：事件捕获阶段、处于目标阶段、事件冒泡阶段。首先发生的是事件捕获，为截获事件提供了机会；然后是实际的目标接收到事件；最后一个阶段是冒泡阶段，可以在这个阶段对事件做出响应。</p>
+</blockquote>
+<p>比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>事件<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>aaaa<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果单击了<code>&lt;div&gt;</code>标签，在事件冒泡的概念下，<code>click</code>事件传播顺序：<code>div -&gt; body -&gt; html -&gt; document</code>;在事件捕获的概念下,<code>click</code>事件传播的顺序：<code>document -&gt; html -&gt; body -&gt; div</code>.</p>
+<p>在DOM事件流中，实际的目标（<code>&lt;div&gt;</code>元素）在捕获阶段不会接收到事件。这意味着在捕获阶段，事件从<code>document</code>到<code>&lt;html&gt;</code>再到<code>&lt;body&gt;</code>就停止了。下一个阶段是“处于目标阶段”，于是事件在<code>&lt;div&gt;</code>上发生，并在事件处理中看成冒泡阶段的一部分。然后冒泡阶段发生，事件又传播回文档。</p>
+<p>【注意】：对于事件代理而言，在事件捕获或事件冒泡阶段处理并没有明显的优劣之分，但由于事件冒泡的事件流模型被所有主流的浏览器兼容，从兼容角度来说，建议使用事件冒泡模型。最好只在需要在事件到达目标之前截获它的时候将将事件处理程序添加到捕获阶段。</p>
+<p>几个题目，看你是否懂了：</p>
+<ol>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s1"</span>&gt;</span>s1</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s2"</span>&gt;</span>s2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">    s1.addEventListener("click", function (e) &#123;</span><br><span class="line">        console.log("s1 捕获事件");</span><br><span class="line">    &#125;, true);</span><br><span class="line">    s2.addEventListener("click", function (e) &#123;</span><br><span class="line">        console.log("s2 捕获事件");</span><br><span class="line">    &#125;, true);</span><br><span class="line">    //点击s1，结果为：s1捕获事件</span><br><span class="line">    //点击s2, 结果为：s1捕获事件，s2捕获事件</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s1"</span>&gt;</span>s1</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s2"</span>&gt;</span>s2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">	s1.addEventListener("click", function (e) &#123;</span><br><span class="line">		console.log("s1 冒泡事件");</span><br><span class="line">	&#125;, false);</span><br><span class="line">	s2.addEventListener("click", function (e) &#123;</span><br><span class="line">		console.log("s2 冒泡事件");</span><br><span class="line">	&#125;, false);</span><br><span class="line">	//点击s1：s1冒泡事件</span><br><span class="line">	//点击s2: s2冒泡事件，s1冒泡事件</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s1"</span>&gt;</span>s1</span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"s2"</span>&gt;</span>s2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">	s1.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s1 冒泡事件");</span><br><span class="line">		&#125;, false);</span><br><span class="line">	s2.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s2 冒泡事件");</span><br><span class="line">		&#125;, false);</span><br><span class="line"></span><br><span class="line">	s1.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s1 捕获事件");</span><br><span class="line">		&#125;, true);</span><br><span class="line"></span><br><span class="line">	s2.addEventListener("click", function (e) &#123;</span><br><span class="line">			console.log("s2 捕获事件");</span><br><span class="line">		&#125;, true);</span><br><span class="line">		//点击s1: s1冒泡，s1捕获</span><br><span class="line">		//点击s2: s1捕获事件 s2冒泡事件 s2捕获事件 s1冒泡事件</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>当事件捕获和事件冒泡一起存在的情况:</p>
+<p>先记被点击的DOM节点为target节点</p>
+<ol>
+<li>document 往 target节点，捕获前进，遇到注册的捕获事件立即触发执行</li>
+<li>到达target节点，触发事件（对于target节点上，是先捕获还是先冒泡则捕获事件和冒泡事件的注册顺序，先注册先执行）</li>
+<li>target节点 往 document 方向，冒泡前进，遇到注册的冒泡事件立即触发</li>
+</ol>
+<p>总结：</p>
+<ul>
+<li>对于非target节点则先执行捕获在执行冒泡</li>
+<li>对于target节点则是先执行先注册的事件，无论冒泡还是捕获</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、事件处理程序"><a href="#二、事件处理程序" class="headerlink" title="二、事件处理程序"></a>二、事件处理程序</h2><blockquote>
+<p>事件是用户或浏览器自生执行的某种动作。<strong>而响应某个事件的函数就叫做事件处理程序（或事件侦听器）</strong>。</p>
+</blockquote>
+<h3 id="HTML中的事件处理程序"><a href="#HTML中的事件处理程序" class="headerlink" title="HTML中的事件处理程序"></a>HTML中的事件处理程序</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"click me"</span> <span class="attr">onclick</span>=<span class="string">"alert('Clicked')"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>某个元素支持的每种事件都可以使用一个与相应事件处理程序同名的HTML特性来制定。这个特性的值应该是能够执行的JavaScript代码。</li>
+<li>在HTML中定义的事件处理程序可以包含要执行的具体动作，也可以调用在页面中其他地方定义的脚本。</li>
+</ul>
+<p><strong>独到之处</strong>：</p>
+<ol>
+<li>会创建一个封装着元素属性值的函数。这个函数有一个局部变量<code>event</code>，也就是<strong>事件对象</strong>。通过<code>event</code>变量，可以直接访问事件对象，不用自己定义，也不用从函数的参数列表中读取。</li>
+<li>在这个函数内部，<code>this</code>的值等于事件的<strong>目标元素</strong>。</li>
+<li>拓展作用域的方式</li>
+</ol>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>存在一个时差问题，因为用户可能会在HTML元素一出现在页面上就触发相应的事件，但当时的事件处理程序有可能尚不具备执行条件。<strong>为此，很多HTML事件处理程序都会被封装在一个<code>try-catch</code>块中，以便错误不会浮出水面。</strong></li>
+<li>这样拓展事件处理程序的作用域链在不同浏览器中会导致不同结果。</li>
+<li><strong>HTML与JavaScript代码紧密耦合。</strong></li>
+</ol>
+<h3 id="DOM0级事件处理程序"><a href="#DOM0级事件处理程序" class="headerlink" title="DOM0级事件处理程序"></a>DOM0级事件处理程序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"Clicked"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>将一个函数赋值给一个事件处理程序属性这种传统方法依然被所有现代浏览器所支持的原因是：简单、跨浏览器优势。</li>
+<li>我们首先要做的就是必须取得一个要操作的对象的引用。</li>
+<li>每个元素（包括window和document）都有自己的事件处理程序属性，将这种属性的值设为一个函数，就可以指定事件处理程序。</li>
+</ul>
+<p><strong>【注意】</strong>：</p>
+<ol>
+<li>使用DOM0级事件方法指定的事件处理程序被认为是<strong>元素的方法</strong>。因此，这时候的事件处理程序是在<strong>元素的作用域</strong>中运行，即<strong>程序中的<code>this</code>引用当前元素。</strong></li>
+<li>可以在事件程序中通过<code>this</code>访问元素的任何属性和方法。</li>
+<li>以这种方式添加的事件处理程序会在事件流的冒泡阶段被处理。</li>
+<li>可以通过将事件处理程序设置为<code>null</code>来删除DOM0级方法指定的事件处理程序</li>
+</ol>
+<h3 id="DOM2级事件处理程序"><a href="#DOM2级事件处理程序" class="headerlink" title="DOM2级事件处理程序"></a>DOM2级事件处理程序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;,<span class="literal">false</span>);</span><br><span class="line">btn.removeEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"this.id"</span>);</span><br><span class="line">&#125;,<span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DOM2级事件定义了两个方法，用于指定和删除事件处理程序的操作：<code>addEventListener()</code>和<code>removeEventListener()</code>。所有DOM节点都包含这两个方法，并且它们都接受3个参数：<strong>要处理的事件名</strong>、<strong>作为事件处理程序的函数</strong>和<strong>一个布尔值</strong>。如果这个布尔值参数为<code>true</code>，表示在捕获阶段调用事件处理程序；为<code>false</code>表示在冒泡阶段调用事件处理程序。</li>
+<li>与DOM0级方法一样，这里添加的事件处理程序也是<strong>在其依附的元素的作用域中运行</strong>。</li>
+<li>使用这种方法的<strong>主要好处</strong>是可以添加多个事件处理程序，并且事件处理程序会按照添加它们的顺序触发。</li>
+<li>通过传入<code>addEventListener()</code>添加的事件处理程序只能用<code>removeEventListener()</code>来移除；移除时传入的参数与添加处理程序时使用的参数相同。也意味着通过<code>addEventListener()</code>添加的匿名函数无法移除。比如上面的例子。</li>
+</ul>
+<h3 id="IE事件处理程序"><a href="#IE事件处理程序" class="headerlink" title="IE事件处理程序"></a>IE事件处理程序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.getElementById(<span class="string">"myBtn"</span>);</span><br><span class="line">btn.attachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.id);</span><br><span class="line">&#125;);</span><br><span class="line">btn.detachEvent(<span class="string">"onclick"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">"this.id"</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>IE实现了和DOM中类似的两个方法: <code>attachEvent()</code>和<code>detachEvent()</code>。这两个方法接收两个参数：<strong>事件处理程序的名称</strong>和<strong>事件处理程序函数</strong>。通过<code>attachEvent()</code>添加的事件处理程序都会被添加到冒泡阶段。</li>
+<li>在IE中使用<code>attachEvent()</code>与使用DOM0级方法的主要区别在于事件处理程序中的<strong>作用域</strong>。在使用DOM0级方法的情况下，事件处理程序会在其所属元素的作用域内运行；在使用<code>attachEvent()</code>方法的情况下，事件处理程序会在全局作用域中运行，因此<code>this</code>等于<code>window</code>。</li>
+<li><code>attachEvent()</code>也可以用来为一个元素添加多个事件处理程序。但以相反的顺序被触发。</li>
+<li>使用 <code>attachEvent()</code>添加的事件可以通过<code>detachEvent()</code>来移除。条件是必须提供相同的参数。这意味着添加的匿名函数无法移除。</li>
+</ul>
+<h3 id="跨浏览器的事件处理程序"><a href="#跨浏览器的事件处理程序" class="headerlink" title="跨浏览器的事件处理程序"></a>跨浏览器的事件处理程序</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventUtil = &#123;</span><br><span class="line">    addHandler: <span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(element.addEventListener)&#123;</span><br><span class="line">            element.addEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>( element.attachEvent)&#123;</span><br><span class="line">            element.attachEvent(<span class="string">"on"</span>+type,handler);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            element[<span class="string">"on"</span>+type] = handler;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    removeHandler:<span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(element.removeEventListener)&#123;</span><br><span class="line">            element.removeEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>( element.detachEvent)&#123;</span><br><span class="line">            element.detachEvent(<span class="string">"on"</span>+type,handler);</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            element[<span class="string">"on"</span>+type] = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">EventUtil.addHandler(btn,<span class="string">"click"</span>,handler);</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、事件对象"><a href="#三、事件对象" class="headerlink" title="三、事件对象"></a>三、事件对象</h2><p>在触发DOM上某个事件时，会产生一个事件对象<code>event</code>，这个对象中包含所有与事件有关的信息。包括导致事件的元素，事件的类型以及其他与特定事件相关的信息。</p>
+<h3 id="DOM中的事件对象"><a href="#DOM中的事件对象" class="headerlink" title="DOM中的事件对象"></a>DOM中的事件对象</h3><p>1.兼容DOM的浏览器会将一个<code>event</code>对象传入到事件处理程序中。无论指定事件处理程序时使用什么方法（DOM0级或DOM2级），都会传入<code>event</code>对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    alert(event.type); <span class="comment">//"click"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>2.在通过HTML特性指定事件处理程序时，变量<code>event</code>中保存着<code>event</code>对象。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"Click me"</span> <span class="attr">onclick</span>=<span class="string">"alert(event.type)"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>以这种方式提供<code>event</code>对象，可以让HTML特性事件处理程序与JavaScript函数执行相同的操作。</p>
+<p><code>event</code>对象中包含着与创建它的特定事件有关的属性和方法。</p>
+<ul>
+<li>在事件处理程序内部对象<code>this</code>始终等于<code>currentTarget</code>的值，而<code>target</code>则只包含事件的<strong>实际目标</strong>。</li>
+<li>要阻止特定事件的默认行为，可以使用<code>preventDefault()</code>方法。</li>
+<li>只有<code>cancelable</code>为<code>true</code>的事件，才可以使用<code>preventDefault()</code>方法</li>
+<li><code>stopPropagation()</code>方法用于立即停止事件在DOM层次中的传播，即进一步取消事件的捕获或冒泡。</li>
+<li>事件对象的<code>eventPhase</code>属性可以用来确定事件当前正位于事件流的哪个阶段。</li>
+</ul>
+<p><strong>只有在事件处理程序执行期间，<code>event</code>对象才会存在；一旦事件处理程序执行完成，<code>event</code>对象就会被销毁。</strong></p>
+<h3 id="IE中的事件对象"><a href="#IE中的事件对象" class="headerlink" title="IE中的事件对象"></a>IE中的事件对象</h3><p><strong>情况1</strong>.DOM0级方法添加事件处理程序时，<code>event</code>对象作为<code>window</code>对象的一个属性存在。</p>
+<p><strong>情况2.</strong>如果事件处理程序是使用<code>attachEvent()</code>添加的，那么就会有一个<code>event</code>对象作为参数传入事件处理程序函数中。</p>
+<p><strong>情况3</strong>.如果通过HTML特性制定的事件处理程序，那么可以通过一个名叫event的变量来访问event对象。</p>
+<p>IE的event对象也包含与创建它的事件相关的属性和方法：</p>
+<ul>
+<li><code>cancelBubble</code>属性  —–  取消冒泡</li>
+<li><code>returnValue</code>属性  —– 取消事件的默认行为</li>
+<li><code>srcElement</code>属性 —- 事件的目标</li>
+<li><code>type</code>属性 — 事件的类型</li>
+</ul>
+<p><strong>因为事件处理程序的作用域是根据指定它的方式来确定的，所以不能认为this会始终等于事件目标。故而，最好还是使用<code>event.srcElement</code>比较保险。</strong></p>
+<h3 id="跨浏览器的事件对象"><a href="#跨浏览器的事件对象" class="headerlink" title="跨浏览器的事件对象"></a>跨浏览器的事件对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventUtil = &#123;</span><br><span class="line">    addHandler: <span class="function"><span class="keyword">function</span>(<span class="params">...</span>)</span>&#123;...&#125;,</span><br><span class="line">    getEvent: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> event? event:<span class="built_in">window</span>.event;</span><br><span class="line">    &#125;,</span><br><span class="line">    getTarget: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> event.target||event.srcElement;</span><br><span class="line">    &#125;,</span><br><span class="line">     preventDefault: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(event.preventDefault)&#123;</span><br><span class="line">             event.perventDefalut();</span><br><span class="line">         &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">             event.returnValue = <span class="literal">false</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     removeHandler:....</span><br><span class="line">     </span><br><span class="line">     stopPropagation:<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(event.stopPropagation)&#123;</span><br><span class="line">             event.stopPropagation();</span><br><span class="line">         &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">             event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、内存和性能"><a href="#四、内存和性能" class="headerlink" title="四、内存和性能"></a>四、内存和性能</h2><p>在JavaScript中，添加到页面上的事件处理程序数量直接关系到页面的整体运行性能。导致这一问题的原因有很多，首先，每个函数都是对象，都会占用内存；内存中的对象越多，性能就越差。其次，必须事先指定所有事件处理程序而导致的DOM访问次数，会延迟整个页面的交互就绪时间。</p>
+<p><strong>事件委托</strong>就是解决方案，时间委托利用了事件冒泡，只指定一个事件处理程序就可以管理某一类的所有事件。<strong>使用事件委托，只需要在DOM树中尽量最高的层次上添加一个事件处理程序。</strong></p>
+<p>内存中存有那些“过时不用”的“空事件处理程序”，也是造成web应用程序内存与性能问题的主要原因。在不需要的时候<strong>移除事件处理程序</strong>也是一种解决方案。</p>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ul>
+<li><a href="https://segmentfault.com/a/1190000005654451" target="_blank" rel="noopener">JS中事件冒泡与捕获</a></li>
+<li>JavaScript高级程序设计</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/21/js定时器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/21/js定时器/" itemprop="url">Js 定时器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-21T21:24:29+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="JavaScript定时器"><a href="#JavaScript定时器" class="headerlink" title="JavaScript定时器"></a>JavaScript定时器</h1><h2 id="一、什么是定时器"><a href="#一、什么是定时器" class="headerlink" title="一、什么是定时器"></a>一、什么是定时器</h2><p>JavaScript提供了一些原生的方法来实现延时去执行某一段代码，下面简单介绍一下：</p>
+<p><code>setTimeout</code>:设置一个定时器，在定时器到期后执行一次函数或代码段，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timeoutId = <span class="built_in">window</span>.setTimeout(func|code, delay);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>timeoutId: 定时器ID</li>
+<li>func: 延迟后执行的函数</li>
+<li>code: 延迟后执行的代码字符串，不推荐使用原理类似eval()</li>
+<li>delay: 延迟的时间（单位：毫秒），默认值为0</li>
+</ul>
+</blockquote>
+<p><code>setInterval</code>: 以固定的时间间隔重复调用一个函数或者代码段<a href="http://caibaojian.com/javascript-timer.html" target="_blank" rel="noopener">·</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var intervalId = window.setInterval(func|code, delay);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>intervalId: 重复操作的ID</li>
+<li>func: 延迟调用的函数</li>
+<li>code: 代码段</li>
+<li>delay: 延迟时间，没有默认值</li>
+</ul>
+</blockquote>
+<p>另外，还有两种不常见的定时器：<code>setImmediate</code>, <code>requestAnimationFrame</code>。</p>
+<h2 id="二、定时器的工作原理以及不定时的原理"><a href="#二、定时器的工作原理以及不定时的原理" class="headerlink" title="二、定时器的工作原理以及不定时的原理"></a>二、定时器的工作原理以及不定时的原理</h2><blockquote>
+<p>JavaScript是一个<strong>单线程的解释器</strong>，因此一定时间内只能执行一段代码。为了要控制执行的代码，就有一个JavaScript任务队列。这些任务会按照它们添加到队列的顺序执行。<code>setTimeout()</code>的第二个参数告诉JavaScript再过多长时间把当前任务添加到队列中。如果队列是空的，那么添加的代码会立即执行；如果队列不是空的，那么它就要等前面的代码执行完了以后再执行。</p>
+</blockquote>
+<p><strong>【注意】</strong>：</p>
+<ol>
+<li>首先，<strong>JavaScript是以单线程的方式运行的</strong>。JavaScript的主要用途是与用户互动，以及操作DOM。若以多线程的方式，则可能出现冲突。假设有两个线程同时操作一个DOM元素，线程1要求浏览器删除DOM，而线程2却要求修改DOM样式，这时浏览器就无法决定采用哪个线程的操作。（但是JavaScript有个基于“Event Loop”并发的模型。&lt;此处不讨论。。&gt;）</li>
+<li>js既然是单线程的，也就意味着所有任务需要排队。所有任务可以分成两种，一种是<strong>同步任务</strong>（synchronous），另一种是<strong>异步任务</strong>（asynchronous）<ul>
+<li>同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务，形成了一个执行栈</li>
+<li>异步任务指的是，不进入主线程，而进入”任务队列”（task queue）的任务。”任务队列”是一个事件的队列（可以当作消息的队列来理解）。IO设备完成一项任务or异步任务有了运行结果，就在”任务队列”中添加一个事件，表示相关的操作可以进入”执行栈”，就等着执行栈调用了。</li>
+</ul>
+</li>
+<li><strong>因为<code>setTimeout</code>, <code>setInterval</code>是异步任务，调用之后不会直接进入执行栈，而是进入任务队列，所以只有等到当前执行栈没有其他操作，它们才会进入执行栈中执行，</strong> 以上就是为什么定时器<strong>不总是定时</strong>的原因了。</li>
+<li>如果<code>delay</code>时间周期设为0，相当于一个插队操作</li>
+</ol>
+<h2 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h2><p>例1：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="literal">false</span>;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>(a)&#123;&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p><code>console.log(a)</code>永远不会执行,因为JavaScript是单线程的，且定时器的回调将在等待当前正在执行的任务完成后才执行，而<code>while(a){}</code>直接进入了死循环，一直占用线程，不会给回调函数执行机会。</p>
+<p>例2：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i);</span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码会输出<code>5 5 5 5 5</code>。当<code>i = 0</code>时，生成一个定时器，将回调函数插入到事件队列中，等待当前队列中无任务执行时立即执行，而此时<code>for</code>循环正在执行，所以回调被搁置。当for循环执行完之后，队列中存在5个回调函数，它们都将执行<code>console.log(i)</code>的操作，因为当前JS代码中并没有使用块级作用域，所以<code>i</code>的值在<code>for</code>循环结束后一直为5.</p>
+<p>例3：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    msg: <span class="string">'obj'</span>,</span><br><span class="line">    shout: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.msg);</span><br><span class="line">    &#125;,</span><br><span class="line">    waitAndShout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.shout();</span><br><span class="line">        &#125;, <span class="number">0</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.waitAndShout();</span><br></pre></td></tr></table></figure>
+
+<p>这个问题涉及到了<code>this</code>的指向问题，由<code>setTimeout()</code>调用的代码运行在与与所在函数完全分离的执行环境上。这会导致这些代码中包含的<code>this</code>关键字会指向<code>window</code>（或全局）对象，<code>window</code>对象中并不存在<code>shout</code>方法，所以就会报错。</p>
+<p>可以这样修改：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    msg: <span class="string">'obj'</span>,</span><br><span class="line">    shout: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.msg);</span><br><span class="line">    &#125;,</span><br><span class="line">    waitAndShout: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>; <span class="comment">//这里将this赋给一个变量</span></span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            self.shout();</span><br><span class="line">        &#125;, <span class="number">0</span>);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">obj.waitAndShout();</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、注意事项"><a href="#四、注意事项" class="headerlink" title="四、注意事项"></a>四、注意事项</h2><ol>
+<li>我们可以使用<code>clearTimeout()</code>和<code>clearInterval()</code>方法来取消定时器</li>
+<li>对于<code>setTimeout(f, 0)</code>指定时间为0，并不是说回调函数<code>f</code>会马上执行，而是会在下一轮事件循环一开始就执行。</li>
+<li>在使用超时调用时，没必要跟踪超时调用ID，因为每次执行代码之后，如果不再设置另一次超时调用，调用就会自行停止。</li>
+<li>最好不要使用间歇调用</li>
+</ol>
+<h2 id="五、参考"><a href="#五、参考" class="headerlink" title="五、参考"></a>五、参考</h2><ul>
+<li><p>《JavaScript高级程序设计》第三版</p>
+</li>
+<li><p>MDN</p>
+</li>
+<li><p><a href="http://caibaojian.com/javascript-timer.html" target="_blank" rel="noopener">JS 定时器的四种写法及简介</a></p>
+</li>
+<li><p><a href="https://javascript.ruanyifeng.com/advanced/timer.html#toc5" target="_blank" rel="noopener">定时器</a></p>
+</li>
+<li><p><a href="https://juejin.im/post/5acd8006f265da239236b172" target="_blank" rel="noopener">js定时器，你所要了解的那点事</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/19/JavaScript高级程序设计总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/19/JavaScript高级程序设计总结/" itemprop="url">JavaScript高级程序设计总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-19T20:27:30+08:00">
+                2019-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="第1章-JavaScript简介"><a href="#第1章-JavaScript简介" class="headerlink" title="第1章 JavaScript简介"></a>第1章 JavaScript简介</h1><h2 id="part-1-JavaScript基本概念"><a href="#part-1-JavaScript基本概念" class="headerlink" title="part 1 JavaScript基本概念"></a>part 1 JavaScript基本概念</h2><p>包括<strong>定义，组成部分，基本特点，日常用途，历史，特性，编程，版本，与其他语言的比较</strong>（<a href="https://baike.baidu.com/item/javascript" target="_blank" rel="noopener">参考</a>).</p>
+<h2 id="part-2-组成部分"><a href="#part-2-组成部分" class="headerlink" title="part 2 组成部分"></a>part 2 组成部分</h2><ul>
+<li>ECMAScript，由ECMA-262定义，提供JavaScript核心功能。</li>
+<li>DOM(<strong>DOM级别</strong>)，提供访问和操作网页内容的方法和接口。</li>
+<li>BOM（5个对象）（JS高程第八章），提供与浏览器交互的方法和接口。</li>
+</ul>
+<h1 id="第二章-在HTML中使用JavaScript"><a href="#第二章-在HTML中使用JavaScript" class="headerlink" title="第二章 在HTML中使用JavaScript"></a>第二章 在HTML中使用JavaScript</h1><p>主要注意点：</p>
+<ul>
+<li><code>&lt;script&gt;</code>的六个属性是什么以及各自的用途？</li>
+<li>延迟脚本&amp;异步脚本各自的特点？</li>
+<li>标签可以放在哪些位置？</li>
+<li>当嵌入代码和外部文件同时存在于一个<code>&lt;script&gt;</code>标签里，会发生什么？</li>
+<li>多个<code>&lt;script&gt;</code>存在于页面中时，它们的解析顺序？（注意延迟脚本和异步脚本的存在）</li>
+<li>外部文件相对于嵌入代码有什么好处？</li>
+<li>文档模式&amp;doctype？（混杂模式，标准模式，准标准模式，严格模式……）</li>
+<li><code>&lt;noscript&gt;</code>标签解决了怎样的问题？</li>
+</ul>
+<h1 id="第三章-基本概念"><a href="#第三章-基本概念" class="headerlink" title="第三章 基本概念"></a>第三章 基本概念</h1><h2 id="part-1-基本语法"><a href="#part-1-基本语法" class="headerlink" title="part 1 基本语法"></a>part 1 基本语法</h2><ul>
+<li>区分大小写</li>
+<li>标识符是什么？标识符命名规则？</li>
+<li>严格模式用在哪？怎么启用？有哪些特点？</li>
+<li>关键字和保留字的区别？关键字和保留字分别有哪些？</li>
+</ul>
+<h2 id="part2-变量"><a href="#part2-变量" class="headerlink" title="part2 变量"></a>part2 变量</h2><ul>
+<li>变量仅仅是一个用于保存值的占位符，变量可以用来保存任何值，未经初始化的变量的值为undefined</li>
+<li>var、let、const的区别？</li>
+</ul>
+<h2 id="part-3-数据类型"><a href="#part-3-数据类型" class="headerlink" title="part 3 数据类型"></a>part 3 数据类型</h2><ul>
+<li><p>基本数据类型有哪些，它们各自有哪些特点？</p>
+</li>
+<li><p><code>typeof</code>操作符有什么作用，它有哪些特点？</p>
+</li>
+<li><p>检测变量数据类型有哪些方法？</p>
+</li>
+<li><p>包含<code>undefined</code>值的变量和尚未定义的变量的区别？</p>
+</li>
+<li><p><code>undefined</code>与<code>null</code>的区别？</p>
+</li>
+<li><p>关于<code>Boolean()</code>函数转化（哪些转换为<code>true</code>，哪些转换为<code>false</code>）</p>
+</li>
+<li><p>JavaScript是如何储存数值的？为什么会出现 <code>0.1+0.2 != 0.3</code> 的情况? <a href="https://blog.csdn.net/u013347241/article/details/79210840" target="_blank" rel="noopener">参考</a></p>
+</li>
+<li><p>数值范围以及<code>isFinite()</code>函数</p>
+</li>
+<li><p><code>NaN</code>是什么，<code>isNaN()</code>函数</p>
+</li>
+<li><p>数值转换函数<code>Number()</code>,<code>parseInt()</code>,<code>parseFloat()</code>各自特点以及它们之间的区别？</p>
+</li>
+<li><p>转义序列是用来干嘛的？有哪些？</p>
+</li>
+<li><p>字符串又什么特点？（ECMAScript中的字符串是不可变的，也就是说，字符串一旦创建，它们的值就不能改变。要改变某个变量保存的字符串，首先要销毁原来的字符串，然后再用另外一个包含新值的字符串填充该变量）</p>
+</li>
+<li><p>转换为字符串方法<code>toString()</code>,<code>String()</code>的区别</p>
+</li>
+<li><p>Object类型所具有的的任何属性和方法同样存在于更具体的对象中。Object的每个实例都有这些属性和方法（<code>constructor</code>、<code>hasOwnProperty(propertyName)</code>、<code>isPrototypeOf(object)</code>、<code>propertyIsEnumerable(propertyName)</code>、<code>toLocaleString()</code>、<code>toString()</code>、<code>valueOf()</code>）</p>
+</li>
+<li><p><code>toLocaleString()</code>、<code>toString()</code>、<code>valueOf()</code>各自的功能以及它们的区别？</p>
+</li>
+</ul>
+<h2 id="part-4-操作符"><a href="#part-4-操作符" class="headerlink" title="part 4 操作符"></a>part 4 操作符</h2><ul>
+<li>++、–、+、- 对非数值应用时，会像Number()转型函数一样对这个值执行转换。</li>
+<li>位操作（&amp;   |    ~   ^  &lt;&lt;  &gt;&gt;)的基本概念</li>
+<li>左移位不会影响操作数的符号位；有符号右移，空位由符号位填充；无符号右移，空位由0填充。</li>
+<li>布尔操作符（&amp;&amp;  ||  !）基本操作。</li>
+<li>逻辑非会先把它的操作数强转为一个布尔值，然后再求反。逻辑与，逻辑或在有一个操作数不是布尔值的情况下，不一定返回布尔值，它们的规则是？(p45、p46)</li>
+<li>关系操作符（&gt;, &lt; ,&lt;=, &gt;=…)的操作数使用了非数值时，要进行数据转换或完成某些操作，规则是怎样的？(p50)</li>
+<li>相等和不相等——先转换再比较；全等和不全等——仅比较而不转换。相等和不相等操作符对操作数进行强制转型的规则是什么？（p51)</li>
+</ul>
+<h2 id="part-5-语句"><a href="#part-5-语句" class="headerlink" title="part 5 语句"></a>part 5 语句</h2><ul>
+<li><p>if语句、do-while语句、while语句、for语句、<strong>for-in语句</strong>、<strong>label语句</strong>、break和continue语句、<strong>with语句</strong>、switch语句</p>
+</li>
+<li><p>for-in语句是一种精准的迭代语句，可以用来枚举对像的属性。语法：<code>for (property in expression) statement</code>。ECMAScript对象的属性没有顺序，因此，通过for-in循环输出的属性名的顺序是不可预测的。但是，如果表示要迭代的对象的变量值为null或undefined，for-in语句会抛出错误。</p>
+</li>
+<li><p>label语句可以在代码中添加标签，以便将来使用。语法：<code>label: statement</code>。</p>
+</li>
+<li><p>break和continue语句都可以和label语句联合使用，从而返回代码中特定的位置。例</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">0</span>;</span><br><span class="line">outermost:</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">10</span>; j++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">5</span> &amp;&amp; j==<span class="number">5</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span> outermost;<span class="comment">//①添加这个标签的结果导致break语句不仅会退出内部的for语句，而且与会退出外部的for语句。</span></span><br><span class="line">            <span class="comment">//continue outermost; //退出内部循环，执行外部循环</span></span><br><span class="line">        &#125;</span><br><span class="line">        num++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">conslole.log(num); <span class="comment">//①55 ②95</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="part-6-函数"><a href="#part-6-函数" class="headerlink" title="part 6 函数"></a>part 6 函数</h2><ul>
+<li>return 语句可以不带有任何返回值。在这种情况下，函数停止执行后将返回undefined值。这种用法一般用在需要提前停止函数执行而又不需要返回值的情况下。</li>
+<li>ECMAScript中的参数在内部都是用一个数组来表示的。函数接收到的始终是这个数组，而不关心数组中包含哪些参数。函数体内的argument对象可以访问这个参数数组，从而获取传递给函数的每一个参数。</li>
+<li>命名的参数只提供便利，但不是必需的。ECMAScript中也没有函数签名的概念，因为其函数参数是一个包含0个或多个值的数组的形式传递的。</li>
+<li>argument对象可以与命名参数一起使用。argument对象的值永远与对应命名参数的值保持同步。虽然值保持同步，但它们的内存空间是独立的。</li>
+<li>没有传递值的命名参数自动被赋予undefined值。</li>
+<li>由于不存在函数签名的特性，ECMAScript函数不能重载。</li>
+</ul>
+<h1 id="第四章-变量、作用域、内存问题"><a href="#第四章-变量、作用域、内存问题" class="headerlink" title="第四章 变量、作用域、内存问题"></a>第四章 变量、作用域、内存问题</h1><h2 id="part-1-引用类型和基本类型的值"><a href="#part-1-引用类型和基本类型的值" class="headerlink" title="part 1 引用类型和基本类型的值"></a>part 1 引用类型和基本类型的值</h2><ul>
+<li>引用类型、基本类型是什么？它们有哪些异同？</li>
+<li>定义基本类型和引用类型的值的方式是类似的：创建一个变量并为该变量赋值。但对于引用类型的值，我们可以为其添加属性和方法，也可以改变和删除其属性和方法。</li>
+<li>复制：①基本类型：两者是完全独立的，相当于创建了一个副本。②引用类型：副本实际是一个指针，指针指向存储在堆中的一个对象。复制结束后，两者实际引用同一个对象。</li>
+<li>传递参数：所有函数的参数都是按值传递的！</li>
+</ul>
+<h2 id="part-2-执行环境和作用域"><a href="#part-2-执行环境和作用域" class="headerlink" title="part 2 执行环境和作用域"></a>part 2 执行环境和作用域</h2><ul>
+<li>执行环境、作用域、作用域链这些是什么？</li>
+<li>怎么延长作用域链？</li>
+<li>关于没有块级作用域怎么理解？</li>
+<li>作用域的类型有哪些？</li>
+</ul>
+<h2 id="part-3-垃圾收集"><a href="#part-3-垃圾收集" class="headerlink" title="part 3 垃圾收集"></a>part 3 垃圾收集</h2><ul>
+<li>为什么需要进行垃圾收集？</li>
+<li>垃圾收集的方式有哪些以及它们的原理？（标记清除&amp;引用计数）</li>
+<li>当代码中存在循环引用现象时，“引用计数”算法就会导致问题，问题是什么？如何解决？</li>
+<li>解除引用是什么？它有哪些好处？</li>
+</ul>
+<h1 id="第五章-引用类型"><a href="#第五章-引用类型" class="headerlink" title="第五章 引用类型"></a>第五章 引用类型</h1><ul>
+<li>引用类型是什么？引用类型的值（对象）是什么？</li>
+</ul>
+<h2 id="part-1-Array类型"><a href="#part-1-Array类型" class="headerlink" title="part 1 Array类型"></a>part 1 Array类型</h2><p>数组的每一项都可以保存任何类型的数据。数组的大小是可以动态调整的，即可以随着数据的添加自动增长以容纳新增数组。</p>
+<ul>
+<li><p>创建数组的方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用Array()构造函数</span></span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">20</span>);</span><br><span class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"black"</span>);</span><br><span class="line"><span class="keyword">var</span> a = <span class="built_in">Array</span>(<span class="number">3</span>);<span class="comment">//在使用Array构造函数时也可以省略new操作符</span></span><br><span class="line"><span class="comment">//使用字面量表示法【与对象一样，在使用数组字面量表示法时，也不会调用Array构造函数。</span></span><br><span class="line"><span class="keyword">var</span> a = [<span class="string">"red"</span>, <span class="string">"blue"</span>, <span class="string">"black"</span>];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检测数组的方法有哪些？</p>
+</li>
+<li><p>数组有哪些方法？（转换方法、栈方法、队列方法、重排序方法、操作方法&lt;创建、切片、删除、插入、替换&gt;、位置方法、迭代方法、归并方法）</p>
+</li>
+<li><p>sort()方法需要注意的问题。sort()方法接受的比较函数是怎样的？实现的原理是什么？</p>
+</li>
+<li><p>splice()方法如何实现删除、插入、替换操作？</p>
+</li>
+<li><p>every()、some()、map()、filter()、forEach()的区别？</p>
+</li>
+<li><p>归并数组方法reduce()和reduceRight()是怎么操作的？</p>
+</li>
+</ul>
+<h2 id="part-2-Date类型"><a href="#part-2-Date类型" class="headerlink" title="part 2 Date类型"></a>part 2 Date类型</h2><p>Date类型使用UTC(国际协调时间)1970年1月1日零时开始经过的毫秒数来保存日期。</p>
+<ul>
+<li><p>创建日期对象<code>var now = new Date(); //自动获取当前时间和日期</code></p>
+</li>
+<li><p>如果想根据特定时间和日期创建日起对象。必须穿入该日期的毫秒数，<code>Date.parse()</code>, <code>Date.UTC()</code>可简化这个过程。两个方法接收的参数有一定的规则。</p>
+</li>
+<li><p>例：</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someDay = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.parse(<span class="string">"May 25, 2004"</span>));</span><br><span class="line"><span class="keyword">var</span> someDay = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"May 25, 2004"</span>);<span class="comment">//后台自动调用Date.parse()方法</span></span><br><span class="line"><span class="keyword">var</span> someDay = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">Date</span>.UTC(<span class="number">2000</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">55</span>,<span class="number">55</span>));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Date.now()方法，返回表示调用这个方法的日期和时间的毫秒数。使用+操作符也可获取Date对象的时间戳。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> start = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="comment">//var start = +new Date();</span></span><br><span class="line">doSomething();</span><br><span class="line"><span class="keyword">var</span> stop = <span class="built_in">Date</span>.now();</span><br><span class="line"><span class="comment">//var stop = +new Date();</span></span><br><span class="line">result = stop-start;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>Date类型继承的toString()、toLocaleStirng、valueOf()方法的区别？</p>
+</li>
+<li><p>日期格式化有哪些方法？</p>
+</li>
+<li><p>日期/时间组件的方法有哪些？</p>
+<h2 id="part-3-RegExp类型"><a href="#part-3-RegExp类型" class="headerlink" title="part 3 RegExp类型"></a>part 3 RegExp类型</h2><h2 id="part-4-Function类型"><a href="#part-4-Function类型" class="headerlink" title="part 4 Function类型"></a>part 4 Function类型</h2></li>
+</ul>
+<p>函数实际上是对象，每个函数都是Function类型的实例，而且都与其他引用类型一样具有属性和方法。由于函数是对象，因此函数名实际上是一个指向函数对象的指针。使用不带圆括号的函数名是访问函数指针，而非调用函数！</p>
+<p>函数名本身就是变量，所以函数也可以通过作为值来使用。也就是说，不仅可以像传递参数一样把一个函数传递给另一个函数，而且可以将一个函数作为另一个函数的结果返回。</p>
+<ul>
+<li>理解函数为什么没有重载？</li>
+<li>函数提升是什么？</li>
+<li>函数内部的两个特殊对象：argument和this分别是什么？</li>
+<li>argument对象的callee属性有什么用？（callee属性是一个指针，指向拥有这个argument对象的函数。）</li>
+<li>函数的另一个对象属性caller是什么？它有什么用？（caller属性保存着调用当前函数的函数的引用，如果是在全局作用域中调用当前函数，它的值为null）。</li>
+<li>函数是对象，因此函数也有属性和方法。每个函数都包含两个属性：length和prototype。length属性标识函数希望接收的命名参数的个数。</li>
+<li>对于EMCAScript引用类型而言，prototype是保存它们所有实例和方法的真正所在。换句话说，诸如toString(),valueOf()等方法实际上都保存在prototype名下，只不过是通过各自对象的实例访问罢了。prototype属性是不可枚举的，因此使用for-in无法发现。</li>
+<li>每个函数都包含两个非继承而来的方法：apply()和call()。它们的用途是什么？它们两个的区别是什么？它们的适用情况？</li>
+<li>bind()方法是什么？</li>
+</ul>
+<h2 id="part-5-基本包装类型"><a href="#part-5-基本包装类型" class="headerlink" title="part 5 基本包装类型"></a>part 5 基本包装类型</h2><p>为了便于操作基本类型值，ECMAScript还提供了3个特殊的引用类型：Boolean,Number和String。这些类型和其他引用类型相似，但同时也有各自的基本类型相应的特殊行为。实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象。</p>
+<p>引用类型和基本包装类型的主要区别就是<strong>对象的生存期</strong>。使用new操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。这意味着我们不能在运行时为基本类型值添加属性和方法。</p>
+<p>Object构造函数会根据传入值的类型返回相应基本包装类型的实例。把字符串传给Object构造函数，就会创建String的实例；传入数值参数会得到Number的实例；传入布尔值参数就会得到Boolean的实例。</p>
+<p>注意：使用new调用基本包装类型的构造函数，与直接调用同名的转型函数是不一样的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="string">"25"</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="built_in">Number</span>(a);<span class="comment">//转型函数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b);<span class="comment">//"number"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = <span class="keyword">new</span> <span class="built_in">Number</span>(a);<span class="comment">//构造函数</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> c);<span class="comment">//"object"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h3><ul>
+<li>创建Boolean对象：<code>var a = new Boolean(ture)</code></li>
+<li>Boolean类型改写了toString()、valueOf()方法</li>
+<li>布尔表达式中所有对象都会被转换为true</li>
+</ul>
+<h3 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h3><ul>
+<li>重写后的valueOf方法返回对象表示的基本类型的数值</li>
+<li>创建：<code>var a = new Nubmer(10);</code></li>
+<li>toString() toFixed() toExponential() toPrecision()方法</li>
+</ul>
+<h3 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h3><ul>
+<li>创建：<code>var s = new String(&quot;Hello world&quot;);</code></li>
+<li>方法: 字符方法、字符串操作方法、字符串位置方法、trim()方法、字符串大小写转换方法、字符串模式匹配方法、localeCompare()方法、fromCharCode()方法</li>
+</ul>
+<h2 id="part-6-单体内置对象"><a href="#part-6-单体内置对象" class="headerlink" title="part 6 单体内置对象"></a>part 6 单体内置对象</h2><p>内置对象的定义：由ECMAScript实现提供的、不依赖于宿主环境的对象，这些对象在ECMAScript程序执行之前就已经存在了。</p>
+<h3 id="Global对象"><a href="#Global对象" class="headerlink" title="Global对象"></a>Global对象</h3><p>不属于任何其他对象的属性和方法，最终都是它的属性和方法。事实上，没有全局变量或全局函数；所有在全局作用域中定义的属性和函数，都是Global对象的属性。</p>
+<ul>
+<li>URI编码方法</li>
+<li>eval()方法</li>
+<li>Global对象的属性</li>
+<li>window对象</li>
+</ul>
+<h3 id="Math对象"><a href="#Math对象" class="headerlink" title="Math对象"></a>Math对象</h3><ul>
+<li>Math对象的属性有哪些？</li>
+<li>min()和max()方法</li>
+<li>舍入方法</li>
+<li>random()方法</li>
+<li>其他方法</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/17/js的new操作符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/17/js的new操作符/" itemprop="url">js的new操作符</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-17T15:08:13+08:00">
+                2019-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="js的new操作符"><a href="#js的new操作符" class="headerlink" title="js的new操作符"></a>js的new操作符</h1><p>我们先来了解一下<code>new</code>运算符的基本概念：</p>
+<p><code>new</code><strong>运算符</strong>创建一个用户自定义的对象类型的实例或具有构造函数的内置对象的实例。<code>new</code>关键字会进行如下操作：</p>
+<ol>
+<li>先创建一个新的空的简单JavaScript对象（即<code>{}</code>）</li>
+<li>然后让这个空对象的<code>_proto_</code>指向函数的原型<code>prototype</code></li>
+<li>将步骤1创建的对象作为<code>this</code>的上下文（将对象作为函数的this传进去）</li>
+<li>如果该函数没有返回对象，则返回<code>this</code></li>
+</ol>
+<p>再来看一段代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">return</span> name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>);</span><br><span class="line"><span class="keyword">var</span> person1 = Person(<span class="string">"Tom"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person); <span class="comment">//Person &#123; name: 'Tom' &#125;（返回的是构造函数实例化后的对象）</span></span><br><span class="line"><span class="built_in">console</span>.log(person1);<span class="comment">//Tom</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，有<code>new</code>和没<code>new</code>的区别所在，现在分析一下<code>new</code>做了什么</p>
+<p>当代码<code>new Person(...)</code>执行时，会发生以下事情：</p>
+<ol>
+<li>一个继承自<code>Person.prototype</code>的新对象被创建</li>
+<li>使用参数<code>Tom</code>调用构造函数<code>Person</code>，并将<code>this</code>绑定到新创建的对象。</li>
+<li>由构造函数<code>Person</code>返回的对象就是 <code>new</code> 表达式的结果（即构造函数实例化后的对象）。</li>
+</ol>
+<p>那要是构造函数返回的是一个对象呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">name</span> : <span class="string">"Gates"</span>&#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>); <span class="comment">//Person&#123; name: 'Gates'&#125;</span></span><br><span class="line"><span class="keyword">var</span> person1 = Person(<span class="string">"Tom"</span>);<span class="comment">//Person&#123; name: 'Gates'&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，当函数返回的是对象时，则返回的即为该对象。</p>
+<p>可是，当构造函数返回null，undefined等非对象时，情况又是什么样的？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>); <span class="comment">//Person&#123; name: 'Tom'&#125;</span></span><br><span class="line"><span class="keyword">var</span> person1 = Person(<span class="string">"Tom"</span>);<span class="comment">//null</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，<code>return null</code>时（当使用<code>new</code>操作符）返回的也是构造函数实例后的对象。这是因为<code>null、undefined</code>为非对象，所以<code>return</code>的其实为<code>this</code></p>
+<p>那，要是没有<code>return</code>语句呢？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">	 <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>); <span class="comment">//Person&#123; name: 'Tom'&#125;</span></span><br><span class="line"><span class="keyword">var</span> person1 = Person(<span class="string">"Tom"</span>); <span class="comment">//Undefined</span></span><br></pre></td></tr></table></figure>
+
+<p>其实，如果在JavaScript没有<code>return</code>语句，那么函数就会默认<code>return this</code></p>
+<p>所以，我们可以得出结论：当我们使用了<code>new</code>操作符时，<strong>①构造函数如果没有返回对象，那么这个返回值毫无意义；②构造函数如果返回值为对象，那么这个返回值会被正常使用</strong></p>
+<p>接下来，我们再看一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">"Tom"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(person.name);<span class="comment">//Tom</span></span><br><span class="line">person.sayName();  <span class="comment">//Tom</span></span><br></pre></td></tr></table></figure>
+
+<p>从这里，我们可以看出<code>new</code>操作符的一些作用：</p>
+<ul>
+<li><strong><code>new</code> 通过构造函数<code>Person</code> 创建出来的实例可以访问到构造函数中的属性</strong></li>
+<li><strong><code>new</code> 通过构造函数<code>Person</code> 创建出来的实例可以访问到构造函数原型链中的属性，也就是说通过 new 操作符，实例与构造函数通过原型链连接了起来</strong></li>
+</ul>
+<p>最后，我们可以自己尝试模拟实现<code>new</code>运算符</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"></span>) </span>&#123; <span class="comment">//(Con, ...args)函数接收不定量的参数，第一个参数为构造函数，接下来的参数被构造函数使用</span></span><br><span class="line">	<span class="keyword">var</span> obj = &#123;&#125;; <span class="comment">//内部创建一个空对象obj</span></span><br><span class="line">    Con = [].shift.call(<span class="built_in">arguments</span>);</span><br><span class="line">    obj._proto_ = Con.prototype;</span><br><span class="line">    <span class="comment">//将新对象的内部属性__proto__指向构造函数的原型，这样新对象就可以访问原型中的属性和方法。等同于Object.setPrototypeOf(obj, Con.prototype);</span></span><br><span class="line">	<span class="keyword">var</span> result = Con.apply(obj, <span class="built_in">arguments</span>);<span class="comment">//使用apply，将构造函数中的this指向新对象，这样新对象就可以访问构造函数中的属性和方法；将obj对象绑定到构造函数上，并且传入剩余参数</span></span><br><span class="line">	<span class="keyword">return</span> result <span class="keyword">instanceof</span> <span class="built_in">Object</span> ? result : obj;<span class="comment">//判断构造函数返回值是否为对象，如果为对象就使用构造函数返回的值，否则使用 obj，这样就实现了忽略构造函数返回的原始值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = objectFactory(Person, <span class="string">'Tom'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>参考资料：</p>
+<ul>
+<li><p>MDN文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new</a></p>
+</li>
+<li><p>通过例子深入了解new：<a href="https://www.cnblogs.com/shuaihan/p/7392771.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuaihan/p/7392771.html</a></p>
+</li>
+<li><p>一道面试题引发的思考：<a href="https://juejin.im/post/5c1bbc16e51d4552e01a0114" target="_blank" rel="noopener">https://juejin.im/post/5c1bbc16e51d4552e01a0114</a></p>
+</li>
+<li><p>聊聊new操作符：<a href="https://juejin.im/post/5c7b963ae51d453eb173896e" target="_blank" rel="noopener">https://juejin.im/post/5c7b963ae51d453eb173896e</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/HTML、CSS面试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/15/HTML、CSS面试/" itemprop="url">HTML、CSS面试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T11:09:04+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-了解什么是Web"><a href="#1-了解什么是Web" class="headerlink" title="1.了解什么是Web"></a>1.了解什么是Web</h2><p>   web即全球广域网，也称万维网。它是一种基于超文本和HTTP的、全球性的、动态交互的、跨平台的分布式图形信息系统。它有三种表现形式：超文本、超媒体、超文本协议。</p>
+<h2 id="2-HTML是什么，HTML5是什么"><a href="#2-HTML是什么，HTML5是什么" class="headerlink" title="2.HTML是什么，HTML5是什么"></a>2.HTML是什么，HTML5是什么</h2><p>   HTML  不是一门编程语言，而是一种用来告知浏览器如何组织页面的标记语言。它用来构造一个网页的基本骨架，由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。 </p>
+<p>   html5是html的最新标准。</p>
+<h2 id="3-HTML元素标签、属性都是什么概念？"><a href="#3-HTML元素标签、属性都是什么概念？" class="headerlink" title="3.HTML元素标签、属性都是什么概念？"></a>3.HTML元素标签、属性都是什么概念？</h2><h3 id="一：标签"><a href="#一：标签" class="headerlink" title="一：标签"></a>一：标签</h3><p>   标签用来标记内容块，也用来标明元素内容的意义，标签使用尖括号包围，如<html>和</html>，这两个标签表示一个HTML文档。<br>   标签有两种形式：成对出现的标签和单独出现的标签<br>   1、成对出现的标签<br>   成对出现的标签包括开始标签和结束标签，&lt;开始标签&gt;内容&lt;/结束标签&gt;<br>   所谓开始标签，及标志一段内容的开始，例如：<br>   <code>&lt;html&gt;</code>表示HTML文档开始了；到<code>&lt;/html&gt;</code>结束，从而形成一个HTML文档。<br>   <code>&lt;head&gt;</code>和<code>&lt;/head&gt;</code>标签描述HTML文档的相关信息，之间的内容不会在浏览器窗口上显示出来<br>   <code>&lt;body&gt;</code>和<code>&lt;/body&gt;</code>标签包含所有要在浏览器窗口上显示的内容，也就是HTML文件的主体部分。<br>   所谓结束标签，是指和开始标签相对的标签。结束标签比开始标签多一个斜杠”/“。<br>   2、单独出现的标签<br>   虽然并不是所有的开始标签都必须有结束标签对应<code>&lt;br&gt;&lt;hr&gt;&lt;img&gt;&lt;input&gt;&lt;link&gt;&lt;meta&gt;</code>等<br>   3、标签的嵌套<br>   标签可以放在另外一个标签所能影响的片段中，以实现对某一段文档的多重标签效果，但是要注意必须要正确嵌套。</p>
+<h3 id="二：元素"><a href="#二：元素" class="headerlink" title="二：元素"></a>二：元素</h3><p>   标签是为一个元素的开始和结束做标记，网页内容是由元素组成的，一个元素通常由一个开始标签、内容、其他元素及一个结束标签组成。</p>
+<p>   如<code>&lt;head&gt;和&lt;/head&gt;</code>是标签，但是下面的就是一个head元素：</p>
+<p>   <code>&lt;head&gt;&lt;title&gt;HTML中的几个基本概念------标签、元素、属性&lt;/title&gt;&lt;/head&gt;</code></p>
+<p>   其中<code>&lt;title&gt;&lt;/title&gt;</code>是标签，但</p>
+<p> <code>&lt;title&gt;HTML中的几个基本概念------标签、元素、属性&lt;/title&gt;</code></p>
+<p>   又是一个title元素，同时这个title元素又是嵌套在head元素中的另一个元素。</p>
+<h3 id="三：属性"><a href="#三：属性" class="headerlink" title="三：属性"></a>三：属性</h3><p>与元素相关的特性叫做属性，可以为属性赋值，属性包含元素的额外信息，这些信息不会出现在实际的内容中<br>  ①：不定义属性值<br>  HTML规定属性也可以没有值<br>   浏览器会使用compact属性的默认值，但有的属性没有默认值，因此不能省略属性值。</p>
+<h2 id="4-文档类型doctype是什么概念，起什么作用？"><a href="#4-文档类型doctype是什么概念，起什么作用？" class="headerlink" title="4.文档类型doctype是什么概念，起什么作用？"></a>4.文档类型doctype是什么概念，起什么作用？</h2><p>   !DOCTYPE ,是用来声明并帮助浏览器正确识别网页的最短有效声明。因为HTML发展至今有许多的不同版本，所以声明不同的文档类型可以让浏览器完全正确地显示出 HTML 页面。 </p>
+<p>   DOCTYPE是docunment type（文档定义）的简写，用来说明web设计中所用的html或xhtml的类型，指出浏览器或者其他阅读程序按照什么样的规则集去解释文档中的标记.</p>
+<h2 id="5-meta标签都用来做什么的？"><a href="#5-meta标签都用来做什么的？" class="headerlink" title="5.meta标签都用来做什么的？"></a>5.meta标签都用来做什么的？</h2><p>   meta标签提供关于 HTML 文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。<br>   典型的情况是，meta 元素被用于规定页面的描述、关键词、文档的作者、最后修改时间以及其他元数据。<br>   meta标签始终位于 head 元素中。<br>   元数据可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。</p>
+<h2 id="6-Web语义化是什么，是为了解决什么问题"><a href="#6-Web语义化是什么，是为了解决什么问题" class="headerlink" title="6.Web语义化是什么，是为了解决什么问题"></a>6.Web语义化是什么，是为了解决什么问题</h2><p>   简单说来就是让机器可以读懂内容。由编写者对网页内容进行语义化主要可以让不同的人和机器对这段内容的作用和所属有清晰的认识，从而查看或者找到自己需要的内容</p>
+<p>   Web语义化是指使用语义恰当的标签，使页面有良好的结构，页面元素有含义，能够让人和搜索引擎都容易理解。如果可以在合适的位置使用恰当的标签，那么写出来的页面语义明确，结构清晰，搜索引擎也可以认出哪些是页面重要内容，予以较高的权值。</p>
+<p>   web语义化的好处</p>
+<ol>
+<li><p>去掉或者丢失样式的时候能够让页面呈现出清晰的结构</p>
+</li>
+<li><p>有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；</p>
+</li>
+<li><p>方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；</p>
+</li>
+<li><p>便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</p>
+</li>
+</ol>
+<h2 id="7-链接是什么概念，对应什么标签？"><a href="#7-链接是什么概念，对应什么标签？" class="headerlink" title="7.链接是什么概念，对应什么标签？"></a>7.链接是什么概念，对应什么标签？</h2><p>   HTML 使用超级链接与网络上的另一个文档相连。对应a标签。</p>
+<p>   超链接使互联网成为互联的网络。超链接使我们能够将我们的文档链接到任何其他文档（或其他资源），也可以链接到文档的指定部分，我们可以在一个简单的网址上提供应用程序（与必须先安装的本地应用程序或其他东西相比）。几乎任何网络内容都可以转换为链接，点击（或激活）超链接将使网络浏览器转到另一个网址（<a href="https://developer.mozilla.org/en-US/docs/Glossary/URL" target="_blank" rel="noopener">URL</a>）</p>
+<h2 id="8-常用标签都有哪些，都适合用在什么场景"><a href="#8-常用标签都有哪些，都适合用在什么场景" class="headerlink" title="8.常用标签都有哪些，都适合用在什么场景"></a>8.常用标签都有哪些，都适合用在什么场景</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span>&gt;</span> 用于超链接。<span class="tag">&lt; <span class="attr">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>some text<span class="tag">&lt;/ <span class="attr">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">article</span>&gt;</span> 用于一篇文章。<span class="tag">&lt; <span class="attr">article</span>&gt;</span>a self-contained article<span class="tag">&lt;/<span class="name">article</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aside</span>&gt;</span> 用于页面的侧边栏。<span class="tag">&lt;<span class="name">aside</span>&gt;</span>some content<span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">blockquote</span>&gt;</span> 用于大段的引用内容。<span class="tag">&lt; <span class="attr">blockquote</span>&gt;</span>some big texts<span class="tag">&lt;/<span class="name">blockquote</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span> 页面上显示的所有内容都被包含在<span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span>里</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span> 用于显示一个按钮</span><br><span class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span> 用于一包裹一段代码内容</span><br><span class="line"><span class="tag">&lt;<span class="name">dd</span>&gt;</span> 用于一个dl列表的某个dt名词的描述</span><br><span class="line"><span class="tag">&lt;<span class="name">del</span>&gt;</span> 用于删除一些不需要的文字</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span> 用于包裹住一些其他的标签，制造一个容器</span><br><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span> 用于制作一个名词和对应解释的列表</span><br><span class="line"><span class="tag">&lt;<span class="name">dt</span>&gt;</span> 用于一个dl列表的某个dt名词</span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span> 用于强调一些文本内容</span><br><span class="line"><span class="tag">&lt;<span class="name">figcaption</span>&gt;</span> 用于一张图表的说明文字</span><br><span class="line"><span class="tag">&lt;<span class="name">figure</span>&gt;</span> 用于一张图表</span><br><span class="line"><span class="tag">&lt;<span class="name">footer</span>&gt;</span> 用于包裹页面的底部内容</span><br><span class="line"><span class="tag">&lt;<span class="name">form</span>&gt;</span> 用于制作一个表单</span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>-<span class="tag">&lt;<span class="name">h6</span>&gt;</span> 用于标记标题，从h1到h6重要性依次递减</span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span> 用于包裹页面的元数据，如<span class="tag">&lt;<span class="name">meta</span>&gt;</span>, <span class="tag">&lt;<span class="name">link</span>&gt;</span>, <span class="tag">&lt;<span class="name">title</span>&gt;</span>等</span><br><span class="line"><span class="tag">&lt;<span class="name">header</span>&gt;</span> 用于包裹页面的头部内容</span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span> 整个 HTML 文档的根元素，包裹住其他所有的元素</span><br><span class="line"><span class="tag">&lt;<span class="name">iframe</span> &gt;</span> 用于嵌入另一个小页面到一个页面中</span><br><span class="line"><span class="tag">&lt;<span class="name">img</span>&gt;</span> 用于显示一张图片</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span>&gt;</span> 用于显示一个表格输入控件</span><br><span class="line"><span class="tag">&lt;<span class="name">label</span>&gt;</span> 用于给一个表格输入控件打上一个标签，说明输入控件的作用</span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span> 用于<span class="tag">&lt;<span class="name">ul</span>&gt;</span>和<span class="tag">&lt;<span class="name">ol</span>&gt;</span>标签，代表一个列表项</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span>&gt;</span> 用于链接外部CSS文件</span><br><span class="line"><span class="tag">&lt;<span class="name">mark</span>&gt;</span> 用于高亮显示某些文本</span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span>&gt;</span> 用于下达一些元数据指令，或者对页面进行说明</span><br><span class="line"><span class="tag">&lt;<span class="name">nav</span>&gt;</span> 用于包裹住一个导航条的内容</span><br><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span> 用于制作一个有序列表</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span> 用于显示一个段落</span><br><span class="line"><span class="tag">&lt;<span class="name">q</span>&gt;</span> 用于一小段引用文字</span><br><span class="line"><span class="tag">&lt; <span class="attr">script</span>&gt;</span> 用于一段JavaScript脚本代码，或者引入一个外部JavaScript脚本文件</span><br><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span> 用于包裹一部分有逻辑关第的页面内容</span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span> 用于制作一个下拉列表选框</span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span> 用于包裹住一小段文字，作为一个容器</span><br><span class="line"><span class="tag">&lt;<span class="name">strong</span>&gt;</span> 用于着重强调重要的文本内容</span><br><span class="line"><span class="tag">&lt; <span class="attr">style</span>&gt;</span> 用于给页面元素加上样式</span><br><span class="line"><span class="tag">&lt; <span class="attr">table</span>&gt;</span> 用于制作一个表格</span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span> 用于表格里的主体部分</span><br><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span> 用于表格里的某一个单元格</span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span>&gt;</span> 用于制作一大块文本输入框</span><br><span class="line"><span class="tag">&lt;<span class="name">tfoot</span>&gt;</span> 用于表格里的底部</span><br><span class="line"><span class="tag">&lt;<span class="name">th</span>&gt;</span> 用于表格里的表头的单元格</span><br><span class="line"><span class="tag">&lt;<span class="name">thead</span>&gt;</span> 用于表格里的表头</span><br><span class="line"><span class="tag">&lt;<span class="name">time</span>&gt;</span> 用于页面内容中的时间</span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span> 用于显示整个页面的标题（显示在浏览器的tab上）</span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span> 用于标记表格里的一行</span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span> 用于制作一个无序列表</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-表单标签都有哪些，对应着什么功能，都有哪些属性"><a href="#9-表单标签都有哪些，对应着什么功能，都有哪些属性" class="headerlink" title="9.表单标签都有哪些，对应着什么功能，都有哪些属性"></a>9.表单标签都有哪些，对应着什么功能，都有哪些属性</h2><p>   表单元素是允许用户在表单中(比如:文本域,下拉列表,单选框,复选框等等)输入信息的元素，最主要的作用就是收集信息。表单元素是页面中不可缺少的元素。一般来说，表单包含如下几个部分：</p>
+<ol>
+<li><p>提示信息：表单中包含的说明性文字</p>
+</li>
+<li><p>表单控件：包含了具体的表单功能项</p>
+</li>
+<li><p>表单域：容纳所有表单控件和提示信息</p>
+<p>常用的表单元素，包括：</p>
+</li>
+<li><p>form: 定义供用户输入的表单。</p>
+</li>
+<li><p>fieldset: 定义域。即输入区加有文字的边框。</p>
+</li>
+<li><p>legend：定义域的标题，即边框上的文字。</p>
+</li>
+<li><p>label：定义一个控制的标签。如输入框前的文字，用以关联用户的选择。</p>
+</li>
+<li><p>input: 定义输入域，常用。可设置type属性，从而具有不同功能。</p>
+</li>
+<li><p>textarea: 定义文本域(一个多行的输入控件)，默认可通过鼠标拖动调整大小。</p>
+</li>
+<li><p>button: 定义一个按钮。</p>
+</li>
+<li><p>select: 定义一个选择列表，即下拉列表。</p>
+</li>
+<li><p>option: 定义下拉列表中的选项。</p>
+<p>接下来是对这些表单元素的具体分析。</p>
+<p><code>&lt;form name=&quot;&quot; action=&quot;&quot; method=&quot;get&quot;&gt;……&lt;/form&gt;</code><br>name : 表单名称；action : 用来指定表单处理程序的位置（url）；method : 定义表单结果从浏览器传送到服务器的方式，默认为”get”（也可以是post）<br><code>&lt;input type=&quot;&quot; name=&quot;&quot; value=&quot;&quot; size=&quot;&quot;&gt;</code><br>name:控件名称；value:input控件默认文本值；size:input控件在页面中的显示宽度（必须是正整数）<br>input常用type属性如下：</p>
+</li>
+<li><p>text：单行文本输入框，可以通过正整数的size控制框长度。</p>
+</li>
+<li><p>password：密码输入框。</p>
+</li>
+<li><p>radio：单选按钮，同一组的单选按钮必须要有相同的name。</p>
+</li>
+<li><p>checkbox：复选框，同一组的单选按钮必须要有相同的name。</p>
+</li>
+<li><p>button：普通按钮。</p>
+</li>
+<li><p>submit：提交按钮，每出现一次，一个 Submit 对象就会被创建。</p>
+</li>
+<li><p>reset：重置按钮，会重置当前表单中全部的内容。</p>
+</li>
+<li><p>image：图像形式的提交按钮，写法是“”。</p>
+</li>
+<li><p>hidden：隐藏域，隐藏字段对于用户是不可见的。</p>
+</li>
+<li><p>file：文件域，用于文件上传。</p>
+<p><code>&lt;selectt size=&quot;&quot; multiple=&quot;multiple&quot;&gt;</code><br><code>&lt;option hidden&gt;选项1&lt;/option&gt;</code><br>size：下拉菜单的可见选项数；multiple：多选。<br>在最新的html5中，有一些表单的新增属性，多用于js，如<br>datalist : 定义填写一个input时，提示几个option用于提示。可通过input的list特性与此元素作关联。<br>output : 表示计算的结果。可通过for特性与其它能够影响运算的元素（如input）作关联。<br>还有一些新增的type属性：</p>
+</li>
+<li><p>search：input会呈现为搜索框（与text类型的唯一区别在于当鼠标覆盖时尾部出现叉号可快速清除输入的内容）。</p>
+</li>
+<li><p>url：编辑url的控件，提交时换行符与首位的空格都将自动去除。</p>
+</li>
+<li><p>email：可输入一个邮件地址。</p>
+</li>
+<li><p>color : 选择颜色的控件。</p>
+</li>
+<li><p>date : 选择年月日的控件。<br>此外，还有time、datetime、datetime-local、month、week、number、range类型</p>
+</li>
+</ol>
+<h2 id="10-ol-ul-li-dl-dd-dt等这些标签都适合用在什么地方，举个例子"><a href="#10-ol-ul-li-dl-dd-dt等这些标签都适合用在什么地方，举个例子" class="headerlink" title="10.ol, ul, li, dl, dd, dt等这些标签都适合用在什么地方，举个例子"></a>10.<strong>ol, ul, li, dl, dd, dt等这些标签都适合用在什么地方，举个例子</strong></h2><pre><code>ol为有序列表,即为一个需要排序的列表内容进行排列; （问路）
+ul为无序列表,即为一个需要列表但不需要排顺序的内容排列; （早点清单）
+li为列表的内容; 
+dl为定义列表; 
+dt为定义列表内的标题或项目名称; 
+dd为定义定义列表中项目的描述(独白旁白)</code></pre><hr>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="1-CSS选择器类型、优先级"><a href="#1-CSS选择器类型、优先级" class="headerlink" title="1.CSS选择器类型、优先级"></a>1.<strong>CSS选择器类型、优先级</strong></h2><p> 　 1.标签选择器(如：body,div,p,ul,li)</p>
+<p>　　2.类选择器(如：class=”head”,class=”head_logo”)</p>
+<p>　　3.ID选择器(如：id=”name”,id=”name_txt”)</p>
+<p>　　4.全局选择器(如：*号)</p>
+<p>　　5.组合选择器(如：.head .head_logo,注意两选择器用空格键分开)</p>
+<p>　　6.后代选择器 (如：#head .nav ul li 从父集到子孙集的选择器)</p>
+<p>　　7.群组选择器 div,span,img {color:Red} 即具有相同样式的标签分组显示</p>
+<p>　　8.继承选择器(如：div p,注意两选择器用空格键分开)</p>
+<p>　　9.伪类选择器(如：就是链接样式,a元素的伪类，4种不同的状态：link、visited、active、hover。)</p>
+<p>　　10.字符串匹配的属性选择符(^ $ *三种，分别对应开始、结尾、包含)</p>
+<p>　　11.子选择器 (如：div&gt;p ,带大于号&gt;)</p>
+<p>　　12.CSS 相邻兄弟选择器器 (如：h1+p,带加号+)  </p>
+<p> <strong>总结排序：!important &gt; 行内样式&gt;ID选择器 &gt; 类选择器 &gt; 标签 &gt; 通配符 &gt; 继承 &gt; 浏览器默认属性</strong></p>
+<h2 id="2-CSS继承，层叠，样式优先级机制"><a href="#2-CSS继承，层叠，样式优先级机制" class="headerlink" title="2.CSS继承，层叠，样式优先级机制"></a>2.<strong>CSS继承，层叠，样式优先级机制</strong></h2><p>当多个相互冲突的CSS声明应用于同一个元素时，CSS层叠算法会根据一定的机制，从最高权重到最低权重的顺序列出</p>
+<p>在CSS中，每个CSS属性定义的概述都指出了这个属性是默认继承的还是默认不继承的。这决定了当你没有为元素的属性指定值时该如何计算值。当元素的一个</p>
+<p>继承属性没有指定值时，则取父元素的同属性的计算值。只有文档根元素取该属性的概述中给定的初始值；当元素的一个非继承属性没有指定值时，则取属性的初始值。</p>
+<h2 id="3-文本，边框，背景，行高等相关属性"><a href="#3-文本，边框，背景，行高等相关属性" class="headerlink" title="3.文本，边框，背景，行高等相关属性"></a>3.<strong>文本，边框，背景，行高等相关属性</strong></h2><p>border:1px solid red;</p>
+<p>background-color: cornflowerblue;</p>
+<p>background-image: url(‘1.jpg’);</p>
+<p>background-repeat: no-repeat;(repeat:平铺满)</p>
+<p>background-position: right(左右距离) top（上下距离）（20px 20px）;(横向：left center right)(纵向：top center bottom)</p>
+<p>简写：&lt; body style=”background: 20px 20px no-repeat #ff4 url(‘1.jpg’)”&gt;</p>
+<p>&lt; div style=”width: 300px;height: 300px;background: 20px 20px no-repeat #ff4 url(‘1.jpg’)”&gt;</p>
+<h2 id="4-块状元素，内联元素和内联块状元素的概念"><a href="#4-块状元素，内联元素和内联块状元素的概念" class="headerlink" title="4.块状元素，内联元素和内联块状元素的概念"></a>4.<strong>块状元素，内联元素和内联块状元素的概念</strong></h2><p>块级元素特点：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span>&gt;、&lt;<span class="selector-tag">p</span>&gt;、&lt;<span class="selector-tag">h1</span>&gt;<span class="selector-tag">-</span>&lt;<span class="selector-tag">h6</span>&gt;、&lt;<span class="selector-tag">ol</span>&gt;、&lt;<span class="selector-tag">ul</span>&gt;、&lt;<span class="selector-tag">dl</span>&gt;、&lt;<span class="selector-tag">table</span>&gt;、&lt;<span class="selector-tag">address</span>&gt;、&lt;<span class="selector-tag">blockquote</span>&gt; 、&lt;<span class="selector-tag">form</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>1、每个块级元素都从新的一行开始，并且其后的元素也另起一行。</p>
+<p>2、元素的高度、宽度、行高以及顶和底边距都可设置。</p>
+<p>3、元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致）。默认高度等于子元素高度。父子均是块级元素时，子块的高度可能冲破父级的限制</p>
+<p>内联元素特点：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">a</span>&gt;、&lt;<span class="selector-tag">span</span>&gt;、&lt;<span class="selector-tag">br</span>&gt;、&lt;<span class="selector-tag">i</span>&gt;、&lt;<span class="selector-tag">em</span>&gt;、&lt;<span class="selector-tag">strong</span>&gt;、&lt;<span class="selector-tag">label</span>&gt;、&lt;<span class="selector-tag">q</span>&gt;、&lt;<span class="selector-tag">var</span>&gt;、&lt;<span class="selector-tag">cite</span>&gt;、&lt;<span class="selector-tag">code</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>1.和其他内联元素都在一行上；</p>
+<p>2.可以通过margin、padding来改变左右的距离，但不可以改变上下的距离，导致width、height、line-height失效或。可以使用border。</p>
+<p>3.内联元素之间有空白区域，空白区域的形成是因为<span>之间有回车，在html中，空格、制表符、回车都属于空白符，多个空白符都会视为一个空格，空格的大小由父级<div>的font-size决定。注意：只有内联(内联块)与内联(内联块)之间的空白符才会形成一个空格，文本元素(除空白符)也是属于内联元素。常用解决方法，给<div>设置font-size: 0;，在<span>上把font-size设置回去</span></div></div></span></p>
+<p>inline-block 元素特点：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">img</span>&gt;、&lt;<span class="selector-tag">input</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>1.和其他元素都在一行上；</p>
+<p>2.元素的高度、宽度、行高以及顶和底边距都可设置。</p>
+<p>3.它也会有元素间出现空白区域的问题</p>
+<h2 id="5-盒模型的所有概念，学习如何计算各种盒模型"><a href="#5-盒模型的所有概念，学习如何计算各种盒模型" class="headerlink" title="5.盒模型的所有概念，学习如何计算各种盒模型"></a>5.<strong>盒模型的所有概念，学习如何计算各种盒模型</strong></h2><p>IE盒子：宽高包括padding和border</p>
+<p>W3C盒子：宽高为content的宽高</p>
+<p>如果想要切换盒模型也很简单，这里需要借助css3的<code>box-sizing</code>属性</p>
+<blockquote>
+<ul>
+<li><code>box-sizing: content-box</code> 是W3C盒子模型</li>
+<li><code>box-sizing: border-box</code>   是IE盒子模型</li>
+</ul>
+</blockquote>
+<h2 id="6-position的相关知识，position有几种，absolute和relative的区别"><a href="#6-position的相关知识，position有几种，absolute和relative的区别" class="headerlink" title="6.position的相关知识，position有几种，absolute和relative的区别"></a>6.<strong>position的相关知识，position有几种，absolute和relative的区别</strong></h2><p><code>position: static | relative | absolute | fixed | sticky</code></p>
+<ul>
+<li><p><code>static</code></p>
+<p>该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。此时 <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code> 和 <code>z-index</code>属性无效</p>
+</li>
+<li><p><code>relative</code></p>
+<p>​    该关键字下，元素先放置在未添加定位时的位置，再在不改变页面布局的前提下调整元素位置（因此会在此元素未添加定位时所在位置留下空白）。position:relative  对 table-*-group, table-row, table-column, table-cell, table-caption  元素无效。</p>
+<p>​    相对定位的元素是在文档中的正常位置偏移给定的值，但是不影响其他元素的偏移，<strong>未脱离文档流。（其他元素的位置不会受该元素的影响发生位置改变来弥补该元素偏移后剩下的空隙）</strong></p>
+</li>
+<li><p><code>absolute</code></p>
+<p>不为元素预留空间，通过指定元素相对于最近的非 static 定位祖先元素的偏移，来确定元素位置。绝对定位的元素可以设置外边距（margins），且不会与其他边距合并，<strong>脱离了文档流</strong>。</p>
+</li>
+<li><p><code>fixed</code></p>
+<p>固定定位与绝对定位相似，但元素的包含块为 viewport 视口。该定位方式常用于创建在滚动屏幕时仍固定在相同位置的元素。</p>
+<p>不为元素预留空间，而是通过指定元素相对于屏幕视口（viewport）的位置来指定元素位置。元素的位置在屏幕滚动时不会改变。打印时，元素会出现在的每页的固定位置。<code>fixed</code> 属性会创建新的层叠上下文。当元素祖先的 <code>transform</code>  属性非 <code>none</code> 时，容器由视口改为该祖先。</p>
+</li>
+<li><p><code>sticky</code>  </p>
+<p>盒位置根据正常流计算(这称为正常流动中的位置)，然后相对于该元素在流中的 flow root（BFC）和 containing block（最近的块级祖先元素）定位。在所有情况下（即便被定位元素为 <code>table 时</code>），该元素定位均不对后续元素造成影响。当元素 B 被粘性定位时，后续元素的位置仍按照 B 未定位时的位置来确定。<code>position: sticky</code>对 <code>table</code> 元素的效果与 <code>position: relative</code>相同。</p>
+<p>粘性定位可以被认为是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。</p>
+</li>
+</ul>
+<h2 id="7-float的相关知识"><a href="#7-float的相关知识" class="headerlink" title="7.float的相关知识"></a>7.<strong>float的相关知识</strong></h2><p>float CSS属性指定一个元素应沿其容器的左侧或右侧放置，<strong>允许文本和内联元素环绕它</strong>。该元素从网页的正常流动(文档流)中移除，尽管仍然保持部分的流动性（与<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#Absolute_positioning" target="_blank" rel="noopener">绝对定位</a>相反）。</p>
+<blockquote>
+<p>当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移直到碰到了所处的容器的边框，或者碰到<strong>另外一个浮动的元素</strong>。</p>
+</blockquote>
+<hr>
+<p>对于浮动，需要了解的是：</p>
+<p> *浮动会将元素从文档流中删除，他的空间会被其它元素补上。</p>
+<p> *浮动的参数物是父元素，是在父元素这个容器中飘。</p>
+<p> *为了清除浮动造成的对浮动元素之后元素的影响，我们在浮动元素之后加一个div，并将这个div的clear设置为both。</p>
+<p> *如果两个元素都设置了浮动，则两个元素并不会重叠，第一个元素占据一定空间，第二个元素紧跟其后。如果不想让第二个元素紧跟其后，可以对第二个浮动的元素使用clear。</p>
+<hr>
+<p><strong>浮动元素</strong>是 <code>float</code> 的计算值非 <code>none</code> 的元素。</p>
+<h2 id="8-基本的布局方式"><a href="#8-基本的布局方式" class="headerlink" title="8.基本的布局方式"></a>8.<strong>基本的布局方式</strong></h2><p>   固定布局、流式（百分比）布局、弹性布局、浮动布局、定位布局</p>
+<h2 id="9-Grid-Flexbox等布局方式"><a href="#9-Grid-Flexbox等布局方式" class="headerlink" title="9.Grid,Flexbox等布局方式"></a>9.<strong>Grid,Flexbox等布局方式</strong></h2><p>   弹性布局是指通过调整其内元素的宽高，从而在任何显示设备上实现对可用显示空间最佳填充的能力。弹性容器扩展其内元素来填充可用空间，或将其收缩来避免溢出。</p>
+<p>   这二者都是 CSS  工作组为在不同用户代理、不同书写模式和其他灵活性要求下的网页应用程序有更好的互操作性而做出的更广泛的努力的一部分。都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。flex主要适用于应用程序的组件及小规模的布局，而（新兴的）栅格布局则针对大规模的布局。</p>
+<p>   Flex 布局是轴线布局，只能指定”项目”针对轴线的位置，可以看作是<strong>一维布局</strong>。Grid 布局则是将容器划分成”行”和”列”，产生单元格，然后指定”项目所在”的单元格，可以看作是<strong>二维布局</strong>。它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。</p>
+<h2 id="10-神马圣杯布局、双飞翼布局都是些什么东西"><a href="#10-神马圣杯布局、双飞翼布局都是些什么东西" class="headerlink" title="10.神马圣杯布局、双飞翼布局都是些什么东西"></a>10.<strong>神马圣杯布局、双飞翼布局都是些什么东西</strong></h2><h2 id="11-强大的负外边距都能干嘛"><a href="#11-强大的负外边距都能干嘛" class="headerlink" title="11.强大的负外边距都能干嘛"></a>11.<strong>强大的负外边距都能干嘛</strong></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">影响元素在文档流中的位置、增加元素宽度、对浮动元素的影响、对居中的影响</span><br></pre></td></tr></table></figure>
+
+<h2 id="12-display的几个属性，及其区别"><a href="#12-display的几个属性，及其区别" class="headerlink" title="12.display的几个属性，及其区别"></a>12.<strong>display的几个属性，及其区别</strong></h2><ul>
+<li>inline:<ol>
+<li>使元素变成行内元素，拥有行内元素的特性，即可以与其他行内元素共享一行，不会独占一行. </li>
+<li>不能更改元素的height，width的值，大小由内容撑开. </li>
+<li>可以使用padding，margin的left和right产生边距效果，但是top和bottom就不行.</li>
+</ol>
+</li>
+<li>block:<ol>
+<li>使元素变成块级元素，独占一行，在不设置自己的宽度的情况下，块级元素会默认填满父级元素的宽度. </li>
+<li>能够改变元素的height，width的值. </li>
+<li>可以设置padding，margin的各个属性值，top，left，bottom，right都能够产生边距效果.</li>
+</ol>
+</li>
+<li>inline-block:<ol>
+<li>结合了inline与block的一些特点，结合了上述inline的第1个特点和block的第2,3个特点.</li>
+</ol>
+</li>
+</ul>
+<h2 id="13-display-none与visibility-hidden的区别"><a href="#13-display-none与visibility-hidden的区别" class="headerlink" title="13.display:none与visibility:hidden的区别"></a>13.<strong>display:none与visibility:hidden的区别</strong></h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:none</span>是彻底消失，不在文档流中占位，浏览器也不会解析该元素；<span class="selector-tag">visibility</span><span class="selector-pseudo">:hidden</span>是视觉上消失了，可以理解为透明度为0的效果，在文档流中占位，浏览器会解析该元素；</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-浏览器清除浮动的方式及其原理"><a href="#14-浏览器清除浮动的方式及其原理" class="headerlink" title="14.浏览器清除浮动的方式及其原理"></a>14.<strong>浏览器清除浮动的方式及其原理</strong></h2><p>1》添加额外的标签：在浮动元素末尾添加一个空的标签例如 &lt; div style=”clear:both”&gt;，其他标签br等亦可</p>
+<p>2》使用 br标签和其自身的 html属性：&lt; br clear=”all” /&gt;</p>
+<p>3》父元素设置 overflow：hidden</p>
+<p>4》父元素设置 overflow：auto 属性</p>
+<p>5》父元素也设置浮动</p>
+<p>6》父元素设置display:table</p>
+<p>7》使用 :after 伪元素</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`.clearfix:after &#123;content:"."; display:block; height:0; visibility:hidden; clear:both; &#125;.clearfix &#123; *zoom:1; &#125;`</span><br></pre></td></tr></table></figure>
+
+<h2 id="15-BFC"><a href="#15-BFC" class="headerlink" title="15.BFC"></a>15.<strong>BFC</strong></h2><p>(1).BFC的特性:</p>
+<p>​    ①块级格式化上下文会阻止外边距叠加</p>
+<p>​    ②块级格式化上下文不会重叠浮动元素</p>
+<p>​    ③块级格式化上下文通常可以包含浮动</p>
+<p>创建了 BFC的元素就是一个独立的盒子，里面的子元素不会在布局上影响外面的元素，反之亦然，同时BFC任然属于文档中的普通流。</p>
+<p>2.触发BFC的条件</p>
+<p>　    1、float 除了none以外的值</p>
+<p>　　2、overflow 除了visible 以外的值（hidden，auto，scroll ）</p>
+<p>　　3、display (table-cell，table-caption，inline-block)</p>
+<p>　　4、position（absolute，fixed）</p>
+<p>　　5、fieldset元素</p>
+<h2 id="16-src与href的区别"><a href="#16-src与href的区别" class="headerlink" title="16.src与href的区别"></a>16.<strong>src与href的区别</strong></h2><pre><code>href表示超文本引用。用来建立当前文档和引用资源之间的链接。常用的有：link、a。
+src是source的缩写，是引入。src指向的内容会嵌入到文档中当前标签所在的位置。常用的有：img、script、iframe 
+简而言之，src用于替换当前元素；href用于在当前文档和引用资源之间建立联系。</code></pre><h2 id="17-px、em、rem的区别"><a href="#17-px、em、rem的区别" class="headerlink" title="17.px、em、rem的区别"></a>17.<strong>px、em、rem的区别</strong></h2><pre><code>都是用于设置字体的大小以及盒子的宽高，但是px不会因为浏览器尺寸的改变而改变，而em和rem会因为浏览器尺寸的变化而变化
+像素是相对于显示器屏幕分辨率而言的
+em是一个相对长度的单位，是相对于当前对象内文本的字体尺寸。如过我们未设置当前文本的字体尺寸，那么em就会相对于浏览器的默认字体尺寸， em大小不是固定的，会继承父级元素的字体大小。
+rem相对的只是HTML根元素，通过它既可以做到只修改根元素就成比例地调整所有字体大小，又可以避免字体大小逐层复合的连锁反应。</code></pre><h2 id="18-为什么要使用css-sprites"><a href="#18-为什么要使用css-sprites" class="headerlink" title="18.为什么要使用css sprites"></a>18.<strong>为什么要使用css sprites</strong></h2><pre><code>CSS Sprites其实就是把网页中一些[背景图片]整合到一张图片文件中，再利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，background-position可以用数字能精确的定位出[背景图片]的位置。
+当页面加载时，不是加载每个单独图片，而是一次加载整个组合图片。这是一个了不起的改进，它大大减少了[HTTP请求]的次数，减轻服务器压力，同时缩短了悬停加载图片所需要的时间延迟，使效果更流畅，不会停顿。
+缺点：就是在拼图时，比较麻烦，还有后期维护也比较麻烦，比如做好的图，然后一个图标改了大小，但是图标之间留的位置不够，那你就要重写很多css。因为每次的图片改动都得往这个图片删除或添加内容，显得稍微繁琐</code></pre><h2 id="19-什么是CSS及CSS怎么运作"><a href="#19-什么是CSS及CSS怎么运作" class="headerlink" title="19.什么是CSS及CSS怎么运作"></a>19.<strong>什么是CSS及CSS怎么运作</strong></h2><pre><code>CSS (Cascading Style Sheets) 是用来样式化和排版你的网页的 
+—— 例如更改网页内容的字体、颜色、大小和间距，将内容分割成多列或者加入动画以及别的装饰型效果。是一种用于向用户指定文档如何呈现的语言。
+Web浏览器将CSS规则应用于文档以影响它们的显示方式。</code></pre><h2 id="20-居中"><a href="#20-居中" class="headerlink" title="20.居中"></a>20.居中</h2><p> <a href="..\CSS\居中.xmind">居中.xmind</a> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/JavaScript面试2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/15/JavaScript面试2/" itemprop="url">JavaScript面试2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-15T11:09:04+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-你觉得js是一门怎样的语言，它与你学过的其他语言有什么不同"><a href="#1-你觉得js是一门怎样的语言，它与你学过的其他语言有什么不同" class="headerlink" title="1.你觉得js是一门怎样的语言，它与你学过的其他语言有什么不同"></a>1.你觉得js是一门怎样的语言，它与你学过的其他语言有什么不同</h2><p>javaScript</p>
+<p>​      一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，最早是在HTML网页上使用，用来给HTML网页增加动态功能。JavaScript兼容于ECMA标准，因此也称为ECMAScript。</p>
+<p>Javascript的特点：</p>
+<p>一、简单性：</p>
+<p>JavaScript是一种基于Java基本语句和控制流之上的简单而紧凑的设计，从而对于学习Java是一种非常好的过渡。它的变量类型是采用弱类型，并未使用严格的数据类型。</p>
+<p>二、动态性：</p>
+<p> avaScript是动态的，它可以直接对用户或客户输入做出响应，无须经过Web服务程序。它对用户的反映响应，是采用以事件驱动的方式进行的。所谓事件驱动，就是指在主页(Home Page)中执行了某种操作所产生的动作，就称为“事件”(Event)。比如按下鼠标、移动窗口、选择菜单等都可以视为事件。当事件发生后，可能会引起相应的事件响应。</p>
+<p>三、跨平台性：</p>
+<p>JavaScript是依赖于浏览器本身，与操作环境无关，只要能运行浏览器的计算机，并支持JavaScript的浏览器就可正确执行。从而实现了“编写一次,走遍天下”的梦想。</p>
+<p>四、安全性：</p>
+<p>JavaScript是一种安全性语言，它不允许访问本地的硬盘，并不能将数据存入到服务器上，不允许对网络文档进行修改和删除，只能通过浏览器实现信息浏览或动态交互。从而有效地防止数据的丢失。</p>
+<p><strong>2</strong>。从静态类型还是动态类型来看 </p>
+<p>静态类型，编译的时候就能够知道每个变量的类型，编程的时候也需要给定类型，如Java中的整型int，浮点型float等。C、C++、Java都属于静态类型语言。 </p>
+<p>  动态类型，运行的时候才知道每个变量的类型，编程的时候无需显示指定类型，如JavaScript中的var、PHP中的$。JavaScript、Ruby、Python都属于动态类型语言。 </p>
+<p>  静态类型还是动态类型对语言的性能有很大影响。 </p>
+<p>  对于静态类型，在编译后会大量利用已知类型的优势，如int类型，占用4个字节，编译后的代码就可以用内存地址加偏移量的方法存取变量，而地址加偏移量的算法汇编很容易实现。 </p>
+<p>  对于动态类型，会当做字符串通通存下来，之后存取就用字符串匹配。 </p>
+<p>  从编译型还是解释型来看 </p>
+<p>  编译型语言，像C、C++，需要编译器编译成本地可执行程序后才能运行，由开发人员在编写完成后手动实施。用户只使用这些编译好的本地代码，这些本地代码由系统加载器执行，由操作系统的CPU直接执行，无需其他额外的虚拟机等。 </p>
+<p>  源代码=》抽象语法树=》中间表示=》本地代码 </p>
+<p>  解释性语言，像JavaScript、Python，开发语言写好后直接将代码交给用户，用户使用脚本解释器将脚本文件解释执行。对于脚本语言，没有开发人员的编译过程，当然，也不绝对。 </p>
+<p>  源代码=》抽象语法树=》解释器解释执行。 </p>
+<p>  对于JavaScript，随着Java虚拟机JIT技术的引入，工作方式也发生了改变。可以将抽象语法树转成中间表示（字节码），再转成本地代码，如JavaScriptCore，这样可以大大提高执行效率。也可以从抽象语法树直接转成本地代码，如V8 </p>
+<p>​    Java语言，分为两个阶段。首先像C++语言一样，经过编译器编译。和C++的不同，C++编译生成本地代码，Java编译后，生成字节码，字节码与平台无关。第二阶段，由Java的运行环境也就是Java虚拟机运行字节码，使用解释器执行这些代码。一般情况下，Java虚拟机都引入了JIT技术，将字节码转换成本地代码来提高执行效率。  </p>
+<p>  注意，在上述情况中，编译器的编译过程没有时间要求，所以编译器可以做大量的代码优化措施。 </p>
+<p>  对于JavaScript与Java它们还有的不同： </p>
+<p>  对于Java，Java语言将源代码编译成字节码，这个同执行阶段是分开的。也就是从源代码到抽象语法树到字节码这段时间的长短是无所谓的。 </p>
+<p>  对于JavaScript，这些都是在网页和JavaScript文件下载后同执行阶段一起在网页的加载和渲染过程中实施的，所以对于它们的处理时间有严格要求</p>
+<h2 id="2-js基本数据类型"><a href="#2-js基本数据类型" class="headerlink" title="2.js基本数据类型"></a>2.js基本数据类型</h2><p>字符串值，数值，布尔值，数组，undefined，null，对象。<br>基本类型数据<br>1.基本数据类型值是指简单的数据段，五种基本类型都是按值访问的（可以操作保存在变量中的实际值）；<br>2.基本类型的值在内存中占据固定大小的空间，被保存在栈内存中。（从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本）；<br>3.不能给基本类型的值添加属性。<br>引用类型数据：object（还有array、function）<br>1.引用类型值是指那些可以由多个值构成的对象。js不允许直接访问内存中的位置，也就是不能直接访问操作对象的内存空间，在操作对象时，实际上是在操作对象的引用而不是实际的对象；<br>2.引用类型的值是对象，保存在堆内存中，包含引用类型值的变量实际上包含的并不是对象本身，而是指向该对象的指针。从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终指向同一个对象。<br>3.对于引用类型的值，可以为其添加属性和方法，也可以改变和删除其属性和方法。<br>4.在ECMAScript中用var关键字来定义变量，因为js是弱类型的，所以无法确定变量一定会存储什么值，也就不知道变量到底会是什么类型，而且变量的类型可以随时改变。这就是ECMAScript是松散类型的来由，所谓松散类型就是可以用来保存任何类型的数据。<br>在es6中新增了let命令来声明变量，const命令声明一个只读的常量<br>let的用法类似于var，但是所声明的变量，只有在let代码块内才有效；const一旦声明，常量的值就不能改变。</p>
+<p><a href="https://www.cnblogs.com/zhengyeye/p/6485124.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhengyeye/p/6485124.html</a></p>
+<h2 id="3-js如何判断变量数据类型"><a href="#3-js如何判断变量数据类型" class="headerlink" title="3.js如何判断变量数据类型"></a>3.js如何判断变量数据类型</h2><p>typeof（typeof的局限性在于 数组、对象、null都为object；typeof运算符把函数返回function）、instanceof（[1,2] instanceof Array 只对数组有用)、Array.isArray()方法确定某个值是否为数组、Object.prototype.toString.call()（最理想，能够十分准确检测出全部类型）、constructor（引用了初始化该对象的构造函数来判断 （(“123”).constructor === String）</p>
+<h2 id="4-类数组和数组"><a href="#4-类数组和数组" class="headerlink" title="4.类数组和数组"></a>4.类数组和数组</h2><p><strong>类数组定义</strong><br>1）拥有length属性，其它属性（索引）为非负整数（对象中的索引会被当做字符串来处理）；<br>2）不具有数组所具有的方法；<br>javascript中常见的类数组有 <code>arguments</code>对象和 DOM方法的返回结果。比如 <code>document.getElementsByTagName()</code>。</p>
+<p>判断是否是类数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isLikeArray</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> o === <span class="string">'object'</span>&amp;&amp; <span class="built_in">isFinite</span>(o.length) &amp;&amp;  o.length &gt;= <span class="number">0</span> &amp;&amp; o.length &lt; <span class="number">4294967296</span>)&#123;<span class="comment">// 4294967296: 2^32</span></span><br><span class="line"> <span class="keyword">return</span> <span class="literal">true</span>&#125; <span class="keyword">else</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="literal">false</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-将类数组转换为数组"><a href="#5-将类数组转换为数组" class="headerlink" title="5.将类数组转换为数组"></a>5.将类数组转换为数组</h2><ol>
+<li>创建一个新的数组，然后将将类数组中的元素添加到新数组里面</li>
+<li>Array.prototype.slice.call()</li>
+<li>Array.form(arguments)</li>
+</ol>
+<h2 id="6-如何遍历数组"><a href="#6-如何遍历数组" class="headerlink" title="6.如何遍历数组"></a>6.如何遍历数组</h2><p>1.普通for循环</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>,len = arr.length; i &lt; len; i++)&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; arr[i] != <span class="literal">null</span>; i++)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.for in 循环</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.forEach循环</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//数组自带的foreach循环，使用频率较高，实际上性能比普通for循环弱</span></span><br></pre></td></tr></table></figure>
+
+<p>4.map遍历</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>))</span>&#123;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>5.for of 遍历</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> arr)&#123;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//这种方式是es6里面用到的，性能好于for in，但仍比不上普通for循环</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.csdn.net/function__/article/details/79555301" target="_blank" rel="noopener">https://blog.csdn.net/function__/article/details/79555301</a></p>
+<h2 id="7-ARRAY常用方法"><a href="#7-ARRAY常用方法" class="headerlink" title="7.ARRAY常用方法"></a>7.ARRAY常用方法</h2><p>push(),pop(),shift(),unshift(),splice(),sort(),reverse(),map(),forEach(),isArray(),toString()等</p>
+<h2 id="8-STRING常用方法"><a href="#8-STRING常用方法" class="headerlink" title="8.STRING常用方法"></a>8.STRING常用方法</h2><p><strong>toUpperCase()</strong>：把一个字符串全部变为大写</p>
+<p><strong>toLowerCase()</strong>：把一个字符串全部变为小写</p>
+<p><strong>indexOf()</strong>：会搜索制定字符串出现的位置，有返回索引，没有返回-1</p>
+<p><strong>substring()</strong>：返回制定索引区间的子串（传一个参数的话表示从该参数索引位置开始到结束；传两个参数的话表示从开始索引到结束索引）</p>
+<p><strong>slice()</strong>：使用与substring()基本相同，可以传负数，负数则从字符串尾部算起；substring()不能传负数</p>
+<p><strong>substr()</strong>：用法与上面两个相似，但是第二个参数表示截取的字符串最大长度（三种字符串截取方法，未填第二参数时，自动截取起始位置到字符串末尾）</p>
+<p><strong>toString()</strong>：可以将其他数据类型转换为字符串</p>
+<p><strong>split()</strong>：对字符串进行分割，返回一个数组（如果只传一个参数则表示以哪个字符进行分割；传两个参数的话第二个参数表示返回的字符串数组的最大长度）</p>
+<p><strong>replace()</strong>：字符串替换，默认只进行第一次匹配操作的替换，想要全局替换，需要加上正则全局标识g。例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　　　　var mystr=&quot;wozaijinxingzifuchuantihuancaozuo,zifuchuantihuano&quot;;</span><br><span class="line">　　　　var replaceStr=mystr.replace(&quot;zifuchuan&quot;,&quot; &quot;);    //wozaijinxing tihuancaozuo,zifuchuantihuano</span><br><span class="line">　　　　var replaceStr=mystr.replace(/zifuchuan/,&quot; &quot;);    //wozaijinxing tihuancaozuo,zifuchuantihuano</span><br><span class="line">　　　　var replaceStr=mystr.replace(/zifuchuan/g,&quot; &quot;);    //wozaijinxing tihuancaozuo, tihuano</span><br></pre></td></tr></table></figure>
+
+<p><strong>length</strong>：获取字符串长度</p>
+<p><strong>indexOf()</strong>：查询子字符串，对大小写敏感，返回字符串中子串第一处出现的索引（从左到右）。如果没有匹配项，返回-1。</p>
+<p><strong>lastIndexOf()</strong>：查询子字符串，对大小写敏感，返回字符串中子串第一处出现的索引（从右到左）。如果没有匹配项，返回-1。</p>
+<p><strong>charAt()</strong>：返回制定位置的字符</p>
+<p><strong>match()</strong>：字符串匹配。若有相匹配的字符，则返回所要匹配的字符串；没有相匹配的，返回null（也可定义一个变量为正则表达式进行匹配）</p>
+<p><strong>exec()</strong>：字符串匹配。与match()效果相同，用法相反</p>
+<p><strong>search()</strong>：进行正则匹配查找。如果查找成功，返回字符串中匹配的索引值。否则返回-1</p>
+<p><strong>trim()</strong>：删除字符串前后的空格</p>
+<h2 id="9-DOM-事件级别"><a href="#9-DOM-事件级别" class="headerlink" title="9.DOM 事件级别"></a>9.DOM 事件级别</h2><p>dom0级事件就是在js中写到 element.onclick=function(){},是一种比较传统的方式：把一个函数(或者匿名函数)赋值给一个事件的处理程序属性。</p>
+<blockquote>
+<p>优势（兼容所有浏览器）</p>
+<p>缺点：不能给元素添加多个事件处理程序，只能添加一个，如果添加多个事件处理程序，后面的会覆盖前面的</p>
+</blockquote>
+<p> 2 DOM1级主要是映射文档，<strong>没有事件</strong>。  </p>
+<p> 3 DOM2级事件 element.addEventListerner(‘click’,function(){},false)  false指的是冒泡，早期浏览器都支持冒泡，为了兼容基本上最后一个参数都是false.</p>
+<blockquote>
+<p>删除事件：element.removeEventListener(‘click’,function(){},false)，这样的删除方式只能删除DOM2级添加的事件。删除的时候传递的参数必须跟添加时传递的参数一样才能正确删除事件。</p>
+<p>优点，可以给元素添加多个事件处理程序，这些事件处理程序按照他们的顺序执行。</p>
+</blockquote>
+<p>4 Dom3级事件跟dom2级事件写法一样的，只是增加了许多事件类型，包括点击事件和键盘事件。</p>
+<h2 id="10-DOM-事件类型"><a href="#10-DOM-事件类型" class="headerlink" title="10.DOM 事件类型"></a>10.DOM 事件类型</h2><p>Web浏览器中可能发生的事件有很多类型。不同的事件类型具有不同的信息，而“DOM3级事件”规定了以下几类事件：</p>
+<ul>
+<li>UI（用户界面）事件，当用户与界面上的元素交互时触发</li>
+<li>焦点事件，当元素获得或失去焦点时触发</li>
+<li>鼠标事件，当用户通过鼠标在页面上执行操作时触发</li>
+<li>滚轮事件，当使用鼠标滚轮时触发</li>
+<li>文本事件，当在文档中输入文本时触发</li>
+<li>键盘事件，当用户通过键盘在页面上执行操作时触发</li>
+<li>合成事件，当为IME输入字符时触发</li>
+<li>变动事件，当底层DOM结构发生变化时触发</li>
+</ul>
+<h2 id="11-DOM-事件流"><a href="#11-DOM-事件流" class="headerlink" title="11.DOM 事件流"></a>11.DOM 事件流</h2><p>什么是事件流：事件流描述的是从页面中接收事件的顺序,DOM2级事件流包括下面几个阶段。<br>事件捕获阶段<br>处于目标阶段<br>事件冒泡阶段</p>
+<p>首先发生的是事件捕获，为截获事件提供了机会；然后是实际的目标接收到事件；最后一个阶段是冒泡阶段，可以在这个阶段对事件做出响应。</p>
+<p>addEventListener：addEventListener 是DOM2 级事件新增的指定事件处理程序的操作，这个方法接收3个参数：要处理的事件名、作为事件处理程序的函数和一个布尔值。最后这个布尔值参数如果是true，表示在捕获阶段调用事件处理程序；如果是false，表示在冒泡阶段调用事件处理程序。<br>IE只支持事件冒泡。 </p>
+<h2 id="12-描述一下冒泡-事件捕获的具体流程"><a href="#12-描述一下冒泡-事件捕获的具体流程" class="headerlink" title="12.描述一下冒泡/事件捕获的具体流程"></a><img src="https://images2015.cnblogs.com/blog/315302/201606/315302-20160621155328756-279009443.png" alt="img">12.描述一下冒泡/事件捕获的具体流程</h2><p>1.事件冒泡：即事件开始时由最具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播到较为不具体的节点（文档）。</p>
+<p>2.事件捕获：思想是不太具体的节点应该更早接收到事件，而最具体的节点应该最后接收到事件。事件捕获的用意在于在事件到达预定目标之前捕获它。</p>
+<h2 id="13-html、dom0、dom2是如何注册事件"><a href="#13-html、dom0、dom2是如何注册事件" class="headerlink" title="13.html、dom0、dom2是如何注册事件"></a>13.html、dom0、dom2是如何注册事件</h2><p>1.在html代码元素中添加事件为Html事件。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"button"</span> value=<span class="string">"按钮"</span> id=<span class="string">"btn1"</span> onclick=<span class="string">"showMess()"</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.使用元素的onclick方法为DOM0级事件处理。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn2.onclick=<span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3.使用事件添加方法为元素添加事件（</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chrome:addEventListener,removeEventListener</span><br><span class="line">IE:attachEvent,detachEvent</span><br></pre></td></tr></table></figure>
+
+<p>）为DOM2级事件处理。</p>
+<h2 id="14-事件流"><a href="#14-事件流" class="headerlink" title="14.事件流"></a>14.事件流</h2><p>JavaScript高级程序设计–p345</p>
+<h2 id="15-事件委托-代理"><a href="#15-事件委托-代理" class="headerlink" title="15.事件委托(代理)"></a>15.事件委托(代理)</h2><p><a href="https://www.jianshu.com/p/a77d8928c5c9" target="_blank" rel="noopener">https://www.jianshu.com/p/a77d8928c5c9</a></p>
+<h2 id="16-自定义事件"><a href="#16-自定义事件" class="headerlink" title="16.自定义事件"></a>16.自定义事件</h2><p>　1.<strong>Event()</strong> 构造函数, 创建一个新的事件对象 <code>Event</code><br>　2.<strong>CustomEvent()</strong>  创建一个自定义事件<br>　3.<strong>document.createEvent()</strong> <code>创建一个新的事件（Event），随之必须调用自身的 init 方法进行初始化</code><br>  4.<a href="https://www.cnblogs.com/shapeY/p/7923353.html" target="_blank" rel="noopener">https://www.cnblogs.com/shapeY/p/7923353.html</a></p>
+<h2 id="17-怎么防止冒泡"><a href="#17-怎么防止冒泡" class="headerlink" title="17.怎么防止冒泡"></a>17.怎么防止冒泡</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">e</span>) </span>&#123; </span><br><span class="line"><span class="comment">//如果提供了事件对象，则这是一个非IE浏览器 </span></span><br><span class="line"><span class="keyword">if</span> ( e &amp;&amp; e.stopPropagation ) </span><br><span class="line">    <span class="comment">//因此它支持W3C的stopPropagation()方法 </span></span><br><span class="line">    e.stopPropagation(); </span><br><span class="line"><span class="keyword">else</span> </span><br><span class="line">    <span class="comment">//否则，我们需要使用IE的方式来取消事件冒泡 </span></span><br><span class="line">    <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>阻止默认行为</p>
+<p><a href="http://caibaojian.com/javascript-stoppropagation-preventdefault.html" target="_blank" rel="noopener">http://caibaojian.com/javascript-stoppropagation-preventdefault.html</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//阻止浏览器的默认行为 </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopDefault</span>(<span class="params"> e </span>) </span>&#123; </span><br><span class="line">    <span class="comment">//阻止默认浏览器动作(W3C) </span></span><br><span class="line">    <span class="keyword">if</span> ( e &amp;&amp; e.preventDefault ) </span><br><span class="line">        e.preventDefault(); </span><br><span class="line">    <span class="comment">//IE中阻止函数器默认动作的方式 </span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        <span class="built_in">window</span>.event.returnValue = <span class="literal">false</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="18-谈谈innerHTML、-nodeValue与-textContent之间的区别"><a href="#18-谈谈innerHTML、-nodeValue与-textContent之间的区别" class="headerlink" title="18.谈谈innerHTML、 nodeValue与 textContent之间的区别"></a>18.谈谈innerHTML、 nodeValue与 textContent之间的区别</h2><p>nodeValue：是节点的值</p>
+<p>innerHTML:浏览器会将内容解析为HTML代码</p>
+<p>textContent：使用纯文本而不是解析为HTML</p>
+<h2 id="19-简单说一下DOM操作中如何查找元素"><a href="#19-简单说一下DOM操作中如何查找元素" class="headerlink" title="19.简单说一下DOM操作中如何查找元素"></a>19.简单说一下DOM操作中如何查找元素</h2><p>document.getElementById(id) 通过元素 id 来查找元素 </p>
+<p>document.getElementsByTagName(name) 通过标签名来查 </p>
+<p> document.getElementsByClassName(name) 通过类名来查 </p>
+<p>document.getElementsByName();//name属性值，一般不用</p>
+<p>* 通过css选择器查找HTML元素 (document.querySelector()返回与该模式匹配的第一个元素，结果为一个元素；如果没找到匹配的元素，则返回null)</p>
+<p>* 通过HTML对象选择器查找HTML对象</p>
+<h2 id="20-dom节点获取，及其特性"><a href="#20-dom节点获取，及其特性" class="headerlink" title="20.dom节点获取，及其特性"></a>20.dom节点获取，及其特性</h2><p>通过 JavaScript，您可以使用以下节点属性在节点之间导航： </p>
+<p> parentNode </p>
+<p> childNodes[nodenumber] </p>
+<p> firstChild </p>
+<p> lastChild </p>
+<p> nextSibling </p>
+<p> previousSibling</p>
+<h2 id="21-如果一个-ul-下面有-5个-li-如何给他们添加点击事情的方法"><a href="#21-如果一个-ul-下面有-5个-li-如何给他们添加点击事情的方法" class="headerlink" title="21.如果一个 ul 下面有 5个 li 如何给他们添加点击事情的方法"></a>21.如果一个 ul 下面有 5个 li 如何给他们添加点击事情的方法</h2><p><a href="https://blog.csdn.net/caoPengFlying/article/details/78495310" target="_blank" rel="noopener">js为li列表添加点击事件 - caoPengFlying的博客 - CSDN博客</a></p>
+<p><a href="https://blog.csdn.net/qq_42445490/article/details/88819063" target="_blank" rel="noopener">JS中for循环出现的问题：如何给li元素绑定事件，点击每个li元素弹出对应的 - 骆小胖~ - CSDN博客</a></p>
+<h2 id="22-window-document-对象是什么？"><a href="#22-window-document-对象是什么？" class="headerlink" title="22.window document 对象是什么？"></a>22.window document 对象是什么？</h2><p>window对象</p>
+<p>代表浏览器中的一个打开的窗口或者框架，window对象会在<body>或者<frameset>每次出现时被自动创建，在客户端JavaScript中，Window对象是全局对象，所有的表达式都在当前的环境中计算，要引用当前的窗口不需要特殊的语法，可以把那个窗口属性作为全局变量使用，例如：可以只写document，而不必写window.document。同样可以把窗口的对象方法当做函数来使用，如：只写alert（），而不必写window.alert</frameset></body></p>
+<p>window对象实现了核心JavaScript所定义的全局属性和方法。</p>
+<p>indow对象的window属性和self属性引用都是他自己。</p>
+<p>document对象</p>
+<p>代表整个HTML文档，可以用来访问页面中的所有元素 。</p>
+<p>每一个载入浏览器的HTML文档都会成为document对象。document对象使我们可以从脚本中对HTML页面中的所有元素进行访问。<br> document对象是window对象的一部分可以通过window.document属性对其进行访问<br> HTMLDocument接口进行了扩展，定义HTML专用的属性和方法，很多属性和方法都是HTMLCollection对象，其中保存了对锚、表单、链接以及其他可脚本元素的引用。</p>
+<h2 id="23-setTimeout-和-setInteval-的区别和使用方法"><a href="#23-setTimeout-和-setInteval-的区别和使用方法" class="headerlink" title="23.setTimeout 和 setInteval 的区别和使用方法"></a>23.setTimeout 和 setInteval 的区别和使用方法</h2><p><a href="https://blog.csdn.net/HandSome_He/article/details/81676640" target="_blank" rel="noopener">https://blog.csdn.net/HandSome_He/article/details/81676640</a></p>
+<h2 id="24-异步同步"><a href="#24-异步同步" class="headerlink" title="24.异步同步"></a>24.异步同步</h2><p><strong>异步</strong></p>
+<p>如果在函数返回的时候，调用者还不能购得到预期结果，而是将来通过一定的手段得到（例如回调函数），这就是异步。例如ajax操作。<br>如果函数是异步的，发出调用之后，马上返回，但是不会马上返回预期结果。调用者不必主动等待，当被调用者得到结果之后会通过回调函数主动通知调用者。</p>
+<p><strong>同步</strong></p>
+<p>如果在函数返回结果的时候，调用者能够拿到预期的结果(就是函数计算的结果)，那么这个函数就是同步的.如果函数是同步的，即使调用函数执行任务比较耗时，也会一致等待直到得到执行结果。</p>
+<h2 id="25-如何实现页面跳转"><a href="#25-如何实现页面跳转" class="headerlink" title="25.如何实现页面跳转"></a>25.如何实现页面跳转</h2><p><strong>第一种：直接跳转加参数</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    &lt;script language=<span class="string">"javascript"</span> type=<span class="string">"text/javascript"</span>&gt;           <span class="built_in">window</span>.location.href=<span class="string">"login.jsp?backurl="</span>+<span class="built_in">window</span>.location.href;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>直接跳转无参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="built_in">window</span>.location.href=<span class="string">'http://www.baidu.com'</span>;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第二种：返回上一次预览界面</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;alert(<span class="string">"返回"</span>);<span class="built_in">window</span>.history.back(<span class="number">-1</span>);<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>标签嵌套：</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"javascript:history.go(-1)"</span>&gt;返回上一步&lt;a&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&lt;%=Request.ServerVariables("</span><span class="attr">HTTP_REFERER</span>")%&gt;</span>"&gt;返回上一步<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第三种：指定跳转页面 对框架无效。。。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;       <span class="built_in">window</span>.navigate(<span class="string">"top.jsp"</span>);  <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第四种：指定自身跳转页面 对框架无效。。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"JavaScript"</span>&gt;          self.location=<span class="string">'top.htm'</span>;   <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第五种：指定自身跳转页面 对框架有效。。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;          alert(<span class="string">"非法访问！"</span>);          top.location=<span class="string">'xx.aspx'</span>;   <span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第六种：按钮式 在button按钮添加 事件跳转。。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input name=<span class="string">"pclog"</span> type=<span class="string">"button"</span> value=<span class="string">"GO"</span> onClick=<span class="string">"location.href='login.aspx'"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>第七种：在新窗口打开：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">　&lt;a href=<span class="string">"javascript:"</span> onClick=<span class="string">"window.open('login.aspx','','height=500,width=611,scrollbars=yes,status=yes')"</span>&gt;开新窗口&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="26-children-和-childNodes-的区别"><a href="#26-children-和-childNodes-的区别" class="headerlink" title="26.children 和 childNodes 的区别"></a>26.children 和 childNodes 的区别</h2><p>childNodes：获取节点，不同浏览器表现不同；</p>
+<p>　　IE：只获取元素节点；</p>
+<p>　　非IE：获取元素节点与文本节点；</p>
+<p>　　解决方案：if(childNode.nodeName==”#text”) continue 或者 if(childNode.nodeType != ‘3’) continue </p>
+<p>2、children：获取元素节点，浏览器表现相同。</p>
+<p>　　因此建议使用children。</p>
+<h2 id="27-如何实现insertAfter"><a href="#27-如何实现insertAfter" class="headerlink" title="27.如何实现insertAfter"></a>27.如何实现insertAfter</h2><p><code>parent.insertBefore(newElement,targetElement.nextSibling)</code>他的三部分为 父节点 新节点 目标节点 他会把新节点创建在目标节点之前 需要注意的是 父节点并无需获取 你通过目标节点.parentNode就可以获取<br>但是js并没有提供插入在目标节点之后的方法 我们可以自己写一个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertAfter</span>(<span class="params">newElement,targetElement</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> parent = targetElement.parentNode;</span><br><span class="line">    <span class="keyword">if</span>(parent.lastChild == targetElement)&#123;</span><br><span class="line">        parent.appendChild(newElement);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;   		        parent.insertBefore(newElement,targetElement.nextSibling);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先 他把目标节点的父节点找到包装在parent里 然后进行对比 如果这个父节点的最后一个节点是目标节点 那么无需插入在中间 因为appendChild默认就是将节点插入到末尾 </p>
+<p>如果不是 目标节点游在中间 那么他会调用Before方法 把新节点插入到 目标节点的后面一个节点之前 其实也就是他的节点之后 绕了一点</p>
+<h2 id="28-变量提升"><a href="#28-变量提升" class="headerlink" title="28.变量提升"></a>28.变量提升</h2><p><a href="https://cloud.tencent.com/developer/article/1405726" target="_blank" rel="noopener">JavaScript 变量提升 - 云+社区 - 腾讯云</a></p>
+<h2 id="29-执行环境与作用域"><a href="#29-执行环境与作用域" class="headerlink" title="29.执行环境与作用域"></a>29.执行环境与作用域</h2><p><a href="https://www.jb51.net/article/83585.htm" target="_blank" rel="noopener">https://www.jb51.net/article/83585.htm</a></p>
+<h2 id="30-克隆对象"><a href="#30-克隆对象" class="headerlink" title="30.克隆对象"></a>30.克隆对象</h2><h2 id="31-this以及修改this"><a href="#31-this以及修改this" class="headerlink" title="31.this以及修改this"></a>31.this以及修改this</h2><p><a href="https://www.cnblogs.com/yummylucky/p/10225066.html" target="_blank" rel="noopener">https://www.cnblogs.com/yummylucky/p/10225066.html</a></p>
+<h2 id="32-call和apply区别"><a href="#32-call和apply区别" class="headerlink" title="32.call和apply区别"></a>32.call和apply区别</h2><p>通过apply和call改变函数的this指向，他们两个函数的第一个参数都是一样的表示要改变指向的那个对象，第二个参数，apply是数组，而call则是arg1,arg2…这种形式（两者区别仅在于接收参数的方式不同。apply()方法第二个参数可以是Array的实例也可以是argument对象，call()方法必须明确地传入每一个参数）。通过bind改变this作用域会返回一个新的函数，这个函数不会马上执行。  </p>
+<p>apply：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.apply(A, arguments);即A对象应用B对象的方法。 </p>
+<p> call：调用一个对象的一个方法，用另一个对象替换当前对象。例如：B.call(A, args1,args2);即A对象调用B对象的方法。 </p>
+<p> bind除了返回是函数以外，它的参数和call一样。 </p>
+<h2 id="33-闭包"><a href="#33-闭包" class="headerlink" title="33.闭包"></a>33.闭包</h2><p>  一句话可以概括：闭包就是能够读取其他函数内部变量的函数，或者子函数在外调用，子函数所在的父函数的作用域不会被释放。 </p>
+<p>  （1）什么是闭包：  闭包是指有权访问另外一个函数作用域中的变量的函数。闭包就是函数的局部变量集合，只是这些局部变量在函数返回后会继续存在。闭包就是就是函数的“堆栈”在函数返回后并不释放，我们也可以理解为这些函数堆栈并不在栈上分配而是在堆上分配。当在一个函数内定义另外一个函数就会产生闭包。 </p>
+<p>（2）为什么要用：  匿名自执行函数：我们知道所有的变量，如果不加上var关键字，则默认的会添加到全局对象的属性上去，这样的临时变量加入全局对象有很多坏处，比如：别的函数可能误用这些变量；造成全局对象过于庞大，影响访问速度(因为变量的取值是需要从原型链上遍历的)。除了每次使用变量都是用var关键字外，我们在实际情况下经常遇到这样一种情况，即有的函数只需要执行一次，其内部变量无需维护，可以用闭包。  结果缓存：我们开发中会碰到很多情况，设想我们有一个处理过程很耗时的函数对象，每次调用都会花费很长时间，那么我们就需要将计算出来的值存储起来，当调用这个函数的时候，首先在缓存中查找，如果找不到，则进行计算，然后更新缓存并返回值，如果找到了，直接返回查找到的值即可。闭包正是可以做到这一点，因为它不会释放外部的引用，从而函数内部的值可以得以保留。</p>
+<h2 id="34-js运行机制"><a href="#34-js运行机制" class="headerlink" title="34.js运行机制"></a>34.js运行机制</h2><p><a href="https://www.baidu.com/link?url=HbzsQy4I1L5Y8RWr5NEReBaQkfm4vCCrb7qa9KYGo0tAglavxUxtAFUCZ2uxKxsEFl3ToD2XukSuaPtSDSDgcWGQmN2PlrmRRrj-ZRpq7g7&amp;wd=&amp;eqid=bfa5949d0000d54b000000065d294ed0" target="_blank" rel="noopener">https://www.baidu.com/link?url=HbzsQy4I1L5Y8RWr5NEReBaQkfm4vCCrb7qa9KYGo0tAglavxUxtAFUCZ2uxKxsEFl3ToD2XukSuaPtSDSDgcWGQmN2PlrmRRrj-ZRpq7g7&amp;wd=&amp;eqid=bfa5949d0000d54b000000065d294ed0</a></p>
+<h2 id="35-js对象的创建方法"><a href="#35-js对象的创建方法" class="headerlink" title="35.js对象的创建方法"></a>35.js对象的创建方法</h2><p><a href="https://www.jb51.net/article/157045.htm" target="_blank" rel="noopener">js中对象与对象创建方法的各种方法_javascript技巧_脚本之家</a></p>
+<h2 id="36-原型链"><a href="#36-原型链" class="headerlink" title="36.原型链"></a>36.原型链</h2><p><a href="https://blog.csdn.net/sinat_21274091/article/details/52741788" target="_blank" rel="noopener">JS重点整理之JS原型链彻底搞清楚 - sinat_21274091的博客 - CSDN博客</a></p>
+<h2 id="37-对象的继承机制"><a href="#37-对象的继承机制" class="headerlink" title="37.对象的继承机制"></a>37.对象的继承机制</h2><p><a href="https://www.cnblogs.com/jofun/p/8727814.html" target="_blank" rel="noopener">详解JavaScript对象继承方式 - 雨霖月寒 - 博客园</a></p>
+<h2 id="38-JS垃圾回收机制"><a href="#38-JS垃圾回收机制" class="headerlink" title="38.JS垃圾回收机制"></a>38.JS垃圾回收机制</h2><p><a href="https://blog.csdn.net/yingzizizizizizzz/article/details/77333996" target="_blank" rel="noopener">面试题——js垃圾回收机制和引起内存泄漏的操作 - yingzizizizizizzz的专栏 - CSDN博客</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/JavaScript面试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -273,7 +2014,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SampsonKY'blog">
+      <meta itemprop="name" content="SampsonKY">
     </span>
 
     
@@ -536,7 +2277,7 @@ inherit:
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SampsonKY'blog">
+      <meta itemprop="name" content="SampsonKY">
     </span>
 
     
@@ -720,7 +2461,7 @@ inherit:
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -742,7 +2483,7 @@ inherit:
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

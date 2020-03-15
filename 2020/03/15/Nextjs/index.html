@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="react,next,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="SampsonKY" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Next.js  Next.js 是一个轻量级的 React 服务端渲染应用框架。有了它我们可以简单轻松的实现React的服务端渲染，从而加快首屏打开速度，也可以作SEO（收索引擎优化了）。在没有Next.js的时候，用React开发需要配置很多繁琐的参数，如Webpack配置，Router配置和服务器端配置等….。如果需要作SEO，要考虑的事情就更多了，怎么样服务端渲染和客户端渲染保持一致就是一">
+<meta name="keywords" content="react,next">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nextjs入门">
+<meta property="og:url" content="http://yoursite.com/2020/03/15/Nextjs/index.html">
+<meta property="og:site_name" content="SampsonKY">
+<meta property="og:description" content="Next.js  Next.js 是一个轻量级的 React 服务端渲染应用框架。有了它我们可以简单轻松的实现React的服务端渲染，从而加快首屏打开速度，也可以作SEO（收索引擎优化了）。在没有Next.js的时候，用React开发需要配置很多繁琐的参数，如Webpack配置，Router配置和服务器端配置等….。如果需要作SEO，要考虑的事情就更多了，怎么样服务端渲染和客户端渲染保持一致就是一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-15T11:50:57.916Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nextjs入门">
+<meta name="twitter:description" content="Next.js  Next.js 是一个轻量级的 React 服务端渲染应用框架。有了它我们可以简单轻松的实现React的服务端渲染，从而加快首屏打开速度，也可以作SEO（收索引擎优化了）。在没有Next.js的时候，用React开发需要配置很多繁琐的参数，如Webpack配置，Router配置和服务器端配置等….。如果需要作SEO，要考虑的事情就更多了，怎么样服务端渲染和客户端渲染保持一致就是一">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/15/Nextjs/">
+
+
+
+
+
+  <title>Nextjs入门 | SampsonKY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SampsonKY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/15/Nextjs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="SampsonKY">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SampsonKY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Nextjs入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-15T19:24:47+08:00">
+                2020-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端学习/" itemprop="url" rel="index">
+                    <span itemprop="name">前端学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Next-js"><a href="#Next-js" class="headerlink" title="Next.js"></a>Next.js</h1><blockquote>
+<p> Next.js 是一个轻量级的 React 服务端渲染应用框架。有了它我们可以简单轻松的实现React的<strong>服务端渲染</strong>，从而加快首屏打开速度，也可以作<strong>SEO</strong>（收索引擎优化了）。在没有Next.js的时候，用React开发需要配置很多繁琐的参数，如Webpack配置，Router配置和服务器端配置等….。如果需要作SEO，要考虑的事情就更多了，怎么样服务端渲染和客户端渲染保持一致就是一件非常麻烦的事情，需要引入很多第三方库。但有了Next.js，这些问题都解决了，使开发人员可以将精力放在业务逻辑上，从繁琐的配置中解放出来。 </p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>Next.js 是一个轻量级的 React 服务端渲染应用框架。</p>
+</blockquote>
+<p>用一个框架，就要知道它的优点（或者是解决了我们什么问题）:</p>
+<ul>
+<li>完善的React项目架构，搭建轻松。比如：Webpack配置，服务器启动，路由配置，缓存能力，这些在它内部已经完善的为我们搭建完成了。</li>
+<li>自带数据同步策略，解决服务端渲染最大难点。把服务端渲染好的数据，拿到客户端重用，这个在没有框架的时候，是非常复杂和困难的。有了Next.js，它为我们提供了非常好的解决方法，让我们轻松的就可以实现这些步骤。</li>
+<li>丰富的插件帮开发人员增加各种功能。每个项目的需求都是不一样的，包罗万象。无所不有，它为我们提供了插件机制，让我们可以在使用的时候按需使用。你也可以自己写一个插件，让别人来使用。</li>
+<li>灵活的配置，让开发变的更简单。它提供很多灵活的配置项，可以根据项目要求的不同快速灵活的进行配置。</li>
+</ul>
+<p>目前Next.js是React服务端渲染的最佳解决方案，所以如果想使用React来开发需要SEO的应用，基本上就要使用Next.js。</p>
+<h2 id="create-next-app-快速创建Next-js项目"><a href="#create-next-app-快速创建Next-js项目" class="headerlink" title="create-next-app 快速创建Next.js项目"></a>create-next-app 快速创建Next.js项目</h2><p><strong>项目结构介绍</strong>：</p>
+<ul>
+<li><strong>components</strong>文件夹:这里是专门放置自己写的组件的，这里的组件不包括页面，指公用的或者有专门用途的组件。</li>
+<li><strong>node_modules</strong>文件夹：Next项目的所有依赖包都在这里，一般我们不会修改和编辑这里的内容。</li>
+<li><strong>pages</strong>文件夹：这里是放置页面的，这里边的内容会自动生成路由，并在服务器端渲染，渲染好后进行数据同步。</li>
+<li><strong>public</strong>文件夹： 这个是静态文件夹，比如项目需要的图片、图标和静态资源都可以放到这里。</li>
+<li><strong>.gitignore</strong>文件： 这个主要是控制git提交和上传文件的，简称就是忽略提交。</li>
+<li><strong>package.json</strong>文件：定义了项目所需要的文件和项目的配置信息（名称、版本和许可证），最主要的是使用<code>npm install</code> 就可以下载项目所需要的所有包。</li>
+</ul>
+<h2 id="Page和Component的使用"><a href="#Page和Component的使用" class="headerlink" title="Page和Component的使用"></a>Page和Component的使用</h2><p>直接在<strong>pages</strong>文件夹下，新建一个<code>xxx.js</code>页面，写好相应的代码后，<code>Next</code>框架就自动做好了路由。如果要做更深的路由，在pages文件夹下再建相应的文件夹，然后在新的文件夹里面新建页面，以此类推即可。</p>
+<p>pages里面的文件名和components文件夹里面的文件名可以相同，不会冲突。</p>
+<p>在components文件夹目录新建组件，在pages里面引入即可。</p>
+<h2 id="路由-基础和基本跳转"><a href="#路由-基础和基本跳转" class="headerlink" title="路由-基础和基本跳转"></a>路由-基础和基本跳转</h2><p>路由跳转两种形式：</p>
+<ul>
+<li><p><strong>标签式导航</strong>：利用标签<code>&lt;Link&gt;</code></p>
+<p><em>引入</em>：<code>import Link from &#39;next/link&#39;</code></p>
+<p><em>使用</em>：<code>&lt;Link href=&quot;/&quot;&gt;&lt;a&gt;返回首页&lt;/a&gt;&lt;/Link&gt;</code></p>
+<p><em>注意</em>：不写<code>&lt;a&gt;</code>标签时不支持兄弟标签并列，使用<code>&lt;a&gt;</code>便可使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=&quot;/jspangA&quot;&gt;</span><br><span class="line">  &lt;a&gt;</span><br><span class="line">    &lt;span&gt;去JspangA页面&lt;/span&gt;</span><br><span class="line">    &lt;span&gt;前端博客&lt;/span&gt;</span><br><span class="line">  &lt;/a&gt;</span><br><span class="line">&lt;/Link&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>编程式跳转</strong>：用js编程的方式进行跳转，也就是利用<code>Router</code>组件</p>
+<p><em>引入</em>：<code>import Router from &#39;next/router&#39;</code></p>
+<p><em>使用：</em> <code>&lt;button onClick={()=&gt;{Router.push(&#39;/jspangA&#39;)}}&gt;去JspangA页面&lt;/button&gt;</code>这种写法简单，但是耦合性太高，可以修改一下 ，把跳转放到一个方法里，然后调用方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotoA</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Router.push(<span class="string">'/jspangA'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;button onClick=&#123;gotoA&#125;&gt;去JspangA页面&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="路由-跳转时用query传递和接收参数"><a href="#路由-跳转时用query传递和接收参数" class="headerlink" title="路由-跳转时用query传递和接收参数"></a>路由-跳转时用query传递和接收参数</h2><p>项目开发中一般需要<strong>动态跳转</strong>，动态跳转就是跳转时需要带一个参数或几个参数过去，然后在到达的页面接受这个传递的参数，并根据参数不同显示不同的内容。比如新闻列表，然后点击一个要看的新闻就会跳转到具体内容。这些类似这样的需求都都是通过传递参数实现的。</p>
+<p><strong>只能用query传递参数</strong>：在<code>Next.js</code>中只能通过通过query（<code>?id=1</code>）来传递参数，而不能通过(<code>path:id</code>)的形式传递参数。</p>
+<p><strong>标签式导航传递参数：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link href=<span class="string">"/jpangA?name=技胖"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span>&gt;</span>技胖<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br><span class="line"> 或者（优雅的写法）   </span><br><span class="line">&lt;Link href=&#123;&#123;<span class="attr">pathname</span>:<span class="string">'/jpangA'</span>,<span class="attr">query</span>:&#123;<span class="attr">name</span>:<span class="string">'技胖'</span>&#125;&#125;&#125;&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span>&gt;</span>技胖<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">Link</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这种写法有两个参数，一个是<code>pathname</code>，一个是<code>query</code>，<code>query</code>里面包含传递的参数</p>
+<p><strong>编程式跳转传递参数：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotojpang</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    Router.push(<span class="string">'/jpangA?name=技胖'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;</span><br><span class="line">  &lt;button onClick=&#123;gotojpang&#125;&gt;技胖&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​    或者：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gotojpang</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   Router.push(&#123;</span><br><span class="line">     pathname:<span class="string">'/jpangA'</span>,</span><br><span class="line">     query:&#123;</span><br><span class="line">       name:<span class="string">'技胖'</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>接受参数</strong>：<code>withRouter</code>是Next.js框架的高级组件，用来处理路由用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//①引入withRouter</span><br><span class="line">import &#123;withRouter&#125; from &apos;next/router&apos;</span><br><span class="line">import Link from &apos;next/link&apos;</span><br><span class="line"></span><br><span class="line">//②这里要传入参数router</span><br><span class="line">const Jspang = (&#123;router&#125;)=&gt;&#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">        	//③通过这种形式获得参数</span><br><span class="line">            &lt;div&gt;&#123;router.query.name&#125;，他来了&lt;/div&gt;</span><br><span class="line">            &lt;Link href=&quot;/&quot;&gt;&lt;a&gt;返回首页&lt;/a&gt;&lt;/Link&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//④导出要使用withRouter</span><br><span class="line">export default withRouter(Jspang)</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由-六个钩子事件"><a href="#路由-六个钩子事件" class="headerlink" title="路由-六个钩子事件"></a>路由-六个钩子事件</h2><blockquote>
+<p> 路由的钩子事件，也就是当路由发生变化时，可以监听到这些变化事件，执行对应的函数。利用钩子事件是可以作很多事情的，比如转换时的加载动画，关掉页面的一些资源计数器…..</p>
+</blockquote>
+<ul>
+<li><p><code>routerChangeStart</code>路由发生变化时</p>
+<p>使用Router组件，然后用<code>on</code>方法来进行兼听</p>
+</li>
+<li><p><code>routerChangeComplete</code>路由结束变化时</p>
+</li>
+<li><p><code>beforeHistoryChange</code>浏览器history触发前</p>
+<p>history就是HTMP中的API，<code>Next.js</code>路由变化默认都是通过history进行的，所以每次都会调用。 不适用history的话，也可以通过hash。</p>
+<p>正确顺序为：①③②</p>
+</li>
+<li><p><code>routeChangeError</code>路由跳转发生错误时</p>
+<p>注意：404找不到路由页面不算错误</p>
+</li>
+</ul>
+<p><strong>转变成hash路由模式</strong></p>
+<p>以下两种事件都是针对hash的。</p>
+<ul>
+<li><code>hashChangeStart</code>：hash跳转开始时执行</li>
+<li><code>hashChangeComplete</code>：hash跳转完成时执行</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br><span class="line">import Link from &apos;next/link&apos;</span><br><span class="line">import Router from &apos;next/router&apos;</span><br><span class="line"></span><br><span class="line">function gotojpang()&#123;</span><br><span class="line">  Router.push(&apos;/jspang?name=技术胖&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//使用Router组件，on方法进行兼听</span><br><span class="line">Router.events.on(&apos;routeChangeStart&apos;, (...args) =&gt; &#123;</span><br><span class="line">  console.log(&apos;1.routeChangeStart-&gt;路由开始变化,参数为:&apos;, ...args)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Router.events.on(&apos;routeChangeComplete&apos;, (...args) =&gt; &#123;</span><br><span class="line">  console.log(&apos;2.routeChangeComplete-&gt;路由结束变化,参数为:&apos;, ...args)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Router.events.on(&apos;beforeHistoryChange&apos;, (...args) =&gt; &#123;</span><br><span class="line">  console.log(&apos;3,beforeHistoryChange-&gt;在改变浏览器 history之前触发,参数为:&apos;, ...args)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Router.events.on(&apos;routeChangeError&apos;, (...args) =&gt; &#123;</span><br><span class="line">  console.log(&apos;4,routeChangeError-&gt;跳转发生错误,参数为:&apos;, ...args)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Router.events.on(&apos;hashChangeStart&apos;, (...args) =&gt; &#123;</span><br><span class="line">  console.log(&apos;5,hashChangeStart-&gt;hash跳转开始时执行,参数为:&apos;, ...args)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Router.events.on(&apos;hashChangeComplete&apos;, (...args) =&gt; &#123;</span><br><span class="line">  console.log(&apos;6,hashChangeComplete-&gt;hash跳转完成时,参数为:&apos;, ...args)</span><br><span class="line">&#125;)</span><br><span class="line">const Home = () =&gt; (</span><br><span class="line">  </span><br><span class="line">  &lt;&gt;</span><br><span class="line">    &lt;div&gt;我是首页&lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Link href=&quot;/jspang?name=技胖&quot;&gt;&lt;a&gt;技胖&lt;/a&gt;&lt;/Link&gt;</span><br><span class="line">      &lt;Link href=&quot;/jspang?name=术胖&quot;&gt;&lt;a&gt;术胖&lt;/a&gt;&lt;/Link&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;button onClick=&#123;gotojpang&#125;&gt;技胖&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    //hash模式</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;Link href=&quot;#jspang&quot;&gt;&lt;a&gt;技术胖&lt;/a&gt;&lt;/Link&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/&gt;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">export default Home</span><br></pre></td></tr></table></figure>
+
+<h2 id="在getInitialProps中使用Axios获取远端数据"><a href="#在getInitialProps中使用Axios获取远端数据" class="headerlink" title="在getInitialProps中使用Axios获取远端数据"></a>在getInitialProps中使用Axios获取远端数据</h2><p>在<code>Next.js</code>框架中提供了<code>getInitialProps</code>静态方法用来获取远端数据，这个是框架的约定，所以你也只能在这个方法里获取远端数据。不要在生命周期里面获得，虽然可以，但是不符合约定。</p>
+<p><em>安装axios</em>: <code>yarn add axios</code></p>
+<p><em>引入</em>： <code>import axios from &#39;axios&#39;</code></p>
+<p>获取数据例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//使用getInitialProps远程获取数据</span><br><span class="line">Jspang.getInitialProps = async ()=&gt;&#123;</span><br><span class="line">    const promise =new Promise((resolve)=&gt;&#123;</span><br><span class="line">            axios(&apos;https://www.easy-mock.com/xxx&apos;).then(</span><br><span class="line">                (res)=&gt;&#123;</span><br><span class="line">                    console.log(&apos;远程数据结果：&apos;,res)</span><br><span class="line">                    resolve(res.data.data)</span><br><span class="line">                &#125;</span><br><span class="line">            )</span><br><span class="line">    &#125;)</span><br><span class="line">    return await promise</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//获取数据之后，把得到的数据传递给页面组件，用&#123;&#125;显示出来就可以了。</span><br><span class="line">//res.data.data里面有一个list数组</span><br><span class="line">const Jspang = (&#123;router,list&#125;)=&gt;&#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;div&gt;&#123;router.query.name&#125;,来了 .&lt;br/&gt;&#123;list&#125;&lt;/div&gt;//直接就可以使用</span><br><span class="line">            &lt;Link href=&quot;/&quot;&gt;&lt;a&gt;返回首页&lt;/a&gt;&lt;/Link&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Style-JSX编写页面的CSS样式"><a href="#使用Style-JSX编写页面的CSS样式" class="headerlink" title="使用Style JSX编写页面的CSS样式"></a>使用Style JSX编写页面的CSS样式</h2><p>在<code>Next.js</code>中引入一个CSS样式是不可以用的，如果想用，需要作额外的配置。因为框架为我们提供了一个<code>style jsx</code>特性，也就是把CSS用JSX的语法写出来。</p>
+<p>一个特性：<strong>自动添加随机类名，不会污染全局css</strong>—加入了<code>Style jsx</code>代码后，<code>Next.js</code>会自动加入一个随机类名，这样就防止了CSS的全局污染。比如我们把代码写成下面这样，然后在浏览器的控制台中进行查看，你会发现自动给我们加入了类名，类似<code>jsx-xxxxxxxx</code></p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Jspang()&#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;div&gt;技术胖免费前端教程&lt;/div&gt;</span><br><span class="line">            &lt;div className=&quot;jspang&quot;&gt;技术胖免费前端教程&lt;/div&gt;</span><br><span class="line">		//使用这种形式些样式</span><br><span class="line">            &lt;style jsx&gt;</span><br><span class="line">                &#123;`</span><br><span class="line">                    div &#123; color:blue;&#125;</span><br><span class="line">                    .jspang &#123;color:red;&#125;</span><br><span class="line">                `&#125;</span><br><span class="line">            &lt;/style&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Jspang</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态显示样式</strong>：</p>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;useState&#125; from &apos;react&apos;</span><br><span class="line">function Jspang()&#123;</span><br><span class="line">    const [color,setColor] = useState(&apos;blue&apos;)</span><br><span class="line">    const changeColor=()=&gt;&#123;</span><br><span class="line">        setColor(color==&apos;blue&apos;?&apos;red&apos;:&apos;blue&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;div&gt;技术胖免费前端教程&lt;/div&gt;</span><br><span class="line">            &lt;div&gt;&lt;button onClick=&#123;changeColor&#125;&gt;改变颜色&lt;/button&gt;&lt;/div&gt;</span><br><span class="line">            &lt;style jsx&gt;</span><br><span class="line">                &#123;`</span><br><span class="line">                    div &#123; color:$&#123;color&#125;;&#125;</span><br><span class="line">                `&#125;</span><br><span class="line">            &lt;/style&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Jspang</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lazy-Loading实现模块懒加载"><a href="#Lazy-Loading实现模块懒加载" class="headerlink" title="Lazy Loading实现模块懒加载"></a>Lazy Loading实现模块懒加载</h2><p>当项目越来越大的时候，模块的加载是需要管理的，如果不管理会出现首次打开过慢，页面长时间没有反应一系列问题。这时候可用<code>Next.js</code>提供的<code>LazyLoading</code>来解决这类问题。让模块和组件只有在用到的时候在进行加载，一般我把这种东西叫做“懒加载”.它一般分为两种情况，一种是<strong>懒加载</strong>（或者说是<strong>异步加载</strong>）<strong>模块</strong>，另一种是<strong>异步加载组件</strong>。</p>
+<blockquote>
+<p>当我们作的应用存在首页打开过慢和某个页面加载过慢时，就可以采用<code>Lazy Loading</code>的形式，用懒加载解决这些问题。</p>
+</blockquote>
+<p><strong>懒加载模块</strong>：</p>
+<p>比如我们引入开发中常用的模块<code>Moment.js</code>,它是一个JavaScript日期处理类库。安装：<code>yarn add moment</code>。</p>
+<p>例如（未使用懒加载）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;useState&#125; from &apos;react&apos;</span><br><span class="line">import moment from &apos;moment&apos; //引入模块</span><br><span class="line"></span><br><span class="line">function Time()&#123;</span><br><span class="line"></span><br><span class="line">    const [nowTime,setTime] = useState(Date.now())</span><br><span class="line"></span><br><span class="line">    const changeTime=()=&gt;&#123;</span><br><span class="line">        //使用</span><br><span class="line">        setTime(moment(Date.now()).format())</span><br><span class="line">    &#125;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;div&gt;显示时间为:&#123;nowTime&#125;&lt;/div&gt;</span><br><span class="line">            &lt;div&gt;&lt;button onClick=&#123;changeTime&#125;&gt;改变时间格式&lt;/button&gt;&lt;/div&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Time</span><br></pre></td></tr></table></figure>
+
+<p><strong>这个看起来很简单和清晰的案例，缺存在着一个潜在的风险，就是如何有半数以上页面使用了这个<code>momnet</code>的库，那它就会以公共库的形式进行打包发布，就算项目第一个页面不使用<code>moment</code>也会进行加载，这就是资源浪费，对于我这样有代码洁癖的良好程序员是绝对不允许的。下面我们就通过<code>Lazy Loading</code>来进行改造代码。</strong></p>
+<p>改良（使用懒加载）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123;useState&#125; from &apos;react&apos;</span><br><span class="line">//删除import moment</span><br><span class="line">function Time()&#123;</span><br><span class="line">    const [nowTime,setTime] = useState(Date.now())</span><br><span class="line">    </span><br><span class="line">    const changeTime= async ()=&gt;&#123; //把方法变成异步模式</span><br><span class="line">        const moment = await import(&apos;moment&apos;) //等待moment加载完成</span><br><span class="line">        setTime(moment.default(Date.now()).format()) //注意使用defalut</span><br><span class="line">    &#125;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;div&gt;显示时间为:&#123;nowTime&#125;&lt;/div&gt;</span><br><span class="line">            &lt;div&gt;&lt;button onClick=&#123;changeTime&#125;&gt;改变时间格式&lt;/button&gt;&lt;/div&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Time</span><br></pre></td></tr></table></figure>
+
+<p><strong>懒加载自定义组件</strong></p>
+<p>首先要在懒加载这个组件的文件汇总引入<code>dynamic</code>，<code>import dynamic from &#39;next/dynamic&#39;</code></p>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import dynamic from &apos;next/dynamic&apos; //引入dynamic</span><br><span class="line">//使用如下方式引入组件</span><br><span class="line">const One = dynamic(import(&apos;../components/one&apos;))</span><br><span class="line">function Time()&#123;</span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;//使用</span><br><span class="line">            &lt;One/&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Time</span><br></pre></td></tr></table></figure>
+
+<p>写完代码后，可以看到自定义组件是懒加载的，只有在<code>jsx</code>里用到``时，才会被加载进来，如果不使用就不会被加载。</p>
+<h2 id="自定义Head更加友好的SEO操作"><a href="#自定义Head更加友好的SEO操作" class="headerlink" title="自定义Head更加友好的SEO操作"></a>自定义Head更加友好的SEO操作</h2><p><strong>定制<code>&lt;Head&gt;</code>标签</strong></p>
+<ul>
+<li><p>方法一：<strong>在各个页面加上<code>&lt;Head&gt;</code>标签</strong>(推荐)    </p>
+<p>例如在pages中的某一个页面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import Head from &apos;next/head&apos; //引入Head</span><br><span class="line">function Header()&#123; </span><br><span class="line">    return (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">        //使用Head</span><br><span class="line">            &lt;Head&gt;</span><br><span class="line">                &lt;title&gt;技术胖是最胖的！&lt;/title&gt;</span><br><span class="line">                &lt;meta charSet=&apos;utf-8&apos; /&gt;</span><br><span class="line">            &lt;/Head&gt;</span><br><span class="line">            &lt;div&gt;JSPang.com&lt;/div&gt;</span><br><span class="line">        &lt;/&gt; </span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line">export default Header</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二：<strong>定义全局的<code>&lt;Head&gt;</code></strong></p>
+<p>这种方法相当于自定义了一个组件，然后把在组件里定义好，以后每个页面都使用这个组件,其实这种方法用处不大，也不灵活。因为<code>Next.js</code>已经把<code>&lt;Head&gt;</code>封装好了，本身就是一个组件，我们再次封装的意义不大。</p>
+</li>
+</ul>
+<h2 id="Next-js框架下使用Ant-Design-UI"><a href="#Next-js框架下使用Ant-Design-UI" class="headerlink" title="Next.js框架下使用Ant Design UI"></a>Next.js框架下使用Ant Design UI</h2><p><strong>让Next.js支持CSS文件</strong>：</p>
+<p><em>安装</em><code>@zeit/next-css</code>包，它的主要功能就是让<code>Next.js</code>可以加载CSS文件，有了这个包才可以进行配置：<code>yarn add @zeit/next-css</code></p>
+<p><em>配置：</em>建立一个<code>next.config.js</code>（建在最外面的那个目录）这个就是<code>Next.js</code>的总配置文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> withCss = <span class="built_in">require</span>(<span class="string">'@zeit/next-css'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">require</span> !== <span class="string">'undefined'</span>)&#123;</span><br><span class="line">    <span class="built_in">require</span>.extensions[<span class="string">'.css'</span>]=<span class="function"><span class="params">file</span>=&gt;</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = withCss(&#123;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>按需加载Ant Design</strong></p>
+<p>加载<code>Ant Design</code>在我们打包的时候会把<code>Ant Design</code>的所有包都打包进来，这样就会产生性能问题，让项目加载变的非常慢。这肯定是不行的，现在的目的是只加载项目中用到的模块，这就需要我们用到一个<strong><code>babel-plugin-import</code></strong>文件。</p>
+<p>先安装<code>Ant Design</code>库：<code>yarn add antd</code></p>
+<p>安装<code>babel-plugin-import</code>插件：<code>yarn add babel-plugin-import</code></p>
+<p>配置<code>babel-plugin-import</code>插件：在项目根目录建立<code>.babelrc</code>文件，然后写入如下配置文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#123;	<span class="comment">//Next.js的总配置文件，相当于继承了它本身的所有配置</span></span><br><span class="line">    <span class="string">"presets"</span>:[<span class="string">"next/babel"</span>], </span><br><span class="line">    <span class="string">"plugins"</span>:[     </span><br><span class="line">        <span class="comment">//增加新的插件，这个插件就是让antd可以按需引入，包括CSS</span></span><br><span class="line">        [</span><br><span class="line">            <span class="string">"import"</span>,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="string">"libraryName"</span>:<span class="string">"antd"</span>,</span><br><span class="line">                <span class="string">"style"</span>:<span class="string">"css"</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置好了以后，<code>webpack</code>就不会默认把整个<code>Ant Design</code>的包都进行打包到生产环境了，而是我们使用那个组件就打包那个组件,同样CSS也是按需打包的。</p>
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123;Button&#125; from &apos;antc&apos;</span><br><span class="line">function Page()&#123;</span><br><span class="line">    return(</span><br><span class="line">    	&lt;&gt;</span><br><span class="line">        &lt;Button&gt;我是按需引入的按钮&lt;/Button&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Next-js生产环境打包"><a href="#Next-js生产环境打包" class="headerlink" title="Next.js生产环境打包"></a>Next.js生产环境打包</h2><p>其实Next.js大打包时非常简单的，只要一个命令就可以打包成功。但是当你使用了<code>Ant Desgin</code>后，在打包的时候会遇到一些坑。</p>
+<blockquote>
+<p>打包 ：next build</p>
+</blockquote>
+<blockquote>
+<p>运行：next start -p 80</p>
+</blockquote>
+<p>先把这两个命令配置到<code>package.json</code>文件里，比如配置成下面的样子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"dev"</span>: <span class="string">"next dev"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"next build"</span>,</span><br><span class="line">  <span class="string">"start"</span>: <span class="string">"next start -p 80"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>然后在终端里运行一下<code>yarn build</code>，如果这时候报错，其实是我们在加入<code>Ant Design</code>的样式时产生的，你可以改用<strong>全局引入CSS</strong>解决问题。</p>
+<p>在page目录下，新建一个<code>_app.js</code>文件，然后写入下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'next/app'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'antd/dist/antd.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App</span><br></pre></td></tr></table></figure>
+
+<p>这样配置一下，就可以打包成功了，然后再运行<code>yarn start</code>来运行服务器，看一下我们的<code>header</code>页面，也是有样式的。说明打包已经成功了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># react</a>
+          
+            <a href="/tags/next/" rel="tag"># next</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/15/Nginx/" rel="next" title="Nginx基础">
+                <i class="fa fa-chevron-left"></i> Nginx基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/15/封装fetch请求/" rel="prev" title="封装fetch请求">
+                封装fetch请求 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="SampsonKY">
+            
+              <p class="site-author-name" itemprop="name">SampsonKY</p>
+              <p class="site-description motion-element" itemprop="description">Dreams are destined to be lonely, and there is no doubt and ridicule on the road, but what about it, even if it is bruised and bruised, it must live beautifully.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/SampsonKY" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:theonekangyong@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Next-js"><span class="nav-number">1.</span> <span class="nav-text">Next.js</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#create-next-app-快速创建Next-js项目"><span class="nav-number">1.2.</span> <span class="nav-text">create-next-app 快速创建Next.js项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Page和Component的使用"><span class="nav-number">1.3.</span> <span class="nav-text">Page和Component的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由-基础和基本跳转"><span class="nav-number">1.4.</span> <span class="nav-text">路由-基础和基本跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由-跳转时用query传递和接收参数"><span class="nav-number">1.5.</span> <span class="nav-text">路由-跳转时用query传递和接收参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由-六个钩子事件"><span class="nav-number">1.6.</span> <span class="nav-text">路由-六个钩子事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在getInitialProps中使用Axios获取远端数据"><span class="nav-number">1.7.</span> <span class="nav-text">在getInitialProps中使用Axios获取远端数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Style-JSX编写页面的CSS样式"><span class="nav-number">1.8.</span> <span class="nav-text">使用Style JSX编写页面的CSS样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lazy-Loading实现模块懒加载"><span class="nav-number">1.9.</span> <span class="nav-text">Lazy Loading实现模块懒加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义Head更加友好的SEO操作"><span class="nav-number">1.10.</span> <span class="nav-text">自定义Head更加友好的SEO操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-js框架下使用Ant-Design-UI"><span class="nav-number">1.11.</span> <span class="nav-text">Next.js框架下使用Ant Design UI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Next-js生产环境打包"><span class="nav-number">1.12.</span> <span class="nav-text">Next.js生产环境打包</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SampsonKY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
